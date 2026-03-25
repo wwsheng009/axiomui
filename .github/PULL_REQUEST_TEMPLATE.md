@@ -1,0 +1,40 @@
+## Summary
+
+Describe the change in one or two short paragraphs.
+
+## Scope
+
+- In scope:
+- Out of scope:
+
+## Related Issues
+
+- Closes #
+- Related to #
+
+## What Changed
+
+- Component or foundation changes:
+- Token or theme changes:
+- Docs or demo changes:
+- Test changes:
+
+## Verification
+
+- [ ] `pnpm typecheck`
+- [ ] `pnpm build`
+- [ ] Relevant docs demo checked manually
+- [ ] Keyboard path checked for interactive components
+- [ ] `LTR/RTL` checked when applicable
+- [ ] `cozy/compact` checked when applicable
+- [ ] Theme switching checked when applicable
+
+## Accessibility
+
+- Roles and labels reviewed:
+- Focus management reviewed:
+- Status or error semantics reviewed:
+
+## Screenshots Or Notes
+
+Add screenshots, terminal notes, or short walkthrough details when useful.
