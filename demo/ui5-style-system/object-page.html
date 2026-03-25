@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI5 Style System Object Page Demo</title>
+  <link rel="stylesheet" href="../../resources/sap/ui/core/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/m/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/f/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/tnt/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/demo.css">
+  <link rel="stylesheet" href="./styles/components.css">
+</head>
+<body>
+  <div class="demo-app" id="demo-app" data-density="cozy">
+    <header class="demo-shell">
+      <div class="repro-shellbar">
+        <div class="repro-shellbar__start">
+          <button class="repro-btn repro-btn--shell repro-btn--icon" type="button">M</button>
+          <div class="repro-shellbar__titles">
+            <div class="repro-shellbar__title">UI5 Style System</div>
+            <div class="repro-shellbar__subtitle">Object page</div>
+          </div>
+        </div>
+        <div class="repro-shellbar__search">
+          <label class="repro-field repro-field--shell">
+            <span class="repro-field__slot">S</span>
+            <input type="text" value="Search object sections">
+            <span class="repro-field__slot">/</span>
+          </label>
+        </div>
+        <div class="repro-shellbar__end">
+          <button class="repro-btn repro-btn--shell" type="button">Edit</button>
+          <button class="repro-btn repro-btn--shell repro-btn--icon" type="button">N</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="demo-main">
+      <section class="demo-hero">
+        <div class="demo-hero__copy">
+          <p class="demo-kicker">Standalone Page</p>
+          <h1>Object Page Scenario</h1>
+          <p class="demo-copy">
+            This page focuses on structural coordination: dynamic title, tabs, form layout, readonly/value-state,
+            cards, list rows and feedback blocks all need to stay coherent when the page moves from overview to detail.
+          </p>
+        </div>
+        <div class="demo-page-nav">
+          <a class="demo-chip" href="./index.html">Home</a>
+          <a class="demo-chip" href="./matrix.html">Matrix</a>
+          <a class="demo-chip" href="./worklist.html">Worklist</a>
+          <a class="demo-chip is-selected" href="./object-page.html">Object Page</a>
+          <a class="demo-chip" href="./tokens.html">Tokens</a>
+          <a class="demo-chip" href="./acceptance.html">Acceptance</a>
+        </div>
+        <div class="demo-controls">
+          <div class="demo-control-group" role="group" aria-label="Density">
+            <span class="demo-control-label">Density</span>
+            <button class="demo-toggle is-active" type="button" data-density-value="cozy" aria-pressed="true">Cozy</button>
+            <button class="demo-toggle" type="button" data-density-value="compact" aria-pressed="false">Compact</button>
+          </div>
+          <div class="demo-control-group" role="group" aria-label="Direction">
+            <span class="demo-control-label">Direction</span>
+            <button class="demo-toggle is-active" type="button" data-dir-value="ltr" aria-pressed="true">LTR</button>
+            <button class="demo-toggle" type="button" data-dir-value="rtl" aria-pressed="false">RTL</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Scenario</p>
+            <h2>Sales Order Detail</h2>
+            <p class="demo-copy">
+              Use the panel links below for direct review or screenshot capture of a specific tab state.
+            </p>
+          </div>
+        </div>
+        <div class="demo-chip-row demo-chip-row--panels">
+          <a class="demo-chip" href="./object-page.html?tab=object-overview#object-overview">Overview Panel</a>
+          <a class="demo-chip" href="./object-page.html?tab=object-items#object-items">Items Panel</a>
+          <a class="demo-chip" href="./object-page.html?tab=object-history#object-history">History Panel</a>
+        </div>
+
+        <div class="demo-scenario demo-scenario--object">
+          <div class="demo-scenario__header">
+            <div class="repro-dynamic-title repro-dynamic-title--object is-focus-visible">
+              <div class="repro-dynamic-title__top">
+                <span class="demo-note">Sales Order / Manage</span>
+                <span class="demo-note">Last synced 09:05</span>
+              </div>
+              <div class="repro-dynamic-title__main">
+                <div>
+                  <div class="repro-dynamic-title__heading">SO-489201</div>
+                  <div class="repro-dynamic-title__summary">Global Retail Germany · €128k · delivery block active</div>
+                </div>
+                <div class="demo-action-bar demo-action-bar--title">
+                  <button class="repro-btn repro-btn--transparent" type="button">Edit</button>
+                  <button class="repro-btn" type="button">Release</button>
+                  <button class="repro-btn repro-btn--emphasized" type="button">Save</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="repro-message repro-message--warning">
+              <span class="repro-message__icon">!</span>
+              <div class="repro-message__body">
+                <strong>Warning</strong>
+                <span>The delivery block is still active. Header actions, field states and tabs must keep the same semantic contrast.</span>
+              </div>
+              <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+            </div>
+          </div>
+
+          <div class="demo-scenario__body">
+            <div class="repro-tabbar repro-tabbar--object" data-tabs data-tab-sync="query">
+              <div class="repro-tabbar__header repro-tabbar__header--object" role="tablist" aria-label="Object sections">
+                <button class="repro-tab is-selected is-hover" id="object-tab-overview" type="button" role="tab" aria-selected="true" aria-controls="object-overview" data-tab-target="object-overview">Overview <span class="repro-badge repro-badge--neutral">4</span></button>
+                <button class="repro-tab" id="object-tab-items" type="button" role="tab" aria-selected="false" aria-controls="object-items" data-tab-target="object-items">Items <span class="repro-badge repro-badge--positive">12</span></button>
+                <button class="repro-tab is-hover" id="object-tab-history" type="button" role="tab" aria-selected="false" aria-controls="object-history" data-tab-target="object-history">History</button>
+                <button class="repro-tab is-focus-visible" type="button">Approvals</button>
+                <button class="repro-tab is-disabled" type="button" disabled>Analytics</button>
+                <button class="repro-btn repro-tabbar__overflow is-focus-visible" type="button">More</button>
+              </div>
+              <div class="repro-tabbar__content">
+                <div class="repro-tabbar__panel is-active" id="object-overview" data-tab-panel role="tabpanel" aria-labelledby="object-tab-overview">
+                  <div class="demo-split-columns">
+                    <div class="demo-stack">
+                      <div class="demo-subsection demo-subsection--form">
+                        <h3 class="demo-subsection__title">General Information</h3>
+                        <div class="demo-form-grid">
+                          <div class="demo-form-item">
+                            <span class="demo-label">Customer</span>
+                            <label class="repro-field">
+                              <input type="text" value="Global Retail Germany">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Sales Org</span>
+                            <label class="repro-field is-readonly">
+                              <input type="text" value="1710" readonly>
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Requested Delivery</span>
+                            <label class="repro-field state-warning">
+                              <input type="text" value="2026-03-27">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Approval Status</span>
+                            <label class="repro-field state-success">
+                              <input type="text" value="Released">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Sales Office</span>
+                            <label class="repro-field is-hover">
+                              <input type="text" value="Shanghai Hub">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Workflow Owner</span>
+                            <label class="repro-field is-focus-visible">
+                              <input type="text" value="Alex Chen">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Compliance Hold</span>
+                            <label class="repro-field state-error">
+                              <input type="text" value="Missing export document">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Legacy Routing</span>
+                            <label class="repro-field is-disabled">
+                              <input type="text" value="Archived template" disabled>
+                            </label>
+                          </div>
+                          <div class="demo-form-item is-span-2">
+                            <span class="demo-label">Internal Note</span>
+                            <label class="repro-field repro-field--textarea state-information">
+                              <textarea rows="4">Object-page form area uses the same field wrapper, readonly model and value-state treatment as the matrix page.</textarea>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="demo-subsection demo-subsection--items">
+                        <h3 class="demo-subsection__title">Recent Items</h3>
+                        <div class="repro-list">
+                          <div class="repro-row is-selected">
+                            <span class="repro-row__highlight"></span>
+                            <div class="repro-row__content">
+                              <div class="repro-row__title">Item 10 · Desktop terminal</div>
+                              <div class="repro-row__meta">Quantity 14 · plant 1710</div>
+                            </div>
+                            <span class="repro-row__counter">€56k</span>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+                          </div>
+                          <div class="repro-row is-selected is-hover" data-highlight="information">
+                            <span class="repro-row__highlight"></span>
+                            <div class="repro-row__content">
+                              <div class="repro-row__title">Item 20 · Support package</div>
+                              <div class="repro-row__meta">Selected plus hover keeps the same row model.</div>
+                            </div>
+                            <span class="repro-row__counter">€18k</span>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+                          </div>
+                          <div class="repro-row is-focus-visible is-unread" data-highlight="warning">
+                            <span class="repro-row__highlight"></span>
+                            <div class="repro-row__content">
+                              <div class="repro-row__title">Item 30 · Export paperwork</div>
+                              <div class="repro-row__meta">Focus ring and highlight strip stay visible together.</div>
+                            </div>
+                            <span class="repro-row__counter">€9k</span>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+                          </div>
+                          <div class="repro-row is-active" data-highlight="error">
+                            <span class="repro-row__highlight"></span>
+                            <div class="repro-row__content">
+                              <div class="repro-row__title">Item 40 · Customs recovery</div>
+                              <div class="repro-row__meta">Active state is stronger than hover and selection.</div>
+                            </div>
+                            <span class="repro-row__counter">€5k</span>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="demo-stack demo-stack--rail">
+                      <div class="repro-card repro-card--summary">
+                        <div class="repro-card__header">
+                          <div class="repro-card__title">Object Summary</div>
+                          <div class="repro-card__subtitle">Header, body and footer layering</div>
+                        </div>
+                        <div class="repro-card__content">
+                          <div class="demo-kv-grid demo-kv-grid--summary">
+                            <div class="demo-kv">
+                              <span class="demo-kv__label">Gross amount</span>
+                              <span class="demo-kv__value">€128k</span>
+                            </div>
+                            <div class="demo-kv">
+                              <span class="demo-kv__label">Items</span>
+                              <span class="demo-kv__value">12</span>
+                            </div>
+                            <div class="demo-kv">
+                              <span class="demo-kv__label">Risk</span>
+                              <span class="demo-kv__value">Medium</span>
+                            </div>
+                            <div class="demo-kv">
+                              <span class="demo-kv__label">Owner</span>
+                              <span class="demo-kv__value">Alex</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="repro-card__footer demo-inline">
+                          <button class="repro-btn repro-btn--transparent" type="button">Open timeline</button>
+                          <span class="repro-spacer"></span>
+                          <span class="demo-note">Updated 09:05</span>
+                        </div>
+                      </div>
+
+                      <div class="repro-card repro-card--summary">
+                        <div class="repro-card__header">
+                          <div class="repro-card__title">Feedback</div>
+                          <div class="repro-card__subtitle">Feed input inside object context</div>
+                        </div>
+                        <div class="repro-card__content demo-feed-stack">
+                          <div class="repro-feed">
+                            <div class="repro-avatar">AB</div>
+                            <div class="repro-feed__composer">
+                              <label class="repro-field repro-field--textarea">
+                                <textarea rows="3">The object page still reuses the same feedback input language.</textarea>
+                              </label>
+                              <div class="repro-feed__footer">
+                                <span class="demo-note">76</span>
+                                <button class="repro-btn repro-btn--emphasized" type="button">Post</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="repro-feed is-disabled">
+                            <div class="repro-avatar">LK</div>
+                            <div class="repro-feed__composer">
+                              <label class="repro-field repro-field--textarea is-disabled">
+                                <textarea rows="2" disabled>Posting is locked while release workflow is running.</textarea>
+                              </label>
+                              <div class="repro-feed__footer">
+                                <span class="demo-note">Locked</span>
+                                <button class="repro-btn repro-btn--emphasized" type="button" disabled>Post</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="repro-card__footer demo-inline">
+                          <button class="repro-btn repro-btn--transparent" type="button">Open discussion</button>
+                          <span class="repro-spacer"></span>
+                          <span class="demo-note">2 unresolved notes</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="repro-tabbar__panel" id="object-items" data-tab-panel role="tabpanel" aria-labelledby="object-tab-items" hidden>
+                  <div class="demo-subsection">
+                    <h3 class="demo-subsection__title">Items Tab</h3>
+                    <div class="demo-table">
+                      <div class="demo-table__head">
+                        <span>Item</span>
+                        <span>Plant</span>
+                        <span>Status</span>
+                        <span>Net</span>
+                      </div>
+                      <div class="demo-table__row">
+                        <div class="demo-table__title">
+                          <span class="demo-table__primary">10 · Desktop terminal</span>
+                          <span class="demo-table__secondary">Hardware line</span>
+                        </div>
+                        <span>1710</span>
+                        <span class="demo-status demo-status--success">Ready</span>
+                        <span>€56k</span>
+                      </div>
+                      <div class="demo-table__row">
+                        <div class="demo-table__title">
+                          <span class="demo-table__primary">20 · Support package</span>
+                          <span class="demo-table__secondary">Service line</span>
+                        </div>
+                        <span>1710</span>
+                        <span class="demo-status demo-status--warning">Review</span>
+                        <span>€18k</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="repro-tabbar__panel" id="object-history" data-tab-panel role="tabpanel" aria-labelledby="object-tab-history" hidden>
+                  <div class="demo-subsection demo-subsection--history">
+                    <h3 class="demo-subsection__title">History Tab</h3>
+                    <div class="repro-message-page demo-message-page--history">
+                      <div class="repro-message-page__inner">
+                        <div class="repro-message-page__icon">i</div>
+                        <div class="repro-message-page__title">No further blockers</div>
+                        <div class="repro-message-page__description">
+                          Page-level feedback stays centered and calmer than the notification list that follows.
+                        </div>
+                        <div class="demo-inline">
+                          <button class="repro-btn" type="button">Refresh</button>
+                          <button class="repro-btn repro-btn--transparent" type="button">Open log</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="repro-notification-group">
+                      <button class="repro-notification-group__header is-focus-visible" type="button">
+                        <span class="repro-notification-group__priority">i</span>
+                        <span class="repro-notification-group__title">Activity Stream</span>
+                        <span class="repro-notification-group__meta">3 events</span>
+                      </button>
+                      <div class="repro-notification-group__body">
+                        <article class="repro-notification is-unread">
+                          <div class="repro-notification__top">
+                            <span class="repro-notification__priority repro-notification__priority--medium">M</span>
+                            <div class="repro-notification__content">
+                              <div class="repro-notification__title">Delivery block updated</div>
+                              <div class="repro-notification__text">History can reuse the same feedback and list language instead of inventing a new stream style.</div>
+                            </div>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">x</button>
+                          </div>
+                          <div class="repro-notification__footer">09:05 · Alex</div>
+                        </article>
+                        <article class="repro-notification">
+                          <div class="repro-notification__top">
+                            <span class="repro-notification__priority repro-notification__priority--high">H</span>
+                            <div class="repro-notification__content">
+                              <div class="repro-notification__title">Escalation reopened</div>
+                              <div class="repro-notification__text">Notification rows stay related to feed input and page feedback, but remain the more interruptive layer.</div>
+                            </div>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">x</button>
+                          </div>
+                          <div class="repro-notification__footer">08:42 · Workflow</div>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </div>
+</body>
+</html>

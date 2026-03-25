@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI5 Style System Token Demo</title>
+  <link rel="stylesheet" href="../../resources/sap/ui/core/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/m/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/f/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/tnt/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/demo.css">
+  <link rel="stylesheet" href="./styles/components.css">
+</head>
+<body>
+  <div class="demo-app" id="demo-app" data-density="cozy">
+    <header class="demo-shell">
+      <div class="repro-shellbar">
+        <div class="repro-shellbar__start">
+          <button class="repro-btn repro-btn--shell repro-btn--icon" type="button">M</button>
+          <div class="repro-shellbar__titles">
+            <div class="repro-shellbar__title">UI5 Style System</div>
+            <div class="repro-shellbar__subtitle">Token inspection</div>
+          </div>
+        </div>
+        <div class="repro-shellbar__search">
+          <label class="repro-field repro-field--shell">
+            <span class="repro-field__slot">T</span>
+            <input type="text" value="Computed Horizon CSS variables">
+            <span class="repro-field__slot">.</span>
+          </label>
+        </div>
+        <div class="repro-shellbar__end">
+          <button class="repro-btn repro-btn--shell" type="button">Inspect</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="demo-main">
+      <section class="demo-hero">
+        <div class="demo-hero__copy">
+          <p class="demo-kicker">Standalone Page</p>
+          <h1>Token Inspection</h1>
+          <p class="demo-copy">
+            This page reads the local Horizon theme variables from the SDK and renders the key tokens used by the
+            matrix and scenario pages. It forms a direct check between the analysis documents and the actual computed CSS values.
+          </p>
+        </div>
+        <div class="demo-page-nav">
+          <a class="demo-chip" href="./index.html">Home</a>
+          <a class="demo-chip" href="./matrix.html">Matrix</a>
+          <a class="demo-chip" href="./worklist.html">Worklist</a>
+          <a class="demo-chip" href="./object-page.html">Object Page</a>
+          <a class="demo-chip is-selected" href="./tokens.html">Tokens</a>
+          <a class="demo-chip" href="./acceptance.html">Acceptance</a>
+        </div>
+        <div class="demo-controls">
+          <div class="demo-control-group" role="group" aria-label="Density">
+            <span class="demo-control-label">Density</span>
+            <button class="demo-toggle is-active" type="button" data-density-value="cozy" aria-pressed="true">Cozy</button>
+            <button class="demo-toggle" type="button" data-density-value="compact" aria-pressed="false">Compact</button>
+          </div>
+          <div class="demo-control-group" role="group" aria-label="Direction">
+            <span class="demo-control-label">Direction</span>
+            <button class="demo-toggle is-active" type="button" data-dir-value="ltr" aria-pressed="true">LTR</button>
+            <button class="demo-toggle" type="button" data-dir-value="rtl" aria-pressed="false">RTL</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Computed Tokens</p>
+            <h2>Key Variables By Component Group</h2>
+            <p class="demo-copy">
+              The swatches below are rendered from the browser's computed values, not from a copied JSON snapshot.
+              That makes this page useful when you later add alternate themes or tweak the compatibility layer.
+            </p>
+          </div>
+        </div>
+        <div class="demo-token-toolbar">
+          <label class="repro-field">
+            <span class="repro-field__slot">F</span>
+            <input id="token-search" type="text" value="" placeholder="Filter by token name, group or description">
+            <span class="repro-field__slot">?</span>
+          </label>
+          <p class="demo-note">
+            Filter results are matched against component-group titles, descriptions and token names. Each card also links
+            back to the relevant analysis docs and the demo page where the tokens are exercised.
+          </p>
+        </div>
+        <div class="demo-token-grid" id="token-groups"></div>
+        <div class="demo-token-empty" id="token-empty" hidden>No token groups match the current filter.</div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </div>
+</body>
+</html>

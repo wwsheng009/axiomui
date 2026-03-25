@@ -1,0 +1,97 @@
+.ax-variant-manager {
+  display: grid;
+  gap: var(--ax-space-3);
+}
+
+.ax-variant-manager__header,
+.ax-variant-manager__actions,
+.ax-variant-manager__item-main,
+.ax-variant-manager__item-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ax-space-2);
+  min-width: 0;
+}
+
+.ax-variant-manager__header {
+  justify-content: space-between;
+}
+
+.ax-variant-manager__label {
+  color: var(--ax-color-text-soft);
+  font: 700 0.72rem/1 var(--ax-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ax-variant-manager__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ax-space-2);
+}
+
+.ax-variant-manager__item {
+  display: grid;
+  gap: 0.25rem;
+  min-height: var(--ax-variant-pill-height);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-md);
+  background: var(--ax-surface-panel);
+  box-shadow: var(--ax-shadow-0);
+  color: var(--ax-color-text-muted);
+  cursor: pointer;
+  text-align: start;
+  transition:
+    background var(--ax-transition-fast),
+    border-color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast),
+    color var(--ax-transition-fast);
+}
+
+.ax-variant-manager__item:hover {
+  border-color: var(--ax-color-brand-500);
+  color: var(--ax-color-text);
+}
+
+.ax-variant-manager__item:focus-visible {
+  outline: none;
+  box-shadow: var(--ax-focus-ring), var(--ax-shadow-0);
+}
+
+.ax-variant-manager__item[data-selected="true"] {
+  border-color: var(--ax-color-brand-500);
+  background: var(--ax-surface-selected);
+  color: var(--ax-color-text);
+}
+
+.ax-variant-manager__item-label {
+  color: currentColor;
+  font: 700 0.84rem/1.2 var(--ax-font-family);
+}
+
+.ax-variant-manager__modified,
+.ax-variant-manager__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.25rem;
+  padding: 0.125rem 0.4rem;
+  border-radius: 999px;
+  background: var(--ax-surface-subtle);
+  color: var(--ax-color-text-soft);
+  font: 700 0.68rem/1 var(--ax-font-family);
+  letter-spacing: 0.06em;
+}
+
+.ax-variant-manager__item-description {
+  color: var(--ax-color-text-soft);
+  font: 500 0.72rem/1.25 var(--ax-font-family);
+}
+
+@media (max-width: 720px) {
+  .ax-variant-manager__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

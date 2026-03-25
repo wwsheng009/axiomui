@@ -1,0 +1,80 @@
+.ax-message-strip {
+  --ax-message-background: var(--ax-surface-information);
+  --ax-message-border: var(--ax-color-information-500);
+  --ax-message-color: var(--ax-color-information-strong);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: start;
+  gap: var(--ax-space-3);
+  min-height: var(--ax-message-min-height);
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--ax-message-border);
+  border-radius: var(--ax-radius-md);
+  background: var(--ax-message-background);
+  color: var(--ax-message-color);
+}
+
+.ax-message-strip[data-tone="neutral"] {
+  --ax-message-background: var(--ax-surface-subtle);
+  --ax-message-border: var(--ax-color-border-subtle);
+  --ax-message-color: var(--ax-color-text-muted);
+}
+
+.ax-message-strip[data-tone="success"] {
+  --ax-message-background: var(--ax-surface-positive);
+  --ax-message-border: var(--ax-color-positive-500);
+  --ax-message-color: var(--ax-color-positive-strong);
+}
+
+.ax-message-strip[data-tone="warning"] {
+  --ax-message-background: var(--ax-surface-attention);
+  --ax-message-border: var(--ax-color-attention-500);
+  --ax-message-color: var(--ax-color-attention-strong);
+}
+
+.ax-message-strip[data-tone="error"] {
+  --ax-message-background: var(--ax-surface-negative);
+  --ax-message-border: var(--ax-color-negative-500);
+  --ax-message-color: var(--ax-color-negative-strong);
+}
+
+.ax-message-strip__icon {
+  display: inline-grid;
+  place-items: center;
+  width: var(--ax-message-icon-width);
+  min-height: calc(var(--ax-message-min-height) - 0.25rem);
+  font: 800 0.8rem/1 var(--ax-font-family);
+  letter-spacing: 0.08em;
+}
+
+.ax-message-strip__content {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.ax-message-strip__headline {
+  color: inherit;
+  font: 700 0.9rem/1.4 var(--ax-font-family);
+}
+
+.ax-message-strip__body {
+  color: inherit;
+  font: 500 0.84rem/1.55 var(--ax-font-family);
+}
+
+.ax-message-strip__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ax-space-2);
+}
+
+@media (max-width: 720px) {
+  .ax-message-strip {
+    grid-template-columns: auto 1fr;
+  }
+
+  .ax-message-strip__actions {
+    grid-column: 2;
+  }
+}

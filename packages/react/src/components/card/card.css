@@ -1,0 +1,101 @@
+.ax-card {
+  --ax-card-accent: transparent;
+  --ax-card-accent-inset: calc(var(--ax-radius-lg) - 1px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ax-space-4);
+  padding: var(--ax-card-padding);
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-lg);
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-raised) 0%,
+    var(--ax-surface-subtle) 100%
+  );
+  box-shadow: var(--ax-shadow-1);
+  backdrop-filter: blur(16px);
+  transition:
+    border-color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast),
+    transform var(--ax-transition-fast);
+}
+
+.ax-card::before {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: var(--ax-card-accent-inset);
+  height: 0.1875rem;
+  border-end-start-radius: 999px;
+  border-end-end-radius: 999px;
+  background: var(--ax-card-accent);
+  content: "";
+  pointer-events: none;
+}
+
+.ax-card[data-interactive="true"] {
+  cursor: pointer;
+}
+
+.ax-card[data-interactive="true"]:hover {
+  transform: translateY(-2px);
+  border-color: var(--ax-color-brand-500);
+  box-shadow: var(--ax-shadow-2);
+}
+
+.ax-card[data-tone="brand"] {
+  --ax-card-accent: linear-gradient(
+    90deg,
+    var(--ax-color-brand-400) 0%,
+    var(--ax-color-brand-500) 100%
+  );
+}
+
+.ax-card[data-tone="positive"] {
+  --ax-card-accent: linear-gradient(
+    90deg,
+    var(--ax-color-positive-400) 0%,
+    var(--ax-color-positive-500) 100%
+  );
+}
+
+.ax-card[data-tone="attention"] {
+  --ax-card-accent: linear-gradient(
+    90deg,
+    var(--ax-color-attention-400) 0%,
+    var(--ax-color-attention-500) 100%
+  );
+}
+
+.ax-card__header,
+.ax-card__headline,
+.ax-card__body,
+.ax-card__footer {
+  display: grid;
+  gap: var(--ax-space-2);
+}
+
+.ax-card__eyebrow {
+  color: var(--ax-color-brand-600);
+  font: 700 0.7rem/1.2 var(--ax-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ax-card__heading {
+  margin: 0;
+  color: var(--ax-color-text);
+  font: 700 1.1rem/1.2 var(--ax-font-family);
+}
+
+.ax-card__description,
+.ax-card__body {
+  margin: 0;
+  color: var(--ax-color-text-muted);
+  font: 500 0.92rem/1.6 var(--ax-font-family);
+}
+
+.ax-card__footer {
+  padding-top: var(--ax-space-3);
+  border-top: 1px solid var(--ax-color-border-subtle);
+}

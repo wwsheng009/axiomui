@@ -1,0 +1,103 @@
+.ax-calendar-panel {
+  display: grid;
+  gap: var(--ax-space-3);
+  width: min(19rem, 100%);
+  color: var(--ax-color-text);
+}
+
+.ax-calendar-panel__header,
+.ax-calendar-panel__nav {
+  display: flex;
+  align-items: center;
+}
+
+.ax-calendar-panel__header {
+  justify-content: space-between;
+  gap: var(--ax-space-3);
+}
+
+.ax-calendar-panel__nav {
+  gap: var(--ax-space-1);
+}
+
+.ax-calendar-panel__title {
+  color: var(--ax-color-text);
+  font: 700 0.95rem/1.2 var(--ax-font-family);
+}
+
+.ax-calendar-panel__weekdays,
+.ax-calendar-panel__week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--ax-space-1);
+}
+
+.ax-calendar-panel__weeks {
+  display: grid;
+  gap: var(--ax-space-1);
+}
+
+.ax-calendar-panel__weekday {
+  padding-block: 0.25rem;
+  color: var(--ax-color-text-soft);
+  font: 600 0.7rem/1.2 var(--ax-font-family);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.ax-calendar-panel__day-cell {
+  min-width: 0;
+}
+
+.ax-calendar-panel__day {
+  display: inline-grid;
+  place-items: center;
+  width: 100%;
+  min-height: 2.375rem;
+  padding: 0.35rem;
+  border: 1px solid transparent;
+  border-radius: var(--ax-radius-md);
+  background: transparent;
+  color: var(--ax-color-text);
+  cursor: pointer;
+  font: 600 0.85rem/1 var(--ax-font-family);
+  transition:
+    background var(--ax-transition-fast),
+    border-color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast),
+    color var(--ax-transition-fast);
+}
+
+.ax-calendar-panel__day:hover,
+.ax-calendar-panel__day[data-focused="true"] {
+  border-color: var(--ax-color-brand-500);
+  background: var(--ax-surface-hover);
+}
+
+.ax-calendar-panel__day:focus-visible {
+  outline: none;
+  box-shadow: var(--ax-focus-ring), var(--ax-shadow-0);
+}
+
+.ax-calendar-panel__day[data-selected="true"] {
+  border-color: var(--ax-color-brand-500);
+  background: var(--ax-surface-selected);
+}
+
+.ax-calendar-panel__day[data-current="true"] {
+  border-color: var(--ax-color-border-strong);
+}
+
+.ax-calendar-panel__day[data-outside-month="true"] {
+  color: var(--ax-color-text-soft);
+}
+
+.ax-calendar-panel__day[data-disabled="true"] {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.ax-calendar-panel__range-note {
+  color: var(--ax-color-text-muted);
+  font: 500 0.74rem/1.4 var(--ax-font-family);
+}

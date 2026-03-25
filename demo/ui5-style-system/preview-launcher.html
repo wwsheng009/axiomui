@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Launcher</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var target = params.get("target") || "index.html";
+      var density = params.get("density") || "cozy";
+      var dir = params.get("dir") || "ltr";
+      var prefix = "ui5-style-system-demo:";
+
+      try {
+        window.localStorage.setItem(prefix + "density", density);
+        window.localStorage.setItem(prefix + "dir", dir);
+      } catch (error) {
+        // Ignore storage failures so screenshots can still navigate.
+      }
+
+      window.location.replace(target);
+    }());
+  </script>
+</body>
+</html>

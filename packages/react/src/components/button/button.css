@@ -1,0 +1,132 @@
+.ax-button {
+  --ax-button-background: var(--ax-surface-raised);
+  --ax-button-border: var(--ax-color-border-strong);
+  --ax-button-color: var(--ax-color-text);
+  --ax-button-hover-background: var(--ax-surface-hover);
+  --ax-button-hover-border: var(--ax-color-border-hover);
+  --ax-button-active-background: var(--ax-surface-active);
+  --ax-button-active-border: var(--ax-color-border-hover);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ax-space-2);
+  min-width: 2.75rem;
+  height: var(--ax-element-height);
+  padding-inline: var(--ax-element-padding-inline);
+  border: 1px solid var(--ax-button-border);
+  border-radius: var(--ax-radius-sm);
+  background: var(--ax-button-background);
+  box-shadow: var(--ax-shadow-0);
+  color: var(--ax-button-color);
+  cursor: pointer;
+  font: 600 0.95rem/1 var(--ax-font-family);
+  transition:
+    background var(--ax-transition-fast),
+    border-color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast),
+    color var(--ax-transition-fast),
+    transform var(--ax-transition-fast);
+  white-space: nowrap;
+}
+
+.ax-button:hover:not(:disabled) {
+  background: var(--ax-button-hover-background);
+  border-color: var(--ax-button-hover-border);
+}
+
+.ax-button:active:not(:disabled) {
+  background: var(--ax-button-active-background);
+  border-color: var(--ax-button-active-border);
+  transform: translateY(1px);
+}
+
+.ax-button:focus-visible {
+  outline: none;
+  box-shadow: var(--ax-focus-ring), var(--ax-shadow-0);
+}
+
+.ax-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.ax-button[data-full-width="true"] {
+  width: 100%;
+}
+
+.ax-button[data-icon-only="true"] {
+  width: var(--ax-element-height);
+  min-width: var(--ax-element-height);
+  padding-inline: 0;
+}
+
+.ax-button[data-selected="true"] {
+  background: var(--ax-surface-selected);
+  border-color: var(--ax-color-brand-500);
+  color: var(--ax-color-brand-strong);
+}
+
+.ax-button[data-variant="emphasized"] {
+  --ax-button-background: var(--ax-brand-gradient);
+  --ax-button-border: var(--ax-color-brand-500);
+  --ax-button-color: var(--ax-color-text-inverse);
+  --ax-button-hover-background: var(--ax-brand-gradient-hover);
+  --ax-button-hover-border: var(--ax-color-brand-600);
+  --ax-button-active-background: var(--ax-brand-gradient-active);
+  --ax-button-active-border: var(--ax-color-brand-700);
+}
+
+.ax-button[data-variant="positive"] {
+  --ax-button-background: var(--ax-surface-positive);
+  --ax-button-border: var(--ax-color-positive-400);
+  --ax-button-color: var(--ax-color-positive-strong);
+  --ax-button-hover-background: var(--ax-surface-positive);
+  --ax-button-hover-border: var(--ax-color-positive-500);
+  --ax-button-active-background: var(--ax-surface-positive);
+  --ax-button-active-border: var(--ax-color-positive-600);
+}
+
+.ax-button[data-variant="negative"] {
+  --ax-button-background: var(--ax-surface-negative);
+  --ax-button-border: var(--ax-color-negative-400);
+  --ax-button-color: var(--ax-color-negative-strong);
+  --ax-button-hover-background: var(--ax-surface-negative);
+  --ax-button-hover-border: var(--ax-color-negative-500);
+  --ax-button-active-background: var(--ax-surface-negative);
+  --ax-button-active-border: var(--ax-color-negative-600);
+}
+
+.ax-button[data-variant="attention"] {
+  --ax-button-background: var(--ax-surface-attention);
+  --ax-button-border: var(--ax-color-attention-400);
+  --ax-button-color: var(--ax-color-attention-strong);
+  --ax-button-hover-background: var(--ax-surface-attention);
+  --ax-button-hover-border: var(--ax-color-attention-500);
+  --ax-button-active-background: var(--ax-surface-attention);
+  --ax-button-active-border: var(--ax-color-attention-600);
+}
+
+.ax-button[data-variant="transparent"] {
+  --ax-button-background: transparent;
+  --ax-button-border: transparent;
+  --ax-button-hover-background: var(--ax-surface-hover);
+  --ax-button-hover-border: transparent;
+  --ax-button-active-background: var(--ax-surface-active);
+  --ax-button-active-border: transparent;
+  box-shadow: none;
+}
+
+.ax-button__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.875rem;
+}
+
+.ax-button__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

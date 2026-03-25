@@ -1,0 +1,127 @@
+.ax-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 3vh var(--ax-space-4);
+}
+
+.ax-dialog__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--ax-surface-overlay);
+  backdrop-filter: blur(6px);
+}
+
+.ax-dialog__shell {
+  --ax-dialog-accent: transparent;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(100%, 42rem);
+  max-height: 94vh;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: 1.25rem;
+  background: var(--ax-surface-panel);
+  box-shadow: var(--ax-shadow-2);
+}
+
+.ax-dialog__shell[data-size="sm"] {
+  width: min(100%, 32rem);
+}
+
+.ax-dialog__shell[data-size="lg"] {
+  width: min(100%, 56rem);
+}
+
+.ax-dialog__shell[data-tone="information"] {
+  --ax-dialog-accent: rgba(15, 108, 173, 0.22);
+}
+
+.ax-dialog__shell[data-tone="success"] {
+  --ax-dialog-accent: rgba(24, 137, 24, 0.22);
+}
+
+.ax-dialog__shell[data-tone="warning"] {
+  --ax-dialog-accent: rgba(209, 125, 0, 0.22);
+}
+
+.ax-dialog__shell[data-tone="error"] {
+  --ax-dialog-accent: rgba(187, 0, 0, 0.22);
+}
+
+.ax-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ax-space-3);
+  min-height: var(--ax-dialog-header-height);
+  padding: 1rem 1rem 0.875rem;
+  box-shadow: inset 0 -1px 0 var(--ax-color-border-subtle),
+    inset 0 0.25rem 0 var(--ax-dialog-accent);
+}
+
+.ax-dialog__heading {
+  display: grid;
+  gap: var(--ax-space-2);
+}
+
+.ax-dialog__title {
+  margin: 0;
+  color: var(--ax-color-text);
+  font: 700 1.12rem/1.2 var(--ax-font-family);
+}
+
+.ax-dialog__description {
+  margin: 0;
+  color: var(--ax-color-text-muted);
+  font: 500 0.9rem/1.6 var(--ax-font-family);
+}
+
+.ax-dialog__content {
+  overflow: auto;
+  padding: var(--ax-dialog-padding);
+  color: var(--ax-color-text-muted);
+}
+
+.ax-dialog__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ax-space-3);
+  padding: 0.875rem 1rem 1rem;
+  border-top: 1px solid var(--ax-color-border-subtle);
+  background: var(--ax-surface-subtle);
+}
+
+.ax-dialog__footer-start,
+.ax-dialog__footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ax-space-2);
+}
+
+.ax-dialog__footer-actions {
+  justify-content: flex-end;
+  margin-inline-start: auto;
+}
+
+@media (max-width: 640px) {
+  .ax-dialog {
+    padding-inline: var(--ax-space-3);
+  }
+
+  .ax-dialog__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ax-dialog__footer-actions {
+    justify-content: stretch;
+    margin-inline-start: 0;
+  }
+}

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI5 Style System Acceptance Demo</title>
+  <link rel="stylesheet" href="../../resources/sap/ui/core/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/m/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/f/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/tnt/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/demo.css">
+  <link rel="stylesheet" href="./styles/components.css">
+</head>
+<body>
+  <div class="demo-app" id="demo-app" data-density="cozy">
+    <header class="demo-shell">
+      <div class="repro-shellbar">
+        <div class="repro-shellbar__start">
+          <button class="repro-btn repro-btn--shell repro-btn--icon" type="button">M</button>
+          <div class="repro-shellbar__titles">
+            <div class="repro-shellbar__title">UI5 Style System</div>
+            <div class="repro-shellbar__subtitle">Acceptance checklist</div>
+          </div>
+        </div>
+        <div class="repro-shellbar__search">
+          <label class="repro-field repro-field--shell">
+            <span class="repro-field__slot">A</span>
+            <input type="text" value="Minimum acceptance sets from the docs">
+            <span class="repro-field__slot">.</span>
+          </label>
+        </div>
+        <div class="repro-shellbar__end">
+          <button class="repro-btn repro-btn--shell" type="button">Review</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="demo-main">
+      <section class="demo-hero">
+        <div class="demo-hero__copy">
+          <p class="demo-kicker">Standalone Page</p>
+          <h1>Acceptance Checklist</h1>
+          <p class="demo-copy">
+            This page converts the minimum acceptance sets from the two state-matrix documents into a review surface.
+            Use it as the starting point for manual validation: open the linked demo pages, compare them against the
+            linked docs, then track which checks already have a demo surface and which still need a final visual pass.
+          </p>
+        </div>
+        <div class="demo-page-nav">
+          <a class="demo-chip" href="./index.html">Home</a>
+          <a class="demo-chip" href="./matrix.html">Matrix</a>
+          <a class="demo-chip" href="./worklist.html">Worklist</a>
+          <a class="demo-chip" href="./object-page.html">Object Page</a>
+          <a class="demo-chip" href="./tokens.html">Tokens</a>
+          <a class="demo-chip is-selected" href="./acceptance.html">Acceptance</a>
+        </div>
+        <div class="demo-controls">
+          <div class="demo-control-group" role="group" aria-label="Density">
+            <span class="demo-control-label">Density</span>
+            <button class="demo-toggle is-active" type="button" data-density-value="cozy" aria-pressed="true">Cozy</button>
+            <button class="demo-toggle" type="button" data-density-value="compact" aria-pressed="false">Compact</button>
+          </div>
+          <div class="demo-control-group" role="group" aria-label="Direction">
+            <span class="demo-control-label">Direction</span>
+            <button class="demo-toggle is-active" type="button" data-dir-value="ltr" aria-pressed="true">LTR</button>
+            <button class="demo-toggle" type="button" data-dir-value="rtl" aria-pressed="false">RTL</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Review Panel</p>
+            <h2>Status Overview</h2>
+            <p class="demo-copy">
+              Coverage marks whether the linked demo surface exists. Review status tracks pass, issue, blocked and pending,
+              while the triage queue collects the checks that still need follow-up.
+            </p>
+          </div>
+        </div>
+        <div class="demo-review-panel" data-acceptance-review-panel>
+          <div class="demo-review-summary">
+            <article class="demo-review-stat">
+              <span class="demo-review-stat__label">Surface Coverage</span>
+              <strong class="demo-review-stat__value"><span data-acceptance-count="covered">0</span>/<span data-acceptance-count="total">0</span></strong>
+              <p class="demo-review-stat__copy">Items with an explicit page or panel target.</p>
+            </article>
+            <article class="demo-review-stat">
+              <span class="demo-review-stat__label">Pending</span>
+              <strong class="demo-review-stat__value" data-acceptance-count="pending">0</strong>
+              <p class="demo-review-stat__copy">Checks that still need an explicit outcome.</p>
+            </article>
+            <article class="demo-review-stat">
+              <span class="demo-review-stat__label">Pass</span>
+              <strong class="demo-review-stat__value" data-acceptance-count="pass">0</strong>
+              <p class="demo-review-stat__copy">Checks confirmed as acceptable in the current review.</p>
+            </article>
+            <article class="demo-review-stat">
+              <span class="demo-review-stat__label">Issue</span>
+              <strong class="demo-review-stat__value" data-acceptance-count="issue">0</strong>
+              <p class="demo-review-stat__copy">Checks that still show a reviewable visual or structural issue.</p>
+            </article>
+            <article class="demo-review-stat">
+              <span class="demo-review-stat__label">Blocked</span>
+              <strong class="demo-review-stat__value" data-acceptance-count="blocked">0</strong>
+              <p class="demo-review-stat__copy">Checks blocked by missing coverage or unresolved prerequisite work.</p>
+            </article>
+            <article class="demo-review-stat">
+              <span class="demo-review-stat__label">Notes</span>
+              <strong class="demo-review-stat__value" data-acceptance-count="noted">0</strong>
+              <p class="demo-review-stat__copy">Checks with reviewer notes attached.</p>
+            </article>
+          </div>
+          <div class="demo-review-controls">
+            <div class="demo-control-group" role="group" aria-label="Review filter">
+              <span class="demo-control-label">Filter</span>
+              <button class="demo-toggle is-active" type="button" data-acceptance-filter="all" aria-pressed="true">All</button>
+              <button class="demo-toggle" type="button" data-acceptance-filter="pending" aria-pressed="false">Pending</button>
+              <button class="demo-toggle" type="button" data-acceptance-filter="pass" aria-pressed="false">Pass</button>
+              <button class="demo-toggle" type="button" data-acceptance-filter="issue" aria-pressed="false">Issue</button>
+              <button class="demo-toggle" type="button" data-acceptance-filter="blocked" aria-pressed="false">Blocked</button>
+            </div>
+            <button class="repro-btn repro-btn--transparent" type="button" data-acceptance-import>Import Review JSON</button>
+            <input type="file" accept=".json,application/json" hidden data-acceptance-import-file>
+            <button class="repro-btn repro-btn--transparent" type="button" data-acceptance-copy-url>Copy Review URL</button>
+            <button class="repro-btn repro-btn--transparent" type="button" data-acceptance-export-findings>Export Findings MD</button>
+            <button class="repro-btn" type="button" data-acceptance-export>Export Review JSON</button>
+            <button class="repro-btn repro-btn--transparent" type="button" data-acceptance-reset>Reset Review State</button>
+          </div>
+          <p class="demo-review-panel__note">Review status persists in local storage for this browser profile, and Copy Review URL captures the current view state for handoff.</p>
+          <p class="demo-review-panel__note" data-acceptance-export-state>Export the current review snapshot or the current findings queue handoff when you need an artifact.</p>
+          <div class="demo-review-triage" data-acceptance-triage>
+            <div class="demo-review-triage__head">
+              <div>
+                <p class="demo-review-triage__eyebrow">Open Findings</p>
+                <h3 class="demo-review-triage__title">Triage Queue</h3>
+                <p class="demo-review-panel__note">
+                  Issue, blocked and noted pending checks are gathered here with direct links back to the checklist item,
+                  current PNG evidence, and inline status controls for quick triage.
+                </p>
+              </div>
+              <div class="demo-review-triage__stats">
+                <span class="demo-review-chip"><strong data-acceptance-triage-count="total">0</strong> queued</span>
+                <span class="demo-review-chip"><strong data-acceptance-triage-count="ready">0</strong> ready evidence</span>
+                <span class="demo-review-chip"><strong data-acceptance-triage-count="noted">0</strong> with notes</span>
+              </div>
+            </div>
+            <div class="demo-review-triage__toolbar">
+              <div class="demo-control-group" role="group" aria-label="Triage queue filter">
+                <span class="demo-control-label">Queue</span>
+                <button class="demo-toggle is-active" type="button" data-acceptance-triage-filter="all" aria-pressed="true">
+                  All <span data-acceptance-triage-filter-count="all">0</span>
+                </button>
+                <button class="demo-toggle" type="button" data-acceptance-triage-filter="blocked" aria-pressed="false">
+                  Blocked <span data-acceptance-triage-filter-count="blocked">0</span>
+                </button>
+                <button class="demo-toggle" type="button" data-acceptance-triage-filter="issue" aria-pressed="false">
+                  Issue <span data-acceptance-triage-filter-count="issue">0</span>
+                </button>
+                <button class="demo-toggle" type="button" data-acceptance-triage-filter="pending" aria-pressed="false">
+                  Pending <span data-acceptance-triage-filter-count="pending">0</span>
+                </button>
+                <button class="demo-toggle" type="button" data-acceptance-triage-filter="ready" aria-pressed="false">
+                  Ready <span data-acceptance-triage-filter-count="ready">0</span>
+                </button>
+                <button class="demo-toggle" type="button" data-acceptance-triage-filter="missing" aria-pressed="false">
+                  Missing <span data-acceptance-triage-filter-count="missing">0</span>
+                </button>
+              </div>
+              <label class="repro-field demo-review-triage__search">
+                <span class="demo-review-triage__search-label">Search queue</span>
+                <input type="search" data-acceptance-triage-search placeholder="Search component, acceptance text, note, or evidence label">
+              </label>
+              <div class="demo-control-group demo-review-triage__bulk" role="group" aria-label="Set visible queue status">
+                <span class="demo-control-label">Set visible</span>
+                <button class="demo-toggle" type="button" data-acceptance-triage-bulk="pending">Pending</button>
+                <button class="demo-toggle" type="button" data-acceptance-triage-bulk="pass">Pass</button>
+                <button class="demo-toggle" type="button" data-acceptance-triage-bulk="issue">Issue</button>
+                <button class="demo-toggle" type="button" data-acceptance-triage-bulk="blocked">Blocked</button>
+              </div>
+            </div>
+            <div class="demo-review-triage__list" data-acceptance-triage-list>
+              <p class="demo-token-empty demo-review-triage__empty" data-acceptance-triage-empty>
+                No open findings yet. Issue, blocked, or noted pending checks will surface here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">How To Use</p>
+            <h2>Review Flow</h2>
+            <p class="demo-copy">
+              The intended order is simple: use the matrix page for state-level checks, the scenario pages for page-level
+              checks, and the token page whenever you need to confirm whether a problem comes from a wrong variable or a wrong layout rule.
+            </p>
+          </div>
+        </div>
+        <div class="demo-chip-row">
+          <a class="demo-chip" href="./matrix.html">1. Check states</a>
+          <a class="demo-chip" href="./worklist.html">2. Check worklist composition</a>
+          <a class="demo-chip" href="./object-page.html">3. Check object page composition</a>
+          <a class="demo-chip" href="./tokens.html">4. Check computed tokens</a>
+          <a class="demo-chip" href="./object-page.html?tab=object-history#object-history">5. Check history feedback panel</a>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Evidence</p>
+            <h2>Screenshot Review Set</h2>
+            <p class="demo-copy">
+              These links open the latest exported PNG evidence for the current density and direction, so acceptance review
+              can stay on one page instead of jumping between the browser and the screenshot folder.
+            </p>
+          </div>
+        </div>
+        <div class="demo-chip-row">
+          <a class="demo-chip" href="../../tmp/ui5-style-system-shots/matrix-compact-ltr.png" data-evidence-link="matrix" data-evidence-label="Matrix Evidence" data-evidence-summary-item>Matrix Evidence</a>
+          <a class="demo-chip" href="../../tmp/ui5-style-system-shots/worklist-compact-ltr.png" data-evidence-link="worklist" data-evidence-label="Worklist Evidence" data-evidence-summary-item>Worklist Evidence</a>
+          <a class="demo-chip" href="../../tmp/ui5-style-system-shots/object-page-compact-ltr.png" data-evidence-link="objectPage" data-evidence-label="Object Page Evidence" data-evidence-summary-item>Object Page Evidence</a>
+          <a class="demo-chip" href="../../tmp/ui5-style-system-shots/object-page-tab-object-history-compact-ltr.png" data-evidence-link="objectHistory" data-evidence-label="History Evidence" data-evidence-summary-item>History Evidence</a>
+          <a class="demo-chip" href="../../tmp/ui5-style-system-shots/tokens-compact-ltr.png" data-evidence-link="tokens" data-evidence-label="Tokens Evidence" data-evidence-summary-item>Tokens Evidence</a>
+          <a class="demo-chip" href="../../tmp/ui5-style-system-shots/acceptance-compact-ltr.png" data-evidence-link="acceptance" data-evidence-label="Acceptance Evidence" data-evidence-summary-item>Acceptance Evidence</a>
+        </div>
+        <div class="demo-evidence-summary">
+          <div class="demo-evidence-summary__item">
+            <span class="demo-evidence-summary__label">Current Variant</span>
+            <strong class="demo-evidence-summary__value" data-evidence-variant>cozy / LTR</strong>
+          </div>
+          <div class="demo-evidence-summary__item">
+            <span class="demo-evidence-summary__label">Ready</span>
+            <strong class="demo-evidence-summary__value"><span data-evidence-count="ready">0</span>/<span data-evidence-count="total">0</span></strong>
+          </div>
+          <div class="demo-evidence-summary__item">
+            <span class="demo-evidence-summary__label">Last Capture</span>
+            <strong class="demo-evidence-summary__value" data-evidence-generated-at>Waiting for manifest</strong>
+          </div>
+        </div>
+        <p class="demo-note" data-evidence-manifest-state>
+          Manifest status pending. Links still point to the expected PNG paths.
+        </p>
+        <p class="demo-note">
+          Regenerate the full review set with <code>python demo/ui5-style-system/scripts/capture_previews.py --suite acceptance --densities cozy compact --dirs ltr rtl</code>.
+        </p>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Core Acceptance</p>
+            <h2>First Priority Components</h2>
+          </div>
+        </div>
+        <div class="demo-checklist-grid">
+          <article class="demo-checklist-card" data-acceptance-card>
+            <div class="demo-checklist-card__head">
+              <h3 class="demo-checklist-card__title">Button</h3>
+              <p class="demo-checklist-card__copy">Reference: core matrix minimum acceptance set.</p>
+            </div>
+            <ul class="demo-checklist">
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="button-states" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">1</span>
+                  <span class="demo-checklist__text">Default, emphasized and transparent buttons all expose hover, active, focus and disabled.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="../../docs/analysis/ui5-style-system/core-component-state-matrices.md">Core Matrix Doc</a>
+                </div>
+              </li>
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="button-selected" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">2</span>
+                  <span class="demo-checklist__text">At least one selected / toggle case keeps selected + hover instead of falling back to a plain hover.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./tokens.html">Token Page</a>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="demo-checklist-card" data-acceptance-card>
+            <div class="demo-checklist-card__head">
+              <h3 class="demo-checklist-card__title">Field / Input</h3>
+              <p class="demo-checklist-card__copy">Wrapper, readonly and value-state checks.</p>
+            </div>
+            <ul class="demo-checklist">
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="field-states" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">1</span>
+                  <span class="demo-checklist__text">Standard field covers default, hover, focus, disabled, readonly and the four value states.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./object-page.html">Object Page</a>
+                </div>
+              </li>
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="field-family" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">2</span>
+                  <span class="demo-checklist__text">TextArea and regular inputs still read as the same field family.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="../../docs/analysis/ui5-style-system/components/field-and-input-system.md">Field System Doc</a>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="demo-checklist-card" data-acceptance-card>
+            <div class="demo-checklist-card__head">
+              <h3 class="demo-checklist-card__title">List / Table Row</h3>
+              <p class="demo-checklist-card__copy">Row-wide states and cross-container reuse.</p>
+            </div>
+            <ul class="demo-checklist">
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="list-states" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">1</span>
+                  <span class="demo-checklist__text">Rows cover default, hover, selected, selected + hover, active, focus and unread.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./worklist.html">Worklist Page</a>
+                </div>
+              </li>
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="list-highlight-focus" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">2</span>
+                  <span class="demo-checklist__text">Highlight strips and focus outlines coexist instead of masking each other.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./object-page.html">Object Page</a>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="demo-checklist-card" data-acceptance-card>
+            <div class="demo-checklist-card__head">
+              <h3 class="demo-checklist-card__title">Dialog / Popover</h3>
+              <p class="demo-checklist-card__copy">Shared overlay shell and semantic header treatment.</p>
+            </div>
+            <ul class="demo-checklist">
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="dialog-shell" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">1</span>
+                  <span class="demo-checklist__text">Standard dialog exposes header focus, content focus and footer actions.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="../../docs/analysis/ui5-style-system/components/dialog-and-popover-system.md">Dialog System Doc</a>
+                </div>
+              </li>
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="popover-contrast" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">2</span>
+                  <span class="demo-checklist__text">Popover remains lighter than dialog while still sharing radius and shadow language.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./tokens.html">Token Page</a>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Secondary Acceptance</p>
+            <h2>Second Priority Components</h2>
+          </div>
+        </div>
+        <div class="demo-checklist-grid">
+          <article class="demo-checklist-card" data-acceptance-card>
+            <div class="demo-checklist-card__head">
+              <h3 class="demo-checklist-card__title">Card</h3>
+              <p class="demo-checklist-card__copy">Surface-shell integrity across static and interactive cards.</p>
+            </div>
+            <ul class="demo-checklist">
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="card-surface" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">1</span>
+                  <span class="demo-checklist__text">Default, interactive and transparent cards still share one surface language.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./worklist.html">Worklist Page</a>
+                </div>
+              </li>
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="card-loading" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">2</span>
+                  <span class="demo-checklist__text">Loading or content-message states stay inside the card shell instead of becoming outside wrappers.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="../../docs/analysis/ui5-style-system/secondary-component-state-matrices.md">Secondary Matrix Doc</a>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="demo-checklist-card" data-acceptance-card>
+            <div class="demo-checklist-card__head">
+              <h3 class="demo-checklist-card__title">Toolbar / Header / ShellBar</h3>
+              <p class="demo-checklist-card__copy">Top-area structure and shell context checks.</p>
+            </div>
+            <ul class="demo-checklist">
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="header-spacing" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">1</span>
+                  <span class="demo-checklist__text">Toolbar, transparent toolbar and info toolbar remain one spacing system.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./worklist.html">Worklist Page</a>
+                </div>
+              </li>
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="header-hierarchy" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">2</span>
+                  <span class="demo-checklist__text">Dynamic title and shellbar preserve different hierarchy weights without splitting into unrelated components.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./object-page.html">Object Page</a>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="demo-checklist-card" data-acceptance-card>
+            <div class="demo-checklist-card__head">
+              <h3 class="demo-checklist-card__title">Tabs / Navigation</h3>
+              <p class="demo-checklist-card__copy">Indicator visibility and collapsed nav integrity.</p>
+            </div>
+            <ul class="demo-checklist">
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="tabs-indicator" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">1</span>
+                  <span class="demo-checklist__text">Tab headers expose selected, hover, focus and disabled with a visible selected indicator.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./object-page.html">Object Page</a>
+                </div>
+              </li>
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="nav-collapse" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">2</span>
+                  <span class="demo-checklist__text">Side navigation keeps selected, hover and collapse behavior in one item model.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./tokens.html">Token Page</a>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="demo-checklist-card" data-acceptance-card>
+            <div class="demo-checklist-card__head">
+              <h3 class="demo-checklist-card__title">Message / Feedback</h3>
+              <p class="demo-checklist-card__copy">Interruption layering and semantic reuse.</p>
+            </div>
+            <ul class="demo-checklist">
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="feedback-strip" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">1</span>
+                  <span class="demo-checklist__text">Message strip covers information, success, warning and error, and remains closable.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./worklist.html">Worklist Page</a>
+                </div>
+              </li>
+              <li class="demo-checklist__item" data-acceptance-item data-acceptance-id="feedback-layering" data-acceptance-coverage="covered" data-acceptance-review="pending">
+                <div class="demo-checklist__row">
+                  <span class="demo-checklist__marker">2</span>
+                  <span class="demo-checklist__text">Page feedback, feed input and notification rows still feel related but not equally interruptive.</span>
+                </div>
+                <div class="demo-checklist__meta">
+                  <span class="demo-review-pill demo-review-pill--coverage" data-acceptance-coverage-label>Covered by demo</span>
+                  <button class="demo-review-pill demo-review-pill--review" type="button" data-acceptance-review-toggle aria-pressed="false">Pending review</button>
+                </div>
+                <div class="demo-checklist__links">
+                  <a class="demo-token-link" href="./matrix.html">Matrix Page</a>
+                  <a class="demo-token-link" href="./object-page.html?tab=object-history#object-history">History Panel</a>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </div>
+</body>
+</html>

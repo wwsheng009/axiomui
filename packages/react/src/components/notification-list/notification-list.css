@@ -1,0 +1,97 @@
+.ax-notification-list {
+  display: grid;
+  gap: var(--ax-space-3);
+  padding: 1rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-lg);
+  background: var(--ax-surface-panel);
+  box-shadow: var(--ax-shadow-0);
+}
+
+.ax-notification-list__header {
+  color: var(--ax-color-text);
+  font: 700 0.96rem/1.2 var(--ax-font-family);
+}
+
+.ax-notification-list__items {
+  display: grid;
+  gap: var(--ax-space-2);
+}
+
+.ax-notification-list__item {
+  --ax-notification-accent: var(--ax-color-border-strong);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--ax-space-3);
+  padding: var(--ax-notification-item-padding);
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-md);
+  background: var(--ax-surface-subtle);
+  box-shadow: inset 0.1875rem 0 0 var(--ax-notification-accent);
+}
+
+.ax-notification-list__item[data-unread="true"] {
+  background: var(--ax-surface-raised);
+}
+
+.ax-notification-list__item[data-tone="information"] {
+  --ax-notification-accent: var(--ax-color-information-500);
+}
+
+.ax-notification-list__item[data-tone="success"] {
+  --ax-notification-accent: var(--ax-color-positive-500);
+}
+
+.ax-notification-list__item[data-tone="warning"] {
+  --ax-notification-accent: var(--ax-color-attention-500);
+}
+
+.ax-notification-list__item[data-tone="error"] {
+  --ax-notification-accent: var(--ax-color-negative-500);
+}
+
+.ax-notification-list__body {
+  display: grid;
+  gap: var(--ax-space-2);
+}
+
+.ax-notification-list__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ax-space-3);
+}
+
+.ax-notification-list__title {
+  color: var(--ax-color-text);
+  font: 700 0.9rem/1.35 var(--ax-font-family);
+}
+
+.ax-notification-list__meta {
+  color: var(--ax-color-text-soft);
+  font: 600 0.72rem/1.2 var(--ax-font-family);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ax-notification-list__description,
+.ax-notification-list__empty {
+  margin: 0;
+  color: var(--ax-color-text-muted);
+  font: 500 0.84rem/1.55 var(--ax-font-family);
+}
+
+.ax-notification-list__action {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 720px) {
+  .ax-notification-list__item {
+    grid-template-columns: 1fr;
+  }
+
+  .ax-notification-list__action {
+    justify-content: flex-start;
+  }
+}

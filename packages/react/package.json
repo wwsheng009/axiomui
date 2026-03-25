@@ -1,0 +1,42 @@
+{
+  "name": "@axiomui/react",
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/style.css"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19"
+  },
+  "dependencies": {
+    "@axiomui/tokens": "workspace:*"
+  },
+  "scripts": {
+    "build": "vite build && node ./scripts/build-styles.mjs && tsc -p tsconfig.json --emitDeclarationOnly --outDir dist/types",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "jsdom": "^29.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "vitest": "^4.1.1"
+  }
+}

@@ -1,0 +1,490 @@
+:root,
+[data-axiom-theme] {
+  --ax-font-family: "72", "72full", "Segoe UI", "Helvetica Neue", sans-serif;
+  --ax-radius-sm: 0.5rem;
+  --ax-radius-md: 0.75rem;
+  --ax-radius-lg: 1rem;
+  --ax-space-1: 0.25rem;
+  --ax-space-2: 0.5rem;
+  --ax-space-3: 0.75rem;
+  --ax-space-4: 1rem;
+  --ax-space-5: 1.5rem;
+  --ax-space-6: 2rem;
+  --ax-space-7: 3rem;
+  --ax-element-height: 2.25rem;
+  --ax-element-padding-inline: 0.75rem;
+  --ax-field-padding-inline: 0.625rem;
+  --ax-icon-slot-width: 2.25rem;
+  --ax-shell-height: 3.25rem;
+  --ax-shell-padding-inline: clamp(1rem, 2.2vw, 2rem);
+  --ax-content-padding-inline: clamp(1rem, 3vw, 2.25rem);
+  --ax-card-padding: 1.25rem;
+  --ax-dialog-padding: 1rem;
+  --ax-dialog-header-height: 2.75rem;
+  --ax-tab-height: 2.75rem;
+  --ax-tab-content-padding: 1rem;
+  --ax-list-row-height: 2.75rem;
+  --ax-form-label-width: 10rem;
+  --ax-toolbar-height: 2rem;
+  --ax-header-height: 3rem;
+  --ax-message-min-height: 2rem;
+  --ax-message-icon-width: 2.5rem;
+  --ax-page-padding-inline: clamp(1rem, 3vw, 3rem);
+  --ax-page-padding-top: clamp(1rem, 2.5vw, 2rem);
+  --ax-page-footer-height: 3rem;
+  --ax-tool-header-height: 2.75rem;
+  --ax-notification-item-padding: 1rem;
+  --ax-object-nav-height: 2.75rem;
+  --ax-split-gap: 1rem;
+  --ax-split-pane-padding: 1rem;
+  --ax-filter-bar-padding: 1rem;
+  --ax-column-manager-padding: 1rem;
+  --ax-column-manager-item-height: 3.5rem;
+  --ax-group-manager-padding: 1rem;
+  --ax-group-manager-item-height: 3.25rem;
+  --ax-sort-manager-padding: 1rem;
+  --ax-sort-manager-item-height: 3.25rem;
+  --ax-variant-sync-padding: 1rem;
+  --ax-variant-sync-card-padding: 1rem;
+  --ax-variant-pill-height: 2rem;
+  --ax-pagination-height: 2rem;
+  --ax-transition-fast: 140ms ease;
+  --ax-transition-soft: 220ms ease;
+}
+
+:root,
+[data-axiom-theme="horizon"] {
+  color-scheme: light;
+  --ax-surface-canvas: #f4f7fb;
+  --ax-surface-shell: rgba(246, 249, 252, 0.88);
+  --ax-surface-panel: rgba(255, 255, 255, 0.86);
+  --ax-surface-raised: #ffffff;
+  --ax-surface-subtle: #edf2f8;
+  --ax-surface-selected: #e8f3ff;
+  --ax-surface-positive: #f3fbf3;
+  --ax-surface-negative: #fff4f4;
+  --ax-surface-attention: #fff8eb;
+  --ax-surface-information: #f3f8fd;
+  --ax-surface-hover: #f7f9fc;
+  --ax-surface-active: #e6edf5;
+  --ax-surface-overlay: rgba(20, 31, 46, 0.3);
+  --ax-color-text: #1f2d3d;
+  --ax-color-text-muted: #5f738a;
+  --ax-color-text-soft: #7f93a9;
+  --ax-color-text-inverse: #f7fbff;
+  --ax-color-brand-400: #2b86e5;
+  --ax-color-brand-500: #0a6ed1;
+  --ax-color-brand-600: #0854a0;
+  --ax-color-brand-700: #053b74;
+  --ax-color-brand-strong: #0854a0;
+  --ax-color-positive-400: #42ab52;
+  --ax-color-positive-500: #188918;
+  --ax-color-positive-600: #146b14;
+  --ax-color-positive-strong: #146b14;
+  --ax-color-negative-400: #d36d6d;
+  --ax-color-negative-500: #bb0000;
+  --ax-color-negative-600: #992727;
+  --ax-color-negative-strong: #8f1d1d;
+  --ax-color-attention-400: #e2a53b;
+  --ax-color-attention-500: #d17d00;
+  --ax-color-attention-600: #996000;
+  --ax-color-attention-strong: #8d6100;
+  --ax-color-information-400: #4f87bd;
+  --ax-color-information-500: #0f6cad;
+  --ax-color-information-600: #0f5d95;
+  --ax-color-information-strong: #0f5d95;
+  --ax-color-border-subtle: rgba(140, 157, 177, 0.28);
+  --ax-color-border-strong: #8c9db1;
+  --ax-color-border-hover: #6d8096;
+  --ax-color-shell-border: rgba(140, 157, 177, 0.2);
+  --ax-shadow-0: 0 0 0 1px rgba(140, 157, 177, 0.18);
+  --ax-shadow-1: 0 0.75rem 2rem rgba(16, 30, 54, 0.08);
+  --ax-shadow-2: 0 1.25rem 2.75rem rgba(16, 30, 54, 0.14);
+  --ax-focus-ring: 0 0 0 0.125rem rgba(255, 255, 255, 0.95),
+    0 0 0 0.3125rem rgba(10, 110, 209, 0.36);
+  --ax-brand-gradient: linear-gradient(
+    180deg,
+    var(--ax-color-brand-400) 0%,
+    var(--ax-color-brand-500) 100%
+  );
+  --ax-brand-gradient-hover: linear-gradient(
+    180deg,
+    #2a83dd 0%,
+    #1273d4 100%
+  );
+  --ax-brand-gradient-active: linear-gradient(
+    180deg,
+    var(--ax-color-brand-600) 0%,
+    #06478b 100%
+  );
+}
+
+[data-axiom-theme="fiori_3"] {
+  color-scheme: light;
+  --ax-surface-canvas: #f5f6f7;
+  --ax-surface-shell: rgba(250, 251, 252, 0.92);
+  --ax-surface-panel: rgba(255, 255, 255, 0.94);
+  --ax-surface-raised: #ffffff;
+  --ax-surface-subtle: #eef1f4;
+  --ax-surface-selected: #e5f0fa;
+  --ax-surface-positive: #f4fbf4;
+  --ax-surface-negative: #fff3f3;
+  --ax-surface-attention: #fff8e8;
+  --ax-surface-information: #f2f8fd;
+  --ax-surface-hover: #f1f4f8;
+  --ax-surface-active: #e4eaf1;
+  --ax-surface-overlay: rgba(18, 27, 38, 0.28);
+  --ax-color-text: #223548;
+  --ax-color-text-muted: #58697b;
+  --ax-color-text-soft: #748497;
+  --ax-color-text-inverse: #fcfdff;
+  --ax-color-brand-400: #2e7fd7;
+  --ax-color-brand-500: #0a6ed1;
+  --ax-color-brand-600: #0854a0;
+  --ax-color-brand-700: #0b395f;
+  --ax-color-brand-strong: #0854a0;
+  --ax-color-positive-400: #4da85a;
+  --ax-color-positive-500: #1f8a2b;
+  --ax-color-positive-600: #186b22;
+  --ax-color-positive-strong: #186b22;
+  --ax-color-negative-400: #d36e6e;
+  --ax-color-negative-500: #cc1919;
+  --ax-color-negative-600: #9e2424;
+  --ax-color-negative-strong: #8e2323;
+  --ax-color-attention-400: #db9a31;
+  --ax-color-attention-500: #e9730c;
+  --ax-color-attention-600: #a85d00;
+  --ax-color-attention-strong: #8c5200;
+  --ax-color-information-400: #5a92c8;
+  --ax-color-information-500: #0f6cad;
+  --ax-color-information-600: #0e5f96;
+  --ax-color-information-strong: #0e5f96;
+  --ax-color-border-subtle: rgba(123, 138, 154, 0.28);
+  --ax-color-border-strong: #95a3b2;
+  --ax-color-border-hover: #738397;
+  --ax-color-shell-border: rgba(123, 138, 154, 0.2);
+  --ax-shadow-0: 0 0 0 1px rgba(123, 138, 154, 0.18);
+  --ax-shadow-1: 0 0.6rem 1.6rem rgba(23, 35, 50, 0.08);
+  --ax-shadow-2: 0 1rem 2.5rem rgba(23, 35, 50, 0.14);
+  --ax-focus-ring: 0 0 0 0.125rem rgba(255, 255, 255, 0.96),
+    0 0 0 0.3125rem rgba(10, 110, 209, 0.34);
+  --ax-brand-gradient: linear-gradient(
+    180deg,
+    var(--ax-color-brand-400) 0%,
+    var(--ax-color-brand-500) 100%
+  );
+  --ax-brand-gradient-hover: linear-gradient(
+    180deg,
+    #3f8ddd 0%,
+    #1978d7 100%
+  );
+  --ax-brand-gradient-active: linear-gradient(
+    180deg,
+    var(--ax-color-brand-600) 0%,
+    #0a457b 100%
+  );
+}
+
+[data-axiom-theme="horizon_dark"] {
+  color-scheme: dark;
+  --ax-surface-canvas: #0f1722;
+  --ax-surface-shell: rgba(20, 28, 41, 0.94);
+  --ax-surface-panel: rgba(28, 38, 52, 0.94);
+  --ax-surface-raised: #202b39;
+  --ax-surface-subtle: #16202d;
+  --ax-surface-selected: #17314c;
+  --ax-surface-positive: #14281a;
+  --ax-surface-negative: #331919;
+  --ax-surface-attention: #34240d;
+  --ax-surface-information: #142433;
+  --ax-surface-hover: #243246;
+  --ax-surface-active: #30425a;
+  --ax-surface-overlay: rgba(2, 7, 12, 0.72);
+  --ax-color-text: #f5f7fa;
+  --ax-color-text-muted: #d4deea;
+  --ax-color-text-soft: #96a8bc;
+  --ax-color-text-inverse: #0b1420;
+  --ax-color-brand-400: #79c2ff;
+  --ax-color-brand-500: #4da6ff;
+  --ax-color-brand-600: #8cc8ff;
+  --ax-color-brand-700: #b9deff;
+  --ax-color-brand-strong: #b9deff;
+  --ax-color-positive-400: #8fe296;
+  --ax-color-positive-500: #69c971;
+  --ax-color-positive-600: #b3ebb6;
+  --ax-color-positive-strong: #b3ebb6;
+  --ax-color-negative-400: #ffb0b0;
+  --ax-color-negative-500: #ff8080;
+  --ax-color-negative-600: #ffd0d0;
+  --ax-color-negative-strong: #ffd0d0;
+  --ax-color-attention-400: #ffd27a;
+  --ax-color-attention-500: #ffb347;
+  --ax-color-attention-600: #ffe3ad;
+  --ax-color-attention-strong: #ffe3ad;
+  --ax-color-information-400: #9ed9ff;
+  --ax-color-information-500: #79c2ff;
+  --ax-color-information-600: #c4e9ff;
+  --ax-color-information-strong: #c4e9ff;
+  --ax-color-border-subtle: rgba(120, 136, 155, 0.36);
+  --ax-color-border-strong: #8ea2ba;
+  --ax-color-border-hover: #b1c4d9;
+  --ax-color-shell-border: rgba(120, 136, 155, 0.26);
+  --ax-shadow-0: 0 0 0 1px rgba(120, 136, 155, 0.28);
+  --ax-shadow-1: 0 1rem 2.4rem rgba(0, 0, 0, 0.34);
+  --ax-shadow-2: 0 1.5rem 3rem rgba(0, 0, 0, 0.46);
+  --ax-focus-ring: 0 0 0 0.125rem rgba(12, 21, 31, 0.95),
+    0 0 0 0.3125rem rgba(77, 166, 255, 0.5);
+  --ax-brand-gradient: linear-gradient(
+    180deg,
+    var(--ax-color-brand-400) 0%,
+    var(--ax-color-brand-500) 100%
+  );
+  --ax-brand-gradient-hover: linear-gradient(
+    180deg,
+    #9fd3ff 0%,
+    #63afff 100%
+  );
+  --ax-brand-gradient-active: linear-gradient(
+    180deg,
+    #3a8edc 0%,
+    #2d7bc6 100%
+  );
+}
+
+[data-axiom-theme="fiori_3_dark"] {
+  color-scheme: dark;
+  --ax-surface-canvas: #1a2027;
+  --ax-surface-shell: rgba(30, 37, 46, 0.94);
+  --ax-surface-panel: rgba(39, 47, 58, 0.94);
+  --ax-surface-raised: #313945;
+  --ax-surface-subtle: #242c35;
+  --ax-surface-selected: #1f3a50;
+  --ax-surface-positive: #183020;
+  --ax-surface-negative: #371d1d;
+  --ax-surface-attention: #37280f;
+  --ax-surface-information: #173040;
+  --ax-surface-hover: #334050;
+  --ax-surface-active: #3c4b5d;
+  --ax-surface-overlay: rgba(8, 12, 18, 0.72);
+  --ax-color-text: #f6f7f9;
+  --ax-color-text-muted: #d6d9df;
+  --ax-color-text-soft: #aab1bb;
+  --ax-color-text-inverse: #10161d;
+  --ax-color-brand-400: #7bc1ff;
+  --ax-color-brand-500: #4aa3ff;
+  --ax-color-brand-600: #9bd1ff;
+  --ax-color-brand-700: #cde8ff;
+  --ax-color-brand-strong: #cde8ff;
+  --ax-color-positive-400: #97e09b;
+  --ax-color-positive-500: #73c979;
+  --ax-color-positive-600: #b9e8bd;
+  --ax-color-positive-strong: #b9e8bd;
+  --ax-color-negative-400: #ffb3b3;
+  --ax-color-negative-500: #ff8b8b;
+  --ax-color-negative-600: #ffd3d3;
+  --ax-color-negative-strong: #ffd3d3;
+  --ax-color-attention-400: #ffd37f;
+  --ax-color-attention-500: #ffb95c;
+  --ax-color-attention-600: #ffe3b2;
+  --ax-color-attention-strong: #ffe3b2;
+  --ax-color-information-400: #a0dbff;
+  --ax-color-information-500: #7bc1ff;
+  --ax-color-information-600: #c7ebff;
+  --ax-color-information-strong: #c7ebff;
+  --ax-color-border-subtle: rgba(128, 139, 152, 0.34);
+  --ax-color-border-strong: #93a0af;
+  --ax-color-border-hover: #b7c3cf;
+  --ax-color-shell-border: rgba(128, 139, 152, 0.22);
+  --ax-shadow-0: 0 0 0 1px rgba(128, 139, 152, 0.24);
+  --ax-shadow-1: 0 1rem 2.25rem rgba(0, 0, 0, 0.32);
+  --ax-shadow-2: 0 1.5rem 3rem rgba(0, 0, 0, 0.42);
+  --ax-focus-ring: 0 0 0 0.125rem rgba(16, 22, 29, 0.95),
+    0 0 0 0.3125rem rgba(74, 163, 255, 0.44);
+  --ax-brand-gradient: linear-gradient(
+    180deg,
+    var(--ax-color-brand-400) 0%,
+    var(--ax-color-brand-500) 100%
+  );
+  --ax-brand-gradient-hover: linear-gradient(
+    180deg,
+    #9ed4ff 0%,
+    #62b1ff 100%
+  );
+  --ax-brand-gradient-active: linear-gradient(
+    180deg,
+    #377fc2 0%,
+    #29679e 100%
+  );
+}
+
+[data-axiom-theme="horizon_hcb"] {
+  color-scheme: dark;
+  --ax-surface-canvas: #000000;
+  --ax-surface-shell: #000000;
+  --ax-surface-panel: #000000;
+  --ax-surface-raised: #000000;
+  --ax-surface-subtle: #0f0f0f;
+  --ax-surface-selected: #001b33;
+  --ax-surface-positive: #001700;
+  --ax-surface-negative: #240000;
+  --ax-surface-attention: #241600;
+  --ax-surface-information: #001c24;
+  --ax-surface-hover: #1a1a1a;
+  --ax-surface-active: #2a2a2a;
+  --ax-surface-overlay: rgba(0, 0, 0, 0.84);
+  --ax-color-text: #ffffff;
+  --ax-color-text-muted: #ffffff;
+  --ax-color-text-soft: #ededed;
+  --ax-color-text-inverse: #000000;
+  --ax-color-brand-400: #99d6ff;
+  --ax-color-brand-500: #66b3ff;
+  --ax-color-brand-600: #b8e5ff;
+  --ax-color-brand-700: #d9f1ff;
+  --ax-color-brand-strong: #d9f1ff;
+  --ax-color-positive-400: #a7f3a7;
+  --ax-color-positive-500: #7dff7d;
+  --ax-color-positive-600: #c9ffc9;
+  --ax-color-positive-strong: #c9ffc9;
+  --ax-color-negative-400: #ffb3b3;
+  --ax-color-negative-500: #ff8a8a;
+  --ax-color-negative-600: #ffd1d1;
+  --ax-color-negative-strong: #ffd1d1;
+  --ax-color-attention-400: #ffe28a;
+  --ax-color-attention-500: #ffd35c;
+  --ax-color-attention-600: #fff0b0;
+  --ax-color-attention-strong: #fff0b0;
+  --ax-color-information-400: #b8ecff;
+  --ax-color-information-500: #9ad9ff;
+  --ax-color-information-600: #ddf7ff;
+  --ax-color-information-strong: #ddf7ff;
+  --ax-color-border-subtle: #ffffff;
+  --ax-color-border-strong: #ffffff;
+  --ax-color-border-hover: #ffffff;
+  --ax-color-shell-border: #ffffff;
+  --ax-shadow-0: 0 0 0 1px #ffffff;
+  --ax-shadow-1: 0 0 0 2px #ffffff;
+  --ax-shadow-2: 0 0 0 2px #ffffff;
+  --ax-focus-ring: 0 0 0 0.125rem #000000, 0 0 0 0.3125rem #ffffff;
+  --ax-brand-gradient: linear-gradient(
+    180deg,
+    var(--ax-color-brand-400) 0%,
+    var(--ax-color-brand-500) 100%
+  );
+  --ax-brand-gradient-hover: linear-gradient(
+    180deg,
+    #c7ecff 0%,
+    #85c6ff 100%
+  );
+  --ax-brand-gradient-active: linear-gradient(
+    180deg,
+    #66b3ff 0%,
+    #4f9ae3 100%
+  );
+}
+
+[data-axiom-theme="horizon_hcw"] {
+  color-scheme: light;
+  --ax-surface-canvas: #ffffff;
+  --ax-surface-shell: #ffffff;
+  --ax-surface-panel: #ffffff;
+  --ax-surface-raised: #ffffff;
+  --ax-surface-subtle: #f5f5f5;
+  --ax-surface-selected: #e9f3ff;
+  --ax-surface-positive: #f5fff5;
+  --ax-surface-negative: #fff5f5;
+  --ax-surface-attention: #fff9ef;
+  --ax-surface-information: #f3fbff;
+  --ax-surface-hover: #e9e9e9;
+  --ax-surface-active: #d9d9d9;
+  --ax-surface-overlay: rgba(0, 0, 0, 0.18);
+  --ax-color-text: #000000;
+  --ax-color-text-muted: #000000;
+  --ax-color-text-soft: #222222;
+  --ax-color-text-inverse: #ffffff;
+  --ax-color-brand-400: #2b86e5;
+  --ax-color-brand-500: #0057d2;
+  --ax-color-brand-600: #003e9c;
+  --ax-color-brand-700: #002a6c;
+  --ax-color-brand-strong: #003e9c;
+  --ax-color-positive-400: #2f9f39;
+  --ax-color-positive-500: #1f7d28;
+  --ax-color-positive-600: #0b5f14;
+  --ax-color-positive-strong: #0b5f14;
+  --ax-color-negative-400: #d13b3b;
+  --ax-color-negative-500: #b00f0f;
+  --ax-color-negative-600: #850000;
+  --ax-color-negative-strong: #850000;
+  --ax-color-attention-400: #d88a00;
+  --ax-color-attention-500: #b36f00;
+  --ax-color-attention-600: #855300;
+  --ax-color-attention-strong: #855300;
+  --ax-color-information-400: #2679bf;
+  --ax-color-information-500: #0f63a7;
+  --ax-color-information-600: #004f8a;
+  --ax-color-information-strong: #004f8a;
+  --ax-color-border-subtle: #000000;
+  --ax-color-border-strong: #000000;
+  --ax-color-border-hover: #000000;
+  --ax-color-shell-border: #000000;
+  --ax-shadow-0: 0 0 0 1px #000000;
+  --ax-shadow-1: 0 0 0 2px #000000;
+  --ax-shadow-2: 0 0 0 2px #000000;
+  --ax-focus-ring: 0 0 0 0.125rem #ffffff, 0 0 0 0.3125rem #000000;
+  --ax-brand-gradient: linear-gradient(
+    180deg,
+    var(--ax-color-brand-400) 0%,
+    var(--ax-color-brand-500) 100%
+  );
+  --ax-brand-gradient-hover: linear-gradient(
+    180deg,
+    #4699ef 0%,
+    #1368dd 100%
+  );
+  --ax-brand-gradient-active: linear-gradient(
+    180deg,
+    var(--ax-color-brand-600) 0%,
+    #003178 100%
+  );
+}
+
+:where(*, *::before, *::after) {
+  box-sizing: border-box;
+}
+
+[data-axiom-density="compact"],
+.axiom-density-compact,
+.sapUiSizeCompact {
+  --ax-element-height: 1.625rem;
+  --ax-element-padding-inline: 0.625rem;
+  --ax-field-padding-inline: 0.5rem;
+  --ax-icon-slot-width: 2rem;
+  --ax-shell-height: 3rem;
+  --ax-card-padding: 1rem;
+  --ax-dialog-header-height: 2.5rem;
+  --ax-tab-height: 2.5rem;
+  --ax-list-row-height: 2.375rem;
+  --ax-form-label-width: 9rem;
+  --ax-toolbar-height: 1.875rem;
+  --ax-header-height: 2.5rem;
+  --ax-page-footer-height: 2.5rem;
+  --ax-tool-header-height: 2.5rem;
+  --ax-object-nav-height: 2.5rem;
+  --ax-split-gap: 0.875rem;
+  --ax-split-pane-padding: 0.875rem;
+  --ax-filter-bar-padding: 0.875rem;
+  --ax-column-manager-padding: 0.875rem;
+  --ax-column-manager-item-height: 3rem;
+  --ax-group-manager-padding: 0.875rem;
+  --ax-group-manager-item-height: 3rem;
+  --ax-sort-manager-padding: 0.875rem;
+  --ax-sort-manager-item-height: 3rem;
+  --ax-variant-sync-padding: 0.875rem;
+  --ax-variant-sync-card-padding: 0.875rem;
+  --ax-variant-pill-height: 1.875rem;
+  --ax-pagination-height: 1.875rem;
+}
+
+[data-axiom-density="cozy"],
+.axiom-density-cozy {
+  --ax-element-height: 2.25rem;
+}

@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI5 Style System Demo</title>
+  <link rel="stylesheet" href="../../resources/sap/ui/core/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/m/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/f/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="../../resources/sap/tnt/themes/sap_horizon/library.css">
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/demo.css">
+  <link rel="stylesheet" href="./styles/components.css">
+</head>
+<body>
+  <div class="demo-app" id="demo-app" data-density="cozy">
+    <header class="demo-shell">
+      <div class="repro-shellbar">
+        <div class="repro-shellbar__start">
+          <button class="repro-btn repro-btn--shell repro-btn--icon" type="button">M</button>
+          <div class="repro-shellbar__titles">
+            <div class="repro-shellbar__title">UI5 Style System</div>
+            <div class="repro-shellbar__subtitle">State matrix driven reconstruction</div>
+          </div>
+        </div>
+        <div class="repro-shellbar__search">
+          <label class="repro-field repro-field--shell">
+            <span class="repro-field__slot">S</span>
+            <input type="text" value="Search components, states, tokens">
+            <span class="repro-field__slot">/</span>
+          </label>
+        </div>
+        <div class="repro-shellbar__end">
+          <button class="repro-btn repro-btn--shell" type="button">New</button>
+          <button class="repro-btn repro-btn--shell repro-btn--icon" type="button">N</button>
+          <button class="repro-btn repro-btn--shell" type="button">AB</button>
+          <button class="repro-btn repro-btn--shell repro-shellbar__cancel" type="button">Cancel</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="demo-main">
+      <section class="demo-hero">
+        <div class="demo-hero__copy">
+          <p class="demo-kicker">Demo Workspace</p>
+          <h1>Static reconstruction from the UI5 style-system docs</h1>
+          <p class="demo-copy">
+            This page consumes the local Horizon theme tokens from the SDK and maps the two state-matrix
+            documents into reproducible component surfaces. It intentionally avoids SAPUI5 controls so the
+            implementation layer remains explicit and inspectable.
+          </p>
+        </div>
+        <div class="demo-page-nav">
+          <a class="demo-chip is-selected" href="./index.html">Home</a>
+          <a class="demo-chip" href="./matrix.html">Matrix</a>
+          <a class="demo-chip" href="./worklist.html">Worklist</a>
+          <a class="demo-chip" href="./object-page.html">Object Page</a>
+          <a class="demo-chip" href="./tokens.html">Tokens</a>
+          <a class="demo-chip" href="./acceptance.html">Acceptance</a>
+        </div>
+        <div class="demo-controls">
+          <div class="demo-control-group" role="group" aria-label="Density">
+            <span class="demo-control-label">Density</span>
+            <button class="demo-toggle is-active" type="button" data-density-value="cozy" aria-pressed="true">Cozy</button>
+            <button class="demo-toggle" type="button" data-density-value="compact" aria-pressed="false">Compact</button>
+          </div>
+          <div class="demo-control-group" role="group" aria-label="Direction">
+            <span class="demo-control-label">Direction</span>
+            <button class="demo-toggle is-active" type="button" data-dir-value="ltr" aria-pressed="true">LTR</button>
+            <button class="demo-toggle" type="button" data-dir-value="rtl" aria-pressed="false">RTL</button>
+          </div>
+          <div class="demo-control-group" role="group" aria-label="Quick actions">
+            <span class="demo-control-label">Quick Actions</span>
+            <button class="repro-btn repro-btn--emphasized" type="button" data-open-dialog>Open Dialog</button>
+            <button class="repro-btn" type="button" data-toggle-popover>Toggle Popover</button>
+          </div>
+        </div>
+        <div class="demo-chip-row">
+          <a class="demo-chip is-selected" href="#core-matrix">Core Matrix</a>
+          <a class="demo-chip" href="#secondary-matrix">Secondary Matrix</a>
+          <a class="demo-chip" href="#scenario-worklist">Worklist</a>
+          <a class="demo-chip" href="#scenario-object-page">Object Page</a>
+        </div>
+      </section>
+
+      <section class="demo-section" id="core-matrix">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Core Matrix</p>
+            <h2>Button, Field, List and Overlay</h2>
+            <p class="demo-copy">
+              The first pass is driven by <code>core-component-state-matrices.md</code>: focus, selected,
+              hover, active, disabled and value-state behavior are made explicit in one page.
+            </p>
+          </div>
+        </div>
+
+        <div class="demo-panel-grid">
+          <article class="demo-panel">
+            <div class="demo-panel__head">
+              <h3>Button</h3>
+              <p>Default, transparent, semantic and selected states stay on one token system.</p>
+            </div>
+            <div class="demo-inline demo-inline--wrap">
+              <button class="repro-btn" type="button">Default</button>
+              <button class="repro-btn repro-btn--emphasized" type="button">Emphasized</button>
+              <button class="repro-btn is-selected" type="button">Selected</button>
+              <button class="repro-btn repro-btn--transparent" type="button">Transparent</button>
+              <button class="repro-btn repro-btn--positive" type="button">Accept</button>
+              <button class="repro-btn repro-btn--negative" type="button">Reject</button>
+              <button class="repro-btn repro-btn--attention" type="button">Attention</button>
+            </div>
+            <div class="demo-state-grid">
+              <div class="demo-state-card">
+                <span class="demo-state-label">Hover</span>
+                <button class="repro-btn is-hover" type="button">Hover</button>
+              </div>
+              <div class="demo-state-card">
+                <span class="demo-state-label">Active</span>
+                <button class="repro-btn is-active" type="button">Pressed</button>
+              </div>
+              <div class="demo-state-card">
+                <span class="demo-state-label">Focus</span>
+                <button class="repro-btn is-focus-visible" type="button">Focus ring</button>
+              </div>
+              <div class="demo-state-card">
+                <span class="demo-state-label">Disabled</span>
+                <button class="repro-btn is-disabled" type="button" disabled>Disabled</button>
+              </div>
+              <div class="demo-state-card">
+                <span class="demo-state-label">Selected + Hover</span>
+                <button class="repro-btn is-selected is-hover" type="button">Selected</button>
+              </div>
+              <div class="demo-state-card">
+                <span class="demo-state-label">Icon only</span>
+                <button class="repro-btn repro-btn--icon" type="button">+</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="demo-panel">
+            <div class="demo-panel__head">
+              <h3>Field / Input</h3>
+              <p>Wrapper carries the visual boundary; states live on the surface, not on the native input.</p>
+            </div>
+            <div class="demo-stack">
+              <label class="repro-field">
+                <span class="repro-field__slot">S</span>
+                <input type="text" value="Default field">
+                <span class="repro-field__slot">v</span>
+              </label>
+              <label class="repro-field is-hover">
+                <span class="repro-field__slot">S</span>
+                <input type="text" value="Hover field">
+                <span class="repro-field__slot">v</span>
+              </label>
+              <label class="repro-field is-focus-visible">
+                <span class="repro-field__slot">S</span>
+                <input type="text" value="Focus-visible field">
+                <span class="repro-field__slot">i</span>
+              </label>
+              <label class="repro-field is-readonly">
+                <span class="repro-field__slot">R</span>
+                <input type="text" value="Readonly" readonly>
+                <span class="repro-field__slot">.</span>
+              </label>
+              <div class="demo-state-grid">
+                <label class="repro-field state-error">
+                  <input type="text" value="Error state">
+                </label>
+                <label class="repro-field state-warning">
+                  <input type="text" value="Warning state">
+                </label>
+                <label class="repro-field state-success">
+                  <input type="text" value="Success state">
+                </label>
+                <label class="repro-field state-information">
+                  <input type="text" value="Information state">
+                </label>
+              </div>
+              <label class="repro-field repro-field--textarea state-information">
+                <textarea rows="4">TextArea shares the same field wrapper and value-state model.</textarea>
+              </label>
+              <label class="repro-field is-disabled">
+                <span class="repro-field__slot">x</span>
+                <input type="text" value="Disabled field" disabled>
+                <span class="repro-field__slot">x</span>
+              </label>
+            </div>
+          </article>
+
+          <article class="demo-panel">
+            <div class="demo-panel__head">
+              <h3>List / Table Row</h3>
+              <p>Hover, selected, active, unread and highlight stay row-wide instead of targeting only text.</p>
+            </div>
+            <div class="repro-list">
+              <div class="repro-row">
+                <span class="repro-row__highlight"></span>
+                <div class="repro-row__content">
+                  <div class="repro-row__title">Default row</div>
+                  <div class="repro-row__meta">Baseline list item</div>
+                </div>
+                <span class="repro-row__counter">12</span>
+                <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+              </div>
+              <div class="repro-row is-hover">
+                <span class="repro-row__highlight"></span>
+                <div class="repro-row__content">
+                  <div class="repro-row__title">Hover row</div>
+                  <div class="repro-row__meta">Whole row gets the hover surface</div>
+                </div>
+                <span class="repro-row__counter">7</span>
+                <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+              </div>
+              <div class="repro-row is-selected">
+                <span class="repro-row__highlight"></span>
+                <div class="repro-row__content">
+                  <div class="repro-row__title">Selected row</div>
+                  <div class="repro-row__meta">Selection background and border are preserved</div>
+                </div>
+                <span class="repro-row__counter">4</span>
+                <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+              </div>
+              <div class="repro-row is-selected is-hover is-focus-visible" data-highlight="information">
+                <span class="repro-row__highlight"></span>
+                <div class="repro-row__content">
+                  <div class="repro-row__title">Selected + hover + focus</div>
+                  <div class="repro-row__meta">Highlight strip and focus ring stay compatible</div>
+                </div>
+                <span class="repro-row__counter">19</span>
+                <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+              </div>
+              <div class="repro-row is-active is-unread" data-highlight="warning">
+                <span class="repro-row__highlight"></span>
+                <div class="repro-row__content">
+                  <div class="repro-row__title">Active unread row</div>
+                  <div class="repro-row__meta">Text, icon and background all switch together</div>
+                </div>
+                <span class="repro-row__counter">3</span>
+                <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="demo-panel">
+            <div class="demo-panel__head">
+              <h3>Dialog / Popover</h3>
+              <p>Standard surface, semantic header states and lightweight popover behavior share one overlay language.</p>
+            </div>
+            <div class="demo-inline demo-inline--wrap">
+              <button class="repro-btn repro-btn--emphasized" type="button" data-open-dialog>Open warning dialog</button>
+              <div class="repro-popover-anchor">
+                <button class="repro-btn" type="button" data-toggle-popover>Anchor popover</button>
+                <div class="repro-popover" id="demo-popover" hidden>
+                  <div class="repro-popover__title">Popover</div>
+                  <p class="demo-note">
+                    Light contextual surface, shorter transition, same radius and shadow language as the dialog.
+                  </p>
+                  <div class="demo-inline">
+                    <button class="repro-btn repro-btn--transparent" type="button">Dismiss</button>
+                    <button class="repro-btn" type="button">Apply</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="demo-state-grid">
+              <div class="repro-dialog-card">
+                <div class="repro-dialog__header state-warning">
+                  <div>
+                    <div class="repro-dialog__title">Warning dialog</div>
+                    <div class="repro-dialog__subtitle">Header shadow carries the semantic tone</div>
+                  </div>
+                  <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">x</button>
+                </div>
+                <div class="repro-dialog__body">
+                  A first-pass reproduction of the dialog surface, spacing and footer action area.
+                </div>
+                <div class="repro-dialog__footer">
+                  <button class="repro-btn repro-btn--transparent" type="button">Cancel</button>
+                  <button class="repro-btn repro-btn--emphasized" type="button">Continue</button>
+                </div>
+              </div>
+              <div class="repro-dialog-card">
+                <div class="repro-dialog__header state-success is-focus-visible">
+                  <div>
+                    <div class="repro-dialog__title">Header focus</div>
+                    <div class="repro-dialog__subtitle">Header and content focus stay separate</div>
+                  </div>
+                  <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">x</button>
+                </div>
+                <div class="repro-dialog__body is-focus-visible">
+                  Content focus uses the same focus token but a different outline placement.
+                </div>
+                <div class="repro-dialog__footer">
+                  <button class="repro-btn" type="button">Back</button>
+                  <button class="repro-btn repro-btn--emphasized" type="button">Save</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-section" id="secondary-matrix">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Secondary Matrix</p>
+            <h2>Card, Header, Navigation and Feedback</h2>
+            <p class="demo-copy">
+              The second pass turns the later matrix document into reproducible styles for surface systems,
+              top-area structure, navigation and feedback layers.
+            </p>
+          </div>
+        </div>
+
+        <div class="demo-panel-grid">
+          <article class="demo-panel">
+            <div class="demo-panel__head">
+              <h3>Card</h3>
+              <p>Surface, interactive hover, loading skeleton and content message all stay inside one shell.</p>
+            </div>
+            <div class="repro-card-grid">
+              <div class="repro-card">
+                <div class="repro-card__header">
+                  <div class="repro-card__title">Default card</div>
+                  <div class="repro-card__subtitle">Header, content and footer</div>
+                </div>
+                <div class="repro-card__content">
+                  <div class="repro-card__metric">42 open items</div>
+                  <div class="repro-card__section">Surface-based content block</div>
+                </div>
+                <div class="repro-card__footer">
+                  <button class="repro-btn repro-btn--transparent" type="button">Details</button>
+                </div>
+              </div>
+              <div class="repro-card is-interactive is-hover is-focus-visible">
+                <div class="repro-card__header is-focus-visible">
+                  <div class="repro-card__title">Interactive card</div>
+                  <div class="repro-card__subtitle">Hover lifts the whole surface</div>
+                </div>
+                <div class="repro-card__content">
+                  <div class="repro-card__section is-hover">Section hover</div>
+                  <div class="repro-card__section is-active">Section active</div>
+                </div>
+              </div>
+              <div class="repro-card is-loading">
+                <div class="repro-card__header">
+                  <div class="repro-card__title">Loading card</div>
+                  <div class="repro-card__subtitle">Skeleton stays inside the shell</div>
+                </div>
+                <div class="repro-card__content">
+                  <div class="repro-card__placeholder"></div>
+                  <div class="repro-card__placeholder repro-card__placeholder--short"></div>
+                  <div class="repro-card__placeholder"></div>
+                </div>
+              </div>
+              <div class="repro-card is-transparent">
+                <div class="repro-card__header">
+                  <div class="repro-card__title">Transparent card</div>
+                  <div class="repro-card__subtitle">Valid layout variant, not a new component</div>
+                </div>
+                <div class="repro-card__content">
+                  <div class="repro-card__message">
+                    Content message overlay stays inside the card bounds.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="demo-panel">
+            <div class="demo-panel__head">
+              <h3>Toolbar / Header / ShellBar</h3>
+              <p>Toolbar, info bar, dynamic title and shell context reuse one action language with different weight.</p>
+            </div>
+            <div class="demo-stack">
+              <div class="repro-toolbar">
+                <span class="repro-toolbar__title">Results</span>
+                <span class="repro-spacer"></span>
+                <button class="repro-btn repro-btn--transparent" type="button">Sort</button>
+                <button class="repro-btn repro-btn--transparent" type="button">Group</button>
+                <button class="repro-btn" type="button">Create</button>
+              </div>
+              <div class="repro-toolbar is-info is-hover">
+                <span class="repro-toolbar__title">Info toolbar</span>
+                <span class="repro-spacer"></span>
+                <span class="demo-note">Hover and active are only for interactive infobars.</span>
+              </div>
+              <div class="repro-page-header">
+                <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&lt;</button>
+                <div class="repro-page-header__title-wrap">
+                  <div class="repro-page-header__title">Sales Orders</div>
+                  <div class="repro-page-header__subtitle">Structured left / middle / right layout</div>
+                </div>
+                <div class="demo-inline">
+                  <button class="repro-btn repro-btn--transparent" type="button">Share</button>
+                  <button class="repro-btn" type="button">Approve</button>
+                </div>
+              </div>
+              <div class="repro-dynamic-title is-focus-visible">
+                <div class="repro-dynamic-title__top">
+                  <span class="demo-note">Breadcrumbs / object context</span>
+                  <span class="demo-note">Updated 08:42</span>
+                </div>
+                <div class="repro-dynamic-title__main">
+                  <div>
+                    <div class="repro-dynamic-title__heading">Object page title</div>
+                    <div class="repro-dynamic-title__summary">DynamicPageTitle keeps content and actions in separate lanes.</div>
+                  </div>
+                  <div class="demo-inline">
+                    <button class="repro-btn repro-btn--transparent" type="button">Edit</button>
+                    <button class="repro-btn repro-btn--emphasized" type="button">Save</button>
+                  </div>
+                </div>
+              </div>
+              <div class="repro-toolheader">
+                <button class="repro-btn repro-btn--shell repro-btn--icon" type="button">#</button>
+                <button class="repro-btn repro-btn--shell" type="button">Workspace</button>
+                <div class="repro-toolheader__tabs">
+                  <button class="repro-tab repro-tab--shell is-selected" type="button">Overview</button>
+                  <button class="repro-tab repro-tab--shell" type="button">Tasks</button>
+                </div>
+                <span class="repro-spacer"></span>
+                <button class="repro-btn repro-btn--shell" type="button">Profile</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="demo-panel">
+            <div class="demo-panel__head">
+              <h3>Tabs / Navigation</h3>
+              <p>Tabs use visible selected indicators; side navigation keeps hover, selected and collapsed states compatible.</p>
+            </div>
+            <div class="demo-stack">
+              <div class="repro-tabbar" data-tabs>
+                <div class="repro-tabbar__header" role="tablist" aria-label="Object tabs">
+                  <button class="repro-tab is-selected" type="button" role="tab" aria-selected="true" data-tab-target="overview-panel">Overview <span class="repro-badge repro-badge--neutral">4</span></button>
+                  <button class="repro-tab" type="button" role="tab" aria-selected="false" data-tab-target="items-panel">Items <span class="repro-badge repro-badge--positive">9</span></button>
+                  <button class="repro-tab is-hover" type="button" role="tab" aria-selected="false" data-tab-target="history-panel">History</button>
+                  <button class="repro-tab is-disabled" type="button" role="tab" aria-selected="false" disabled>Analytics</button>
+                  <button class="repro-btn repro-tabbar__overflow" type="button">More</button>
+                </div>
+                <div class="repro-tabbar__content">
+                  <div class="repro-tabbar__panel is-active" id="overview-panel" data-tab-panel>
+                    Overview panel keeps the selected indicator visible and the content separated from the header.
+                  </div>
+                  <div class="repro-tabbar__panel" id="items-panel" data-tab-panel hidden>
+                    Items panel demonstrates content switching without changing the tab shell.
+                  </div>
+                  <div class="repro-tabbar__panel" id="history-panel" data-tab-panel hidden>
+                    History panel shows secondary context within the same tab framework.
+                  </div>
+                </div>
+              </div>
+
+              <div class="repro-tabbar repro-tabbar--shell">
+                <div class="repro-tabbar__header" role="tablist" aria-label="Shell tabs">
+                  <button class="repro-tab repro-tab--shell is-selected" type="button" role="tab" aria-selected="true">Home</button>
+                  <button class="repro-tab repro-tab--shell" type="button" role="tab" aria-selected="false">Projects</button>
+                  <button class="repro-tab repro-tab--shell" type="button" role="tab" aria-selected="false">Admin</button>
+                  <button class="repro-btn repro-btn--shell repro-tabbar__overflow" type="button">More</button>
+                </div>
+              </div>
+
+              <div class="repro-side-layout">
+                <nav class="repro-side-nav" id="demo-side-nav" aria-label="Side navigation">
+                  <div class="repro-side-nav__header">
+                    <span class="repro-side-nav__title">Navigation</span>
+                    <button class="repro-btn repro-btn--transparent" type="button" data-toggle-nav>Collapse</button>
+                  </div>
+                  <button class="repro-side-nav__item is-selected is-focus-visible" type="button" data-nav-item>
+                    <span class="repro-side-nav__icon">H</span>
+                    <span class="repro-side-nav__label">Home</span>
+                  </button>
+                  <button class="repro-side-nav__item is-hover" type="button" data-nav-item>
+                    <span class="repro-side-nav__icon">W</span>
+                    <span class="repro-side-nav__label">Worklist</span>
+                  </button>
+                  <button class="repro-side-nav__item" type="button" data-nav-item>
+                    <span class="repro-side-nav__icon">R</span>
+                    <span class="repro-side-nav__label">Reports</span>
+                  </button>
+                  <button class="repro-side-nav__item is-active" type="button" data-nav-item>
+                    <span class="repro-side-nav__icon">S</span>
+                    <span class="repro-side-nav__label">Settings</span>
+                  </button>
+                </nav>
+                <div class="demo-note-block">
+                  <strong>Collapsed behavior</strong>
+                  <p class="demo-note">
+                    The collapse toggle intentionally keeps the same item model, selection background and focus ring.
+                    Only the width and text exposure change.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="demo-panel">
+            <div class="demo-panel__head">
+              <h3>Message / Feedback</h3>
+              <p>Inline, page, input and notification feedback share semantic colors but not the same interruption level.</p>
+            </div>
+            <div class="demo-stack">
+              <div class="repro-message-stack">
+                <div class="repro-message repro-message--information">
+                  <span class="repro-message__icon">i</span>
+                  <div class="repro-message__body">
+                    <strong>Information</strong>
+                    <span>This inline message uses neutral surface semantics.</span>
+                  </div>
+                  <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+                </div>
+                <div class="repro-message repro-message--success">
+                  <span class="repro-message__icon">+</span>
+                  <div class="repro-message__body">
+                    <strong>Success</strong>
+                    <span>Positive state is a surface treatment, not only an icon change.</span>
+                  </div>
+                  <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+                </div>
+                <div class="repro-message repro-message--warning">
+                  <span class="repro-message__icon">!</span>
+                  <div class="repro-message__body">
+                    <strong>Warning</strong>
+                    <span>Warning remains distinct from error and keeps text readable.</span>
+                  </div>
+                  <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+                </div>
+                <div class="repro-message repro-message--error">
+                  <span class="repro-message__icon">x</span>
+                  <div class="repro-message__body">
+                    <strong>Error</strong>
+                    <span>Error state carries stronger border and icon semantics.</span>
+                  </div>
+                  <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+                </div>
+              </div>
+
+              <div class="repro-message-page">
+                <div class="repro-message-page__inner">
+                  <div class="repro-message-page__icon">!</div>
+                  <div class="repro-message-page__title">Nothing to show yet</div>
+                  <div class="repro-message-page__description">
+                    Page feedback keeps a centered content column instead of stretching into a large inline strip.
+                  </div>
+                  <div class="demo-inline">
+                    <button class="repro-btn" type="button">Refresh</button>
+                    <button class="repro-btn repro-btn--transparent" type="button">Learn more</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="repro-feed">
+                <div class="repro-avatar">AB</div>
+                <div class="repro-feed__composer">
+                  <label class="repro-field repro-field--textarea">
+                    <textarea rows="3">Feed input continues the field system instead of becoming a custom editor skin.</textarea>
+                  </label>
+                  <div class="repro-feed__footer">
+                    <span class="demo-note">140</span>
+                    <button class="repro-btn repro-btn--emphasized" type="button">Send</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="repro-notification-group" id="demo-notification-group">
+                <button class="repro-notification-group__header is-focus-visible" type="button" data-toggle-notification-group>
+                  <span class="repro-notification-group__priority">!</span>
+                  <span class="repro-notification-group__title">Notification Group</span>
+                  <span class="repro-notification-group__meta">2 items</span>
+                </button>
+                <div class="repro-notification-group__body">
+                  <article class="repro-notification is-unread is-focus-visible">
+                    <div class="repro-notification__top">
+                      <span class="repro-notification__priority repro-notification__priority--high">H</span>
+                      <div class="repro-notification__content">
+                        <div class="repro-notification__title">High priority workflow issue</div>
+                        <div class="repro-notification__text">Notification items still follow list row language and information hierarchy.</div>
+                      </div>
+                      <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">x</button>
+                    </div>
+                    <div class="repro-notification__footer">Alex Chen · 5 min ago</div>
+                  </article>
+                  <article class="repro-notification">
+                    <div class="repro-notification__top">
+                      <span class="repro-notification__priority repro-notification__priority--medium">M</span>
+                      <div class="repro-notification__content">
+                        <div class="repro-notification__title">Reminder</div>
+                        <div class="repro-notification__text">Grouped notifications keep the same background and divider system.</div>
+                      </div>
+                      <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">x</button>
+                    </div>
+                    <div class="repro-notification__footer">Design System · 16 min ago</div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-section" id="scenario-worklist">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Scenario</p>
+            <h2>Worklist Page</h2>
+            <p class="demo-copy">
+              This scenario checks whether shellbar, page header, filter fields, toolbar, message strip, table rows
+              and summary cards still read as one coherent UI5-style page when they are composed together.
+            </p>
+          </div>
+        </div>
+
+        <div class="demo-scenario demo-scenario--worklist">
+          <div class="demo-scenario__header">
+            <div class="repro-page-header">
+              <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&lt;</button>
+              <div class="repro-page-header__title-wrap">
+                <div class="repro-page-header__title">My Worklist</div>
+                <div class="repro-page-header__subtitle">Sales processing backlog with reusable row-state language</div>
+              </div>
+              <div class="demo-inline">
+                <button class="repro-btn repro-btn--transparent" type="button">Share</button>
+                <button class="repro-btn" type="button">Create</button>
+              </div>
+            </div>
+            <div class="repro-message repro-message--information">
+              <span class="repro-message__icon">i</span>
+              <div class="repro-message__body">
+                <strong>Information</strong>
+                <span>List rows, chips, toolbar actions and summary cards all consume the same token base.</span>
+              </div>
+              <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+            </div>
+          </div>
+
+          <div class="demo-scenario__body">
+            <div class="demo-split-columns">
+              <div class="demo-stack">
+                <div class="demo-subsection demo-subsection--metrics">
+                  <div class="demo-stat-grid">
+                    <div class="demo-stat">
+                      <span class="demo-stat__value">128</span>
+                      <span class="demo-stat__label">Open orders</span>
+                    </div>
+                    <div class="demo-stat">
+                      <span class="demo-stat__value">17</span>
+                      <span class="demo-stat__label">Escalations</span>
+                    </div>
+                    <div class="demo-stat">
+                      <span class="demo-stat__value">94%</span>
+                      <span class="demo-stat__label">SLA</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="demo-subsection demo-subsection--table">
+                  <div class="demo-form-grid demo-form-grid--filters">
+                    <div class="demo-form-item">
+                      <span class="demo-label">Search</span>
+                      <label class="repro-field">
+                        <span class="repro-field__slot">S</span>
+                        <input type="text" value="Sales order, customer, owner">
+                        <span class="repro-field__slot">/</span>
+                      </label>
+                    </div>
+                    <div class="demo-form-item">
+                      <span class="demo-label">Status</span>
+                      <label class="repro-field">
+                        <span class="repro-field__slot">v</span>
+                        <input type="text" value="Open and in process">
+                        <span class="repro-field__slot">v</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="demo-chip-row demo-chip-row--filters">
+                    <span class="demo-chip is-selected">My items</span>
+                    <span class="demo-chip">Overdue</span>
+                    <span class="demo-chip">Critical customers</span>
+                    <span class="demo-chip">Blocked delivery</span>
+                  </div>
+                  <div class="demo-toolbar-stack demo-toolbar-stack--worklist">
+                    <div class="repro-toolbar repro-toolbar--transparent">
+                      <span class="repro-toolbar__title">Saved View</span>
+                      <span class="demo-note">Backlog handoff</span>
+                      <span class="repro-spacer"></span>
+                      <button class="repro-btn repro-btn--transparent" type="button">Reset</button>
+                    </div>
+                    <div class="repro-toolbar is-info">
+                      <span class="repro-toolbar__title">8 items ready for approval</span>
+                      <span class="repro-spacer"></span>
+                      <span class="demo-note">Info toolbar keeps the lighter batch-action rhythm.</span>
+                    </div>
+                    <div class="repro-toolbar repro-toolbar--section">
+                      <span class="repro-toolbar__title">Orders</span>
+                      <span class="repro-spacer"></span>
+                      <button class="repro-btn repro-btn--transparent" type="button">Group</button>
+                      <button class="repro-btn repro-btn--transparent" type="button">Sort</button>
+                      <button class="repro-btn repro-btn--transparent" type="button">Export</button>
+                      <button class="repro-btn" type="button">Approve</button>
+                    </div>
+                  </div>
+                  <div class="demo-table demo-table--worklist">
+                    <div class="demo-table__head demo-table__head--worklist">
+                      <span>Order</span>
+                      <span>Owner</span>
+                      <span>Status</span>
+                      <span>Amount</span>
+                    </div>
+                    <div class="demo-table__row">
+                      <div class="demo-table__title">
+                        <span class="demo-table__primary">SO-489201</span>
+                        <span class="demo-table__secondary">Default row keeps the plain table baseline.</span>
+                      </div>
+                      <span>Alex</span>
+                      <span class="demo-status demo-status--warning">Attention</span>
+                      <span>€128k</span>
+                    </div>
+                    <div class="demo-table__row is-hover">
+                      <div class="demo-table__title">
+                        <span class="demo-table__primary">SO-489187</span>
+                        <span class="demo-table__secondary">Hover stays lighter than a selected or active row.</span>
+                      </div>
+                      <span>Mina</span>
+                      <span class="demo-status demo-status--success">Released</span>
+                      <span>€76k</span>
+                    </div>
+                    <div class="demo-table__row is-selected">
+                      <div class="demo-table__title">
+                        <span class="demo-table__primary">SO-489172</span>
+                        <span class="demo-table__secondary">Selected row keeps its own surface even without hover.</span>
+                      </div>
+                      <span>Jordan</span>
+                      <span class="demo-status demo-status--neutral">Queued</span>
+                      <span>€54k</span>
+                    </div>
+                    <div class="demo-table__row is-selected is-hover" data-highlight="warning">
+                      <div class="demo-table__title">
+                        <span class="demo-table__primary">SO-489162</span>
+                        <span class="demo-table__secondary">Selected plus hover preserves the selection language.</span>
+                      </div>
+                      <span>Priya</span>
+                      <span class="demo-status demo-status--warning">Review</span>
+                      <span>€42k</span>
+                    </div>
+                    <div class="demo-table__row is-focus-visible is-unread" data-highlight="information">
+                      <div class="demo-table__title">
+                        <span class="demo-table__primary">SO-489144</span>
+                        <span class="demo-table__secondary">Focus ring and highlight strip coexist without masking each other.</span>
+                      </div>
+                      <span>Sam</span>
+                      <span class="demo-status demo-status--neutral">Escalated</span>
+                      <span>€22k</span>
+                    </div>
+                    <div class="demo-table__row is-active" data-highlight="error">
+                      <div class="demo-table__title">
+                        <span class="demo-table__primary">SO-489133</span>
+                        <span class="demo-table__secondary">Active row pushes the whole row into the stronger pressed state.</span>
+                      </div>
+                      <span>Leo</span>
+                      <span class="demo-status demo-status--error">Blocked</span>
+                      <span>€19k</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="demo-stack demo-stack--rail">
+                <div class="repro-card repro-card--summary">
+                  <div class="repro-card__header">
+                    <div class="repro-card__title">Today</div>
+                    <div class="repro-card__subtitle">Summary card in worklist context</div>
+                  </div>
+                  <div class="repro-card__content">
+                    <div class="demo-kv-grid demo-kv-grid--summary">
+                      <div class="demo-kv">
+                        <span class="demo-kv__label">Due now</span>
+                        <span class="demo-kv__value">11</span>
+                      </div>
+                      <div class="demo-kv">
+                        <span class="demo-kv__label">At risk</span>
+                        <span class="demo-kv__value">6</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="repro-card__footer demo-inline">
+                    <button class="repro-btn repro-btn--transparent" type="button">Open board</button>
+                    <span class="repro-spacer"></span>
+                    <span class="demo-note">Synced 2 min ago</span>
+                  </div>
+                </div>
+                <div class="repro-card repro-card--summary is-interactive is-hover">
+                  <div class="repro-card__header">
+                    <div class="repro-card__title">Actions</div>
+                    <div class="repro-card__subtitle">Interactive card hover in page context</div>
+                  </div>
+                  <div class="repro-card__content">
+                    <div class="repro-card__section is-hover">Assign ownership</div>
+                    <div class="repro-card__section">Trigger workflow</div>
+                  </div>
+                  <div class="repro-card__footer demo-inline">
+                    <button class="repro-btn repro-btn--transparent" type="button">Open queue</button>
+                    <span class="repro-spacer"></span>
+                    <span class="demo-note">2 recommendations</span>
+                  </div>
+                </div>
+                <div class="repro-card is-transparent demo-rail-card demo-rail-card--ghost">
+                  <div class="repro-card__header">
+                    <div class="repro-card__title">Capacity Pulse</div>
+                    <div class="repro-card__subtitle">Transparent card keeps loading and content-message states inside one shell.</div>
+                  </div>
+                  <div class="repro-card__content">
+                    <div class="repro-card__placeholder"></div>
+                    <div class="repro-card__placeholder repro-card__placeholder--short"></div>
+                    <div class="repro-card__message">Content message overlay stays inside the card bounds.</div>
+                  </div>
+                </div>
+                <div class="repro-message-stack demo-feedback-stack demo-feedback-stack--worklist">
+                  <div class="repro-message repro-message--success">
+                    <span class="repro-message__icon">+</span>
+                    <div class="repro-message__body">
+                      <strong>Success</strong>
+                      <span>Batch release completed for 6 orders.</span>
+                    </div>
+                    <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+                  </div>
+                  <div class="repro-message repro-message--warning">
+                    <span class="repro-message__icon">!</span>
+                    <div class="repro-message__body">
+                      <strong>Warning</strong>
+                      <span>2 orders are missing export paperwork.</span>
+                    </div>
+                    <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+                  </div>
+                  <div class="repro-message repro-message--error">
+                    <span class="repro-message__icon">x</span>
+                    <div class="repro-message__body">
+                      <strong>Error</strong>
+                      <span>Workflow handoff failed for one blocked customer.</span>
+                    </div>
+                    <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+                  </div>
+                </div>
+                <div class="repro-notification-group">
+                  <button class="repro-notification-group__header is-focus-visible" type="button" data-toggle-notification-group>
+                    <span class="repro-notification-group__priority">!</span>
+                    <span class="repro-notification-group__title">Notifications</span>
+                    <span class="repro-notification-group__meta">2 items</span>
+                  </button>
+                  <div class="repro-notification-group__body">
+                    <article class="repro-notification is-unread">
+                      <div class="repro-notification__top">
+                        <span class="repro-notification__priority repro-notification__priority--high">H</span>
+                        <div class="repro-notification__content">
+                          <div class="repro-notification__title">High priority approval</div>
+                          <div class="repro-notification__text">Notification rows still follow list feedback language.</div>
+                        </div>
+                        <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">x</button>
+                      </div>
+                      <div class="repro-notification__footer">09:12 · Workflow</div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section" id="scenario-object-page">
+        <div class="demo-section__head">
+          <div>
+            <p class="demo-kicker">Scenario</p>
+            <h2>Object Page</h2>
+            <p class="demo-copy">
+              This scenario validates the more structural side of the system: dynamic title, tabs, semantic messages,
+              field states, readonly sections and feedback controls all inside one object-detail layout.
+            </p>
+          </div>
+        </div>
+
+        <div class="demo-scenario demo-scenario--object">
+          <div class="demo-scenario__header">
+            <div class="repro-dynamic-title repro-dynamic-title--object is-focus-visible">
+              <div class="repro-dynamic-title__top">
+                <span class="demo-note">Sales Order / Manage</span>
+                <span class="demo-note">Last synced 09:05</span>
+              </div>
+              <div class="repro-dynamic-title__main">
+                <div>
+                  <div class="repro-dynamic-title__heading">SO-489201</div>
+                  <div class="repro-dynamic-title__summary">Global Retail Germany · €128k · delivery block active</div>
+                </div>
+                <div class="demo-action-bar demo-action-bar--title">
+                  <button class="repro-btn repro-btn--transparent" type="button">Edit</button>
+                  <button class="repro-btn" type="button">Release</button>
+                  <button class="repro-btn repro-btn--emphasized" type="button">Save</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="repro-message repro-message--warning">
+              <span class="repro-message__icon">!</span>
+              <div class="repro-message__body">
+                <strong>Warning</strong>
+                <span>The delivery block is still active. Header actions, field states and tabs must keep the same semantic contrast.</span>
+              </div>
+              <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-message>x</button>
+            </div>
+          </div>
+
+          <div class="demo-scenario__body">
+            <div class="repro-tabbar repro-tabbar--object" data-tabs>
+              <div class="repro-tabbar__header repro-tabbar__header--object" role="tablist" aria-label="Object sections">
+                <button class="repro-tab is-selected is-hover" type="button" role="tab" aria-selected="true" data-tab-target="object-overview">Overview <span class="repro-badge repro-badge--neutral">4</span></button>
+                <button class="repro-tab" type="button" role="tab" aria-selected="false" data-tab-target="object-items">Items <span class="repro-badge repro-badge--positive">12</span></button>
+                <button class="repro-tab is-hover" type="button" role="tab" aria-selected="false" data-tab-target="object-history">History</button>
+                <button class="repro-tab is-focus-visible" type="button">Approvals</button>
+                <button class="repro-tab is-disabled" type="button" disabled>Analytics</button>
+                <button class="repro-btn repro-tabbar__overflow is-focus-visible" type="button">More</button>
+              </div>
+              <div class="repro-tabbar__content">
+                <div class="repro-tabbar__panel is-active" id="object-overview" data-tab-panel>
+                  <div class="demo-split-columns">
+                    <div class="demo-stack">
+                      <div class="demo-subsection demo-subsection--form">
+                        <h3 class="demo-subsection__title">General Information</h3>
+                        <div class="demo-form-grid">
+                          <div class="demo-form-item">
+                            <span class="demo-label">Customer</span>
+                            <label class="repro-field">
+                              <input type="text" value="Global Retail Germany">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Sales Org</span>
+                            <label class="repro-field is-readonly">
+                              <input type="text" value="1710" readonly>
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Requested Delivery</span>
+                            <label class="repro-field state-warning">
+                              <input type="text" value="2026-03-27">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Approval Status</span>
+                            <label class="repro-field state-success">
+                              <input type="text" value="Released">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Sales Office</span>
+                            <label class="repro-field is-hover">
+                              <input type="text" value="Shanghai Hub">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Workflow Owner</span>
+                            <label class="repro-field is-focus-visible">
+                              <input type="text" value="Alex Chen">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Compliance Hold</span>
+                            <label class="repro-field state-error">
+                              <input type="text" value="Missing export document">
+                            </label>
+                          </div>
+                          <div class="demo-form-item">
+                            <span class="demo-label">Legacy Routing</span>
+                            <label class="repro-field is-disabled">
+                              <input type="text" value="Archived template" disabled>
+                            </label>
+                          </div>
+                          <div class="demo-form-item is-span-2">
+                            <span class="demo-label">Internal Note</span>
+                            <label class="repro-field repro-field--textarea state-information">
+                              <textarea rows="4">Object-page form area uses the same field wrapper, readonly model and value-state treatment as the matrix page.</textarea>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="demo-subsection demo-subsection--items">
+                        <h3 class="demo-subsection__title">Recent Items</h3>
+                        <div class="repro-list">
+                          <div class="repro-row is-selected">
+                            <span class="repro-row__highlight"></span>
+                            <div class="repro-row__content">
+                              <div class="repro-row__title">Item 10 · Desktop terminal</div>
+                              <div class="repro-row__meta">Quantity 14 · plant 1710</div>
+                            </div>
+                            <span class="repro-row__counter">€56k</span>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+                          </div>
+                          <div class="repro-row is-selected is-hover" data-highlight="information">
+                            <span class="repro-row__highlight"></span>
+                            <div class="repro-row__content">
+                              <div class="repro-row__title">Item 20 · Support package</div>
+                              <div class="repro-row__meta">Selected plus hover keeps the same row model.</div>
+                            </div>
+                            <span class="repro-row__counter">€18k</span>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+                          </div>
+                          <div class="repro-row is-focus-visible is-unread" data-highlight="warning">
+                            <span class="repro-row__highlight"></span>
+                            <div class="repro-row__content">
+                              <div class="repro-row__title">Item 30 · Export paperwork</div>
+                              <div class="repro-row__meta">Focus ring and highlight strip stay visible together.</div>
+                            </div>
+                            <span class="repro-row__counter">€9k</span>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+                          </div>
+                          <div class="repro-row is-active" data-highlight="error">
+                            <span class="repro-row__highlight"></span>
+                            <div class="repro-row__content">
+                              <div class="repro-row__title">Item 40 · Customs recovery</div>
+                              <div class="repro-row__meta">Active state is stronger than hover and selection.</div>
+                            </div>
+                            <span class="repro-row__counter">€5k</span>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">&gt;</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="demo-stack demo-stack--rail">
+                      <div class="repro-card repro-card--summary">
+                        <div class="repro-card__header">
+                          <div class="repro-card__title">Object Summary</div>
+                          <div class="repro-card__subtitle">Header, body and footer layering</div>
+                        </div>
+                        <div class="repro-card__content">
+                          <div class="demo-kv-grid demo-kv-grid--summary">
+                            <div class="demo-kv">
+                              <span class="demo-kv__label">Gross amount</span>
+                              <span class="demo-kv__value">€128k</span>
+                            </div>
+                            <div class="demo-kv">
+                              <span class="demo-kv__label">Items</span>
+                              <span class="demo-kv__value">12</span>
+                            </div>
+                            <div class="demo-kv">
+                              <span class="demo-kv__label">Risk</span>
+                              <span class="demo-kv__value">Medium</span>
+                            </div>
+                            <div class="demo-kv">
+                              <span class="demo-kv__label">Owner</span>
+                              <span class="demo-kv__value">Alex</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="repro-card__footer demo-inline">
+                          <button class="repro-btn repro-btn--transparent" type="button">Open timeline</button>
+                          <span class="repro-spacer"></span>
+                          <span class="demo-note">Updated 09:05</span>
+                        </div>
+                      </div>
+
+                      <div class="repro-card repro-card--summary">
+                        <div class="repro-card__header">
+                          <div class="repro-card__title">Feedback</div>
+                          <div class="repro-card__subtitle">Feed input inside object context</div>
+                        </div>
+                        <div class="repro-card__content demo-feed-stack">
+                          <div class="repro-feed">
+                            <div class="repro-avatar">AB</div>
+                            <div class="repro-feed__composer">
+                              <label class="repro-field repro-field--textarea">
+                                <textarea rows="3">The object page still reuses the same feedback input language.</textarea>
+                              </label>
+                              <div class="repro-feed__footer">
+                                <span class="demo-note">76</span>
+                                <button class="repro-btn repro-btn--emphasized" type="button">Post</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="repro-feed is-disabled">
+                            <div class="repro-avatar">LK</div>
+                            <div class="repro-feed__composer">
+                              <label class="repro-field repro-field--textarea is-disabled">
+                                <textarea rows="2" disabled>Posting is locked while release workflow is running.</textarea>
+                              </label>
+                              <div class="repro-feed__footer">
+                                <span class="demo-note">Locked</span>
+                                <button class="repro-btn repro-btn--emphasized" type="button" disabled>Post</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="repro-card__footer demo-inline">
+                          <button class="repro-btn repro-btn--transparent" type="button">Open discussion</button>
+                          <span class="repro-spacer"></span>
+                          <span class="demo-note">2 unresolved notes</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="repro-tabbar__panel" id="object-items" data-tab-panel hidden>
+                  <div class="demo-subsection">
+                    <h3 class="demo-subsection__title">Items Tab</h3>
+                    <div class="demo-table">
+                      <div class="demo-table__head">
+                        <span>Item</span>
+                        <span>Plant</span>
+                        <span>Status</span>
+                        <span>Net</span>
+                      </div>
+                      <div class="demo-table__row">
+                        <div class="demo-table__title">
+                          <span class="demo-table__primary">10 · Desktop terminal</span>
+                          <span class="demo-table__secondary">Hardware line</span>
+                        </div>
+                        <span>1710</span>
+                        <span class="demo-status demo-status--success">Ready</span>
+                        <span>€56k</span>
+                      </div>
+                      <div class="demo-table__row">
+                        <div class="demo-table__title">
+                          <span class="demo-table__primary">20 · Support package</span>
+                          <span class="demo-table__secondary">Service line</span>
+                        </div>
+                        <span>1710</span>
+                        <span class="demo-status demo-status--warning">Review</span>
+                        <span>€18k</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="repro-tabbar__panel" id="object-history" data-tab-panel hidden>
+                  <div class="demo-subsection demo-subsection--history">
+                    <h3 class="demo-subsection__title">History Tab</h3>
+                    <div class="repro-message-page demo-message-page--history">
+                      <div class="repro-message-page__inner">
+                        <div class="repro-message-page__icon">i</div>
+                        <div class="repro-message-page__title">No further blockers</div>
+                        <div class="repro-message-page__description">
+                          Page-level feedback stays centered and calmer than the notification list that follows.
+                        </div>
+                        <div class="demo-inline">
+                          <button class="repro-btn" type="button">Refresh</button>
+                          <button class="repro-btn repro-btn--transparent" type="button">Open log</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="repro-notification-group">
+                      <button class="repro-notification-group__header is-focus-visible" type="button">
+                        <span class="repro-notification-group__priority">i</span>
+                        <span class="repro-notification-group__title">Activity Stream</span>
+                        <span class="repro-notification-group__meta">3 events</span>
+                      </button>
+                      <div class="repro-notification-group__body">
+                        <article class="repro-notification is-unread">
+                          <div class="repro-notification__top">
+                            <span class="repro-notification__priority repro-notification__priority--medium">M</span>
+                            <div class="repro-notification__content">
+                              <div class="repro-notification__title">Delivery block updated</div>
+                              <div class="repro-notification__text">History can reuse the same feedback and list language instead of inventing a new stream style.</div>
+                            </div>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">x</button>
+                          </div>
+                          <div class="repro-notification__footer">09:05 · Alex</div>
+                        </article>
+                        <article class="repro-notification">
+                          <div class="repro-notification__top">
+                            <span class="repro-notification__priority repro-notification__priority--high">H</span>
+                            <div class="repro-notification__content">
+                              <div class="repro-notification__title">Escalation reopened</div>
+                              <div class="repro-notification__text">Notification rows stay related to feed input and page feedback, but remain the more interruptive layer.</div>
+                            </div>
+                            <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button">x</button>
+                          </div>
+                          <div class="repro-notification__footer">08:42 · Workflow</div>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="repro-modal" id="demo-dialog" hidden>
+      <div class="repro-dialog" role="dialog" aria-modal="true" aria-labelledby="demo-dialog-title">
+        <div class="repro-dialog__header state-warning is-focus-visible">
+          <div>
+            <div class="repro-dialog__title" id="demo-dialog-title">Warning dialog</div>
+            <div class="repro-dialog__subtitle">Semantic header shadow stays on the shell, not the whole body.</div>
+          </div>
+          <button class="repro-btn repro-btn--transparent repro-btn--icon" type="button" data-close-dialog>x</button>
+        </div>
+        <div class="repro-dialog__body">
+          <p class="demo-note">
+            This modal preview uses the same spacing, footer layout and semantic header treatment described in the
+            dialog / popover state matrix. Use it as the first acceptance page for surface behavior.
+          </p>
+          <label class="repro-field is-focus-visible">
+            <span class="repro-field__slot">i</span>
+            <input type="text" value="Dialog body focus surface">
+            <span class="repro-field__slot">.</span>
+          </label>
+        </div>
+        <div class="repro-dialog__footer">
+          <button class="repro-btn repro-btn--transparent" type="button" data-close-dialog>Cancel</button>
+          <button class="repro-btn repro-btn--emphasized" type="button" data-close-dialog>Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

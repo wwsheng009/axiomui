@@ -1,0 +1,84 @@
+.ax-split-layout {
+  display: grid;
+  gap: var(--ax-split-gap);
+}
+
+.ax-split-layout[data-pane-count="2"][data-secondary-width="narrow"] {
+  grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.72fr);
+}
+
+.ax-split-layout[data-pane-count="2"][data-secondary-width="regular"] {
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.88fr);
+}
+
+.ax-split-layout[data-pane-count="2"][data-secondary-width="wide"] {
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 1fr);
+}
+
+.ax-split-layout[data-pane-count="3"] {
+  grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.86fr) minmax(14rem, 0.7fr);
+}
+
+.ax-split-layout__pane-wrap,
+.ax-split-layout__pane,
+.ax-split-layout__pane-body {
+  display: grid;
+  min-width: 0;
+  gap: var(--ax-space-3);
+}
+
+.ax-split-layout__pane {
+  align-content: start;
+  height: 100%;
+  padding: var(--ax-split-pane-padding);
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-lg);
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-raised) 0%,
+    var(--ax-surface-subtle) 100%
+  );
+  box-shadow: var(--ax-shadow-0);
+}
+
+.ax-split-layout__pane[data-pane="primary"] {
+  box-shadow: var(--ax-shadow-1);
+}
+
+.ax-split-layout__pane-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ax-space-3);
+  padding-bottom: var(--ax-space-3);
+  border-bottom: 1px solid var(--ax-color-border-subtle);
+}
+
+.ax-split-layout__pane-headline,
+.ax-split-layout__pane-toolbar {
+  display: grid;
+  gap: var(--ax-space-2);
+}
+
+.ax-split-layout__pane-title {
+  margin: 0;
+  color: var(--ax-color-text);
+  font: 700 1rem/1.2 var(--ax-font-family);
+}
+
+.ax-split-layout__pane-description {
+  margin: 0;
+  color: var(--ax-color-text-muted);
+  font: 500 0.82rem/1.5 var(--ax-font-family);
+}
+
+@media (max-width: 960px) {
+  .ax-split-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ax-split-layout[data-has-active-pane="true"]
+    .ax-split-layout__pane-wrap[data-mobile-hidden="true"] {
+    display: none;
+  }
+}

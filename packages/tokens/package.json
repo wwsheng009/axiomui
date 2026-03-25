@@ -1,0 +1,15 @@
+{
+  "name": "@axiomui/tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "files": ["dist"],
+  "sideEffects": ["**/*.css"],
+  "exports": {
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "typecheck": "node -e \"console.log('No typecheck required for @axiomui/tokens')\""
+  }
+}
+

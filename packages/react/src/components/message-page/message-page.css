@@ -1,0 +1,69 @@
+.ax-message-page {
+  --ax-message-page-color: var(--ax-color-information-strong);
+  display: grid;
+  justify-items: center;
+  gap: var(--ax-space-4);
+  padding: 2rem 1rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-raised) 0%,
+    var(--ax-surface-subtle) 100%
+  );
+  text-align: center;
+}
+
+.ax-message-page[data-tone="success"] {
+  --ax-message-page-color: var(--ax-color-positive-strong);
+}
+
+.ax-message-page[data-tone="warning"] {
+  --ax-message-page-color: var(--ax-color-attention-strong);
+}
+
+.ax-message-page[data-tone="error"] {
+  --ax-message-page-color: var(--ax-color-negative-strong);
+}
+
+.ax-message-page[data-tone="neutral"] {
+  --ax-message-page-color: var(--ax-color-text-muted);
+}
+
+.ax-message-page__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 999px;
+  background: var(--ax-surface-panel);
+  box-shadow: var(--ax-shadow-1);
+  color: var(--ax-message-page-color);
+  font: 800 1.5rem/1 var(--ax-font-family);
+  letter-spacing: 0.08em;
+}
+
+.ax-message-page__content {
+  display: grid;
+  gap: var(--ax-space-2);
+  max-width: 30rem;
+}
+
+.ax-message-page__headline {
+  margin: 0;
+  color: var(--ax-color-text);
+  font: 700 1.5rem/1.1 var(--ax-font-family);
+}
+
+.ax-message-page__description {
+  margin: 0;
+  color: var(--ax-color-text-muted);
+  font: 500 0.95rem/1.65 var(--ax-font-family);
+}
+
+.ax-message-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--ax-space-2);
+}

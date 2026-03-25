@@ -1,0 +1,177 @@
+.ax-combo-box {
+  --ax-field-background: var(--ax-surface-panel);
+  --ax-field-border: var(--ax-color-border-strong);
+  --ax-field-support: var(--ax-color-text-muted);
+  display: grid;
+  min-width: 0;
+  gap: var(--ax-space-2);
+  color: var(--ax-color-text);
+}
+
+.ax-combo-box__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  gap: var(--ax-space-3);
+}
+
+.ax-combo-box__label {
+  color: var(--ax-color-text);
+  font: 600 0.825rem/1.2 var(--ax-font-family);
+}
+
+.ax-combo-box__description,
+.ax-combo-box__support,
+.ax-combo-box__empty {
+  color: var(--ax-field-support);
+  font: 500 0.75rem/1.4 var(--ax-font-family);
+}
+
+.ax-combo-box__control {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: var(--ax-element-height);
+  border: 1px solid var(--ax-field-border);
+  border-radius: var(--ax-radius-sm);
+  background: var(--ax-field-background);
+  box-shadow: var(--ax-shadow-0);
+  transition:
+    background var(--ax-transition-fast),
+    border-color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast);
+}
+
+.ax-combo-box__control:hover {
+  border-color: var(--ax-color-border-hover);
+}
+
+.ax-combo-box__control:focus-within,
+.ax-combo-box__control[data-open="true"] {
+  border-color: var(--ax-color-brand-500);
+  box-shadow: var(--ax-focus-ring), var(--ax-shadow-0);
+}
+
+.ax-combo-box__native {
+  flex: 1;
+  min-width: 0;
+  height: calc(var(--ax-element-height) - 2px);
+  padding-inline: var(--ax-field-padding-inline);
+  border: 0;
+  background: transparent;
+  color: var(--ax-color-text);
+  font: 500 0.95rem/1 var(--ax-font-family);
+  caret-color: var(--ax-color-brand-500);
+}
+
+.ax-combo-box__native:focus {
+  outline: none;
+}
+
+.ax-combo-box__native::placeholder {
+  color: var(--ax-color-text-soft);
+}
+
+.ax-combo-box__toggle {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: var(--ax-icon-slot-width);
+  height: calc(var(--ax-element-height) - 2px);
+  color: var(--ax-color-text-soft);
+  cursor: pointer;
+}
+
+.ax-combo-box__toggle .ax-button {
+  width: calc(var(--ax-icon-slot-width) - 0.25rem);
+  min-width: calc(var(--ax-icon-slot-width) - 0.25rem);
+  height: calc(var(--ax-element-height) - 0.25rem);
+}
+
+.ax-combo-box[data-value-state="error"] {
+  --ax-field-background: var(--ax-surface-negative);
+  --ax-field-border: var(--ax-color-negative-500);
+  --ax-field-support: var(--ax-color-negative-strong);
+}
+
+.ax-combo-box[data-value-state="warning"] {
+  --ax-field-background: var(--ax-surface-attention);
+  --ax-field-border: var(--ax-color-attention-500);
+  --ax-field-support: var(--ax-color-attention-strong);
+}
+
+.ax-combo-box[data-value-state="success"] {
+  --ax-field-background: var(--ax-surface-positive);
+  --ax-field-border: var(--ax-color-positive-500);
+  --ax-field-support: var(--ax-color-positive-strong);
+}
+
+.ax-combo-box[data-value-state="information"] {
+  --ax-field-background: var(--ax-surface-information);
+  --ax-field-border: var(--ax-color-information-500);
+  --ax-field-support: var(--ax-color-information-strong);
+}
+
+.ax-combo-box[data-disabled="true"] .ax-combo-box__control {
+  opacity: 0.58;
+}
+
+.ax-combo-box[data-disabled="true"] .ax-combo-box__native {
+  cursor: not-allowed;
+}
+
+.ax-combo-box[data-readonly="true"] .ax-combo-box__control {
+  background: var(--ax-surface-subtle);
+  border-style: dashed;
+}
+
+.ax-combo-box__list {
+  display: grid;
+  gap: var(--ax-space-2);
+  max-height: min(18rem, 50vh);
+  overflow: auto;
+}
+
+.ax-combo-box__option {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-md);
+  background: var(--ax-surface-panel);
+  color: var(--ax-color-text);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--ax-transition-fast),
+    border-color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast);
+}
+
+.ax-combo-box__option:hover:not(:disabled),
+.ax-combo-box__option[data-highlighted="true"] {
+  border-color: var(--ax-color-brand-500);
+  background: var(--ax-surface-hover);
+}
+
+.ax-combo-box__option[data-selected="true"] {
+  border-color: var(--ax-color-brand-500);
+  background: var(--ax-surface-selected);
+}
+
+.ax-combo-box__option:disabled {
+  opacity: 0.52;
+  cursor: not-allowed;
+}
+
+.ax-combo-box__option-label {
+  color: currentColor;
+  font: 700 0.88rem/1.3 var(--ax-font-family);
+}
+
+.ax-combo-box__option-description {
+  color: var(--ax-color-text-soft);
+  font: 500 0.74rem/1.45 var(--ax-font-family);
+}

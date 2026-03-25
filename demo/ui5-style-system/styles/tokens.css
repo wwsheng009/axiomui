@@ -1,0 +1,60 @@
+:root {
+  color-scheme: light;
+  --demo-font-family: var(--sapFontFamily, "72", "Segoe UI", Arial, sans-serif);
+  --demo-page-max-width: 90rem;
+  --demo-shell-max-width: 96rem;
+  --demo-section-gap: 2rem;
+  --demo-panel-gap: 1.25rem;
+  --demo-panel-radius: 1.25rem;
+  --demo-panel-border: 0.0625rem solid rgba(53, 74, 95, 0.08);
+  --demo-panel-shadow: 0 0.125rem 0.5rem rgba(34, 53, 72, 0.04), 0 1rem 2rem rgba(34, 53, 72, 0.06);
+  --demo-background:
+    radial-gradient(circle at top left, rgba(0, 100, 217, 0.08), transparent 26rem),
+    radial-gradient(circle at top right, rgba(33, 150, 243, 0.08), transparent 24rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 246, 247, 0.96));
+  --demo-grid-line: rgba(53, 74, 95, 0.05);
+  --demo-button-height: 3rem;
+  --demo-button-min-width: 2.5rem;
+  --demo-field-height: 2.75rem;
+  --demo-field-padding-inline: 0.625rem;
+  --demo-list-row-height: 2.75rem;
+  --demo-toolbar-height: 3rem;
+  --demo-info-toolbar-height: 2rem;
+  --demo-page-header-height: 3rem;
+  --demo-shellbar-height: 3rem;
+  --demo-toolheader-height: 3.25rem;
+  --demo-nav-item-height: 2.75rem;
+  --demo-shellbar-padding: 3rem;
+  --demo-tab-min-height: 2.75rem;
+  --demo-card-min-height: 14rem;
+  --demo-focus-outline: var(--sapContent_FocusWidth, 0.125rem) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0057d2);
+}
+
+.demo-app[data-density="compact"] {
+  --demo-button-height: var(--sapElement_Compact_Height, 2rem);
+  --demo-button-min-width: 2rem;
+  --demo-field-height: 2rem;
+  --demo-field-padding-inline: 0.5rem;
+  --demo-list-row-height: 2rem;
+  --demo-toolbar-height: 2rem;
+  --demo-page-header-height: 2rem;
+  --demo-shellbar-height: 3rem;
+  --demo-toolheader-height: 2.75rem;
+  --demo-nav-item-height: 2rem;
+  --demo-tab-min-height: 2.5rem;
+  --demo-shellbar-padding: 1rem;
+}
+
+@media (min-width: 61rem) and (max-width: 79.99rem) {
+  .demo-app {
+    --demo-shellbar-padding: 2rem;
+  }
+}
+
+@media (max-width: 60.99rem) {
+  .demo-app {
+    --demo-section-gap: 1.5rem;
+    --demo-panel-gap: 1rem;
+    --demo-shellbar-padding: 1rem;
+  }
+}
