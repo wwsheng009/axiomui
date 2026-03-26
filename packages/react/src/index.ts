@@ -78,6 +78,11 @@ export type {
 } from "./components/data-table/data-table";
 export { DatePicker } from "./components/date-picker/date-picker";
 export type { DatePickerProps } from "./components/date-picker/date-picker";
+export { DateRangePicker } from "./components/date-range-picker/date-range-picker";
+export type {
+  DateRangePickerProps,
+  DateRangeValue,
+} from "./components/date-range-picker/date-range-picker";
 export { DynamicPage } from "./components/dynamic-page/dynamic-page";
 export type { DynamicPageProps } from "./components/dynamic-page/dynamic-page";
 export { Dialog } from "./components/dialog/dialog";
@@ -98,11 +103,18 @@ export { Input } from "./components/input/input";
 export type { InputProps, ValueState } from "./components/input/input";
 export { MessagePage } from "./components/message-page/message-page";
 export type { MessagePageProps } from "./components/message-page/message-page";
+export { MessagePopover } from "./components/message-popover/message-popover";
+export type {
+  MessagePopoverItem,
+  MessagePopoverProps,
+} from "./components/message-popover/message-popover";
 export { MessageStrip } from "./components/message-strip/message-strip";
 export type {
   MessageStripProps,
   MessageTone,
 } from "./components/message-strip/message-strip";
+export { Menu } from "./components/menu/menu";
+export type { MenuItem, MenuProps } from "./components/menu/menu";
 export { MultiComboBox } from "./components/multi-combo-box/multi-combo-box";
 export type {
   MultiComboBoxItem,
@@ -133,6 +145,10 @@ export type {
   PopoverPlacement,
   PopoverProps,
 } from "./components/popover/popover";
+export { ResponsivePopover } from "./components/responsive-popover/responsive-popover";
+export type {
+  ResponsivePopoverProps,
+} from "./components/responsive-popover/responsive-popover";
 export { Select } from "./components/select/select";
 export type { SelectItem, SelectProps } from "./components/select/select";
 export { SplitLayout } from "./components/split-layout/split-layout";
@@ -153,6 +169,8 @@ export { Toolbar } from "./components/toolbar/toolbar";
 export type { ToolbarProps, ToolbarVariant } from "./components/toolbar/toolbar";
 export { Tabs } from "./components/tabs/tabs";
 export type { TabTone, TabsItem, TabsProps } from "./components/tabs/tabs";
+export { TimePicker } from "./components/time-picker/time-picker";
+export type { TimePickerProps } from "./components/time-picker/time-picker";
 export {
   VariantSyncActivityList,
   VariantSyncComparisonSummary,

@@ -4,14 +4,18 @@ import {
   type RefObject,
   useEffect,
   useId,
+  useMemo,
   useRef,
   useState,
 } from "react";
 
 import { cx } from "../../lib/cx";
+import { restoreAnchorFocus } from "../../lib/overlay/focus-restore";
+import { useLocale } from "../../providers/locale-provider";
 import { useOverlayStack } from "../../lib/overlay/overlay-stack";
 import { Button } from "../button/button";
 import { DismissLayer } from "../overlay/dismiss-layer";
+import { getOverlayCopy } from "../overlay/overlay-copy";
 import { PortalHost } from "../overlay/portal-host";
 
 export type PopoverPlacement =
@@ -22,8 +26,20 @@ export type PopoverPlacement =
 
 interface PopoverPosition {
   left: number;
+  maxHeight: number;
+  maxWidth: number;
   minWidth?: number;
   top: number;
+}
+
+function clampToViewport(value: number, size: number, viewportSize: number, margin: number) {
+  const availableSize = viewportSize - margin * 2;
+
+  if (size >= availableSize) {
+    return margin;
+  }
+
+  return Math.min(Math.max(value, margin), viewportSize - size - margin);
 }
 
 export interface PopoverProps
@@ -59,6 +75,8 @@ function resolvePopoverPosition({
   const viewportHeight = window.innerHeight;
   const viewportWidth = window.innerWidth;
   const margin = 12;
+  const maxHeight = Math.max(viewportHeight - margin * 2, 0);
+  const maxWidth = Math.max(viewportWidth - margin * 2, 0);
   let side = placement.startsWith("top") ? "top" : "bottom";
   const align = placement.endsWith("end") ? "end" : "start";
   let top =
@@ -82,18 +100,14 @@ function resolvePopoverPosition({
       ? anchorRect.right - popoverRect.width
       : anchorRect.left;
 
-  left = Math.min(
-    Math.max(left, margin),
-    viewportWidth - popoverRect.width - margin,
-  );
-  top = Math.min(
-    Math.max(top, margin),
-    viewportHeight - popoverRect.height - margin,
-  );
+  left = clampToViewport(left, popoverRect.width, viewportWidth, margin);
+  top = clampToViewport(top, popoverRect.height, viewportHeight, margin);
 
   return {
     left,
-    minWidth: matchTriggerWidth ? anchorRect.width : undefined,
+    maxHeight,
+    maxWidth,
+    minWidth: matchTriggerWidth ? Math.min(anchorRect.width, maxWidth) : undefined,
     top,
   };
 }
@@ -104,7 +118,7 @@ export function Popover({
   children,
   className,
   closable = false,
-  closeButtonLabel = "Close popover",
+  closeButtonLabel,
   closeOnEscape = true,
   closeOnOutsideClick = true,
   description,
@@ -117,11 +131,14 @@ export function Popover({
   title,
   ...props
 }: PopoverProps) {
+  const { locale } = useLocale();
+  const copy = useMemo(() => getOverlayCopy(locale), [locale]);
   const contentRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
   const descriptionId = useId();
   const overlayState = useOverlayStack(open);
   const [position, setPosition] = useState<PopoverPosition | null>(null);
+  const previousOpenRef = useRef(open);
 
   useEffect(() => {
     if (!open || !anchorRef.current || !contentRef.current) {
@@ -156,6 +173,22 @@ export function Popover({
     };
   }, [anchorRef, matchTriggerWidth, offset, open, placement]);
 
+  useEffect(() => {
+    if (previousOpenRef.current && !open) {
+      const frame = window.requestAnimationFrame(() => {
+        restoreAnchorFocus(anchorRef.current);
+      });
+
+      previousOpenRef.current = open;
+
+      return () => {
+        window.cancelAnimationFrame(frame);
+      };
+    }
+
+    previousOpenRef.current = open;
+  }, [anchorRef, open]);
+
   if (!open) {
     return null;
   }
@@ -168,6 +201,7 @@ export function Popover({
         contentRef={contentRef}
         dismissOnEscape={closeOnEscape}
         dismissOnPointerDownOutside={closeOnOutsideClick}
+        insideRefs={[anchorRef]}
         isTopmost={overlayState.isTopmost}
         onDismiss={() => onOpenChange?.(false)}
         role="presentation"
@@ -183,6 +217,8 @@ export function Popover({
           style={{
             ...style,
             left: position?.left ?? 12,
+            maxHeight: position?.maxHeight,
+            maxWidth: position?.maxWidth,
             minWidth: position?.minWidth,
             top: position?.top ?? 12,
           }}
@@ -204,7 +240,7 @@ export function Popover({
               </div>
               {closable && onOpenChange ? (
                 <Button
-                  aria-label={closeButtonLabel}
+                  aria-label={closeButtonLabel ?? copy.closePopover}
                   iconName="close"
                   variant="transparent"
                   onClick={() => onOpenChange(false)}

@@ -11,7 +11,10 @@ import {
 } from "react";
 
 import { cx } from "../../lib/cx";
+import { restoreElementFocus } from "../../lib/overlay/focus-restore";
+import { useLocale } from "../../providers/locale-provider";
 import { Icon } from "../icon/icon";
+import { getOverlayCopy } from "../overlay/overlay-copy";
 import { Popover } from "../popover/popover";
 import type { ValueState } from "../input/input";
 
@@ -59,7 +62,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
     message,
     name,
     onValueChange,
-    placeholder = "Select",
+    placeholder,
     readOnly,
     value,
     valueState = "none",
@@ -73,6 +76,8 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
   const descriptionId = description ? `${triggerId}-description` : undefined;
   const messageId = message ? `${triggerId}-message` : undefined;
   const describedBy = [descriptionId, messageId].filter(Boolean).join(" ") || undefined;
+  const { locale } = useLocale();
+  const copy = useMemo(() => getOverlayCopy(locale), [locale]);
   const [open, setOpen] = useState(false);
   const [internalValue, setInternalValue] = useState(defaultValue ?? "");
   const [activeIndex, setActiveIndex] = useState(getFirstEnabledIndex(items));
@@ -84,10 +89,11 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
     () => items.find((item) => item.value === resolvedValue),
     [items, resolvedValue],
   );
+  const resolvedPlaceholder = placeholder ?? copy.selectPlaceholder;
 
   function focusTrigger() {
     window.requestAnimationFrame(() => {
-      triggerRef.current?.focus();
+      restoreElementFocus(triggerRef.current, [triggerRef.current]);
     });
   }
 
@@ -277,7 +283,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
           className="ax-select__value"
           data-placeholder={selectedItem ? undefined : "true"}
         >
-          {selectedItem?.label ?? placeholder}
+          {selectedItem?.label ?? resolvedPlaceholder}
         </span>
         <span className="ax-select__icon" aria-hidden="true">
           <Icon name="chevron-down" />

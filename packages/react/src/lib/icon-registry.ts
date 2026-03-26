@@ -58,6 +58,12 @@ const defaultIcons: IconRegistryInput = {
       "M5 6h14a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a1 1 0 0 1 1-1z",
     ],
   },
+  clock: {
+    path: [
+      "M12 7v5l3 2",
+      "M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0z",
+    ],
+  },
   "chevron-down": {
     path: "m6 9 6 6 6-6",
   },

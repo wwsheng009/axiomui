@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useState } from "react";
 
 const overlayStack: string[] = [];
 const listeners = new Set<() => void>();
@@ -36,11 +36,14 @@ export interface OverlayStackState {
   zIndex: number;
 }
 
+const useIsomorphicLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 export function useOverlayStack(active: boolean): OverlayStackState {
   const overlayId = useId();
   const [, setVersion] = useState(0);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     function handleStackChange() {
       setVersion((version) => version + 1);
     }
@@ -52,7 +55,7 @@ export function useOverlayStack(active: boolean): OverlayStackState {
     };
   }, []);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!active) {
       return;
     }

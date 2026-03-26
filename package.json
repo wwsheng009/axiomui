@@ -2,17 +2,31 @@
   "name": "axiomui",
   "private": true,
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwsheng009/axiomui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wwsheng009/axiomui/issues"
+  },
+  "homepage": "https://github.com/wwsheng009/axiomui#readme",
   "packageManager": "pnpm@10.27.0",
   "scripts": {
     "dev": "pnpm --filter @axiomui/docs dev",
     "build": "pnpm -r build",
-    "test": "pnpm --filter @axiomui/react test",
-    "typecheck": "pnpm -r typecheck"
+    "lint:workflows": "node ./scripts/lint-workflows.mjs",
+    "test": "pnpm -r --if-present test",
+    "typecheck": "pnpm -r typecheck",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "publish:packages": "changeset publish",
+    "release:check": "node ./scripts/release-check.mjs"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.30.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react-swc": "^4.3.0",
+    "@vitejs/plugin-react": "^5.1.0",
     "typescript": "^6.0.2",
     "vite": "^8.0.2"
   }

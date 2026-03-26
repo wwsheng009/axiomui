@@ -7,10 +7,13 @@
 
 .ax-popover__shell {
   position: fixed;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--ax-space-3);
+  width: max-content;
   min-width: min(18rem, calc(100vw - 2rem));
-  max-width: min(32rem, calc(100vw - 2rem));
+  max-width: calc(100vw - 1.5rem);
+  max-height: calc(100vh - 1.5rem);
   padding: 1rem;
   border: 1px solid var(--ax-color-border-subtle);
   border-radius: var(--ax-radius-lg);
@@ -20,6 +23,7 @@
     var(--ax-surface-subtle) 100%
   );
   box-shadow: var(--ax-shadow-2);
+  overflow: hidden;
   pointer-events: auto;
 }
 
@@ -28,6 +32,7 @@
 .ax-popover__footer {
   display: grid;
   gap: var(--ax-space-2);
+  flex: none;
 }
 
 .ax-popover__header {
@@ -48,6 +53,13 @@
 .ax-popover__description {
   color: var(--ax-color-text-muted);
   font: 500 0.8rem/1.5 var(--ax-font-family);
+}
+
+.ax-popover__content {
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: auto;
 }
 
 .ax-popover__footer {

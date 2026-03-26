@@ -23,6 +23,8 @@ Describe the change in one or two short paragraphs.
 
 - [ ] `pnpm typecheck`
 - [ ] `pnpm build`
+- [ ] `pnpm release:check` when publishable packages, build, pack, or type outputs changed
+- [ ] Added a `.changeset/*.md` file when publishable packages changed
 - [ ] Relevant docs demo checked manually
 - [ ] Keyboard path checked for interactive components
 - [ ] `LTR/RTL` checked when applicable

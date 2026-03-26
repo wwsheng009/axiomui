@@ -3,7 +3,6 @@ import { Fragment, useState, type HTMLAttributes, type ReactNode } from "react";
 import { cx } from "../../lib/cx";
 import {
   sortRows,
-  type SortDirection,
   type SortableValue,
   type TableSort,
 } from "../../lib/table-sort";

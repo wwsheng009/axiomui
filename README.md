@@ -25,6 +25,8 @@ pnpm build
 ## 参与开发
 
 - `CONTRIBUTING.md`：贡献指南，包含任务选择、issue/PR 流程、验证要求和 docs 验收路径
+- `docs/release/README.md`：发布说明，包含 `pnpm changeset`、`pnpm release:check` 与当前发版流程
+- `docs/release/admin-checklist.md`：仓库管理员检查清单，包含 branch protection、Actions、secret 与 Dependabot 启用项
 - `docs/roadmap/onboarding/README.md`：新成员上手包，包含 30 分钟快速入门、角色 guide、执行清单和 demo walkthrough 清单
 
 ## 当前初始化内容
@@ -55,9 +57,10 @@ pnpm build
 - `.github/ISSUE_TEMPLATE/docs-qa-task.md`：docs 与 QA 任务模板
 - `.github/ISSUE_TEMPLATE/sprint-epic.md`：Sprint Epic 模板
 - `.github/PULL_REQUEST_TEMPLATE.md`：PR 提交检查清单
+- `.github/dependabot.yml`：依赖升级自动化配置
 
 ## 下一步建议
 
 1. 继续补齐 `Dialog`、`Tabs`、`Table`、`Form Grid` 等 UI5 核心组件族。
 2. 把 `analysis/ui5-style-system` 中的状态矩阵继续沉淀成组件级 token 和示例页。
-3. 引入测试、发布流程和视觉回归基线。
+3. 继续完善版本发布和视觉回归基线。

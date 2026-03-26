@@ -1,0 +1,111 @@
+.ax-menu {
+  display: grid;
+  gap: var(--ax-space-2);
+  min-width: min(18rem, calc(100vw - 3rem));
+  max-width: min(22rem, calc(100vw - 3rem));
+}
+
+.ax-menu__pathbar {
+  display: flex;
+  align-items: center;
+  gap: var(--ax-space-2);
+  padding-bottom: var(--ax-space-2);
+  border-bottom: 1px solid var(--ax-color-border-subtle);
+}
+
+.ax-menu__back {
+  min-width: 0;
+  padding-inline: 0.25rem 0.5rem;
+}
+
+.ax-menu__path-label {
+  min-width: 0;
+  color: var(--ax-color-text-muted);
+  font: 600 0.8rem/1.3 var(--ax-font-family);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ax-menu__list {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.ax-menu__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--ax-space-2);
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid transparent;
+  border-radius: var(--ax-radius-md);
+  background: transparent;
+  color: var(--ax-color-text);
+  cursor: pointer;
+  text-align: start;
+  transition:
+    background var(--ax-transition-fast),
+    border-color var(--ax-transition-fast),
+    color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast);
+}
+
+.ax-menu__item:hover:not(:disabled),
+.ax-menu__item[data-active="true"]:not(:disabled) {
+  background: var(--ax-surface-hover);
+  border-color: var(--ax-color-border-subtle);
+}
+
+.ax-menu__item:focus-visible {
+  outline: none;
+  box-shadow: var(--ax-focus-ring);
+}
+
+.ax-menu__item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ax-menu__item[data-destructive="true"] {
+  color: var(--ax-color-negative-strong);
+}
+
+.ax-menu__item[data-destructive="true"]:hover:not(:disabled),
+.ax-menu__item[data-destructive="true"][data-active="true"]:not(:disabled) {
+  background: var(--ax-surface-negative);
+  border-color: var(--ax-color-negative-400);
+}
+
+.ax-menu__item-main {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ax-space-3);
+  min-width: 0;
+}
+
+.ax-menu__item-icon,
+.ax-menu__item-meta {
+  display: inline-grid;
+  place-items: center;
+  width: 1rem;
+  height: 1rem;
+  color: var(--ax-color-text-soft);
+}
+
+.ax-menu__item-copy {
+  display: grid;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.ax-menu__item-label {
+  color: currentColor;
+  font: 600 0.92rem/1.35 var(--ax-font-family);
+}
+
+.ax-menu__item-description {
+  color: var(--ax-color-text-muted);
+  font: 500 0.78rem/1.4 var(--ax-font-family);
+}

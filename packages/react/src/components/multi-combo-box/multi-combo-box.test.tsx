@@ -1,7 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
+import { LocaleProvider } from "../../providers/locale-provider";
 import { MultiComboBox } from "./multi-combo-box";
 
 describe("MultiComboBox", () => {
@@ -32,9 +33,14 @@ describe("MultiComboBox", () => {
       screen.getByRole("button", { name: /remove mia chen/i }),
     ).toBeInTheDocument();
     expect(input).toHaveValue("");
+    await waitFor(() => {
+      expect(input).toHaveFocus();
+    });
 
     await user.type(input, "No");
-    await user.keyboard("{ArrowDown}{Enter}");
+    expect(screen.getByRole("option", { name: /noah patel/i })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /mia chen/i })).not.toBeInTheDocument();
+    await user.keyboard("{Enter}");
     expect(
       screen.getByRole("button", { name: /remove noah patel/i }),
     ).toBeInTheDocument();
@@ -46,5 +52,33 @@ describe("MultiComboBox", () => {
     expect(
       screen.getByRole("button", { name: /remove noah patel/i }),
     ).toBeInTheDocument();
+  });
+
+  it("localizes default overlay copy for zh-CN", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <LocaleProvider locale="zh-CN">
+        <MultiComboBox
+          label="负责人"
+          items={[
+            { value: "mia", label: "Mia Chen" },
+            { value: "avery", label: "Avery Kim" },
+          ]}
+        />
+      </LocaleProvider>,
+    );
+
+    const input = screen.getByRole("combobox", { name: /负责人/i });
+    expect(input).toHaveAttribute("placeholder", "输入以搜索");
+    expect(screen.getByRole("button", { name: "打开建议" })).toBeInTheDocument();
+
+    await user.click(input);
+    expect(screen.getAllByText("选择")).toHaveLength(2);
+
+    await user.keyboard("{ArrowDown}{Enter}");
+
+    expect(screen.getByRole("button", { name: "移除Avery Kim" })).toBeInTheDocument();
+    expect(screen.getByText("已选")).toBeInTheDocument();
   });
 });

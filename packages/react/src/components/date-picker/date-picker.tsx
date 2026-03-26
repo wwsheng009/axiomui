@@ -9,8 +9,10 @@ import {
 } from "react";
 
 import { cx } from "../../lib/cx";
+import { restoreElementFocus } from "../../lib/overlay/focus-restore";
 import { useLocale } from "../../providers/locale-provider";
 import { Button } from "../button/button";
+import { getDateCopy } from "../calendar-panel/date-copy";
 import { CalendarPanel } from "../calendar-panel/calendar-panel";
 import {
   createDatePlaceholder,
@@ -75,6 +77,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     const describedBy = [descriptionId, messageId].filter(Boolean).join(" ") || undefined;
     const { locale } = useLocale();
     const resolvedFormat = resolveDateFormatOptions(format);
+    const copy = getDateCopy(locale);
     const resolvedPlaceholder =
       placeholder ?? createDatePlaceholder(locale, resolvedFormat);
     const [open, setOpen] = useState(false);
@@ -124,7 +127,11 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
 
     function focusInput() {
       window.requestAnimationFrame(() => {
-        inputRef.current?.focus();
+        restoreElementFocus(inputRef.current, [
+          controlRef.current,
+          panelRef.current,
+          inputRef.current,
+        ]);
       });
     }
 
@@ -290,7 +297,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
           />
           <div className="ax-date-picker__toggle">
             <Button
-              aria-label={open ? "Close calendar" : "Open calendar"}
+              aria-label={open ? copy.closeCalendar : copy.openCalendar}
               iconName="calendar"
               variant="transparent"
               onClick={() => {

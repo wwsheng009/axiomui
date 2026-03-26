@@ -1,0 +1,445 @@
+.ax-time-picker {
+  --ax-field-background: var(--ax-surface-panel);
+  --ax-field-border: var(--ax-color-border-strong);
+  --ax-field-support: var(--ax-color-text-muted);
+  display: grid;
+  min-width: 0;
+  gap: var(--ax-space-2);
+  color: var(--ax-color-text);
+}
+
+.ax-time-picker__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  gap: var(--ax-space-3);
+}
+
+.ax-time-picker__label {
+  color: var(--ax-color-text);
+  font: 600 0.825rem/1.2 var(--ax-font-family);
+}
+
+.ax-time-picker__description,
+.ax-time-picker__support,
+.ax-time-picker__panel-summary,
+.ax-time-picker__dial-center-label,
+.ax-time-picker__mobile-label,
+.ax-time-picker__fine-tune-label {
+  color: var(--ax-field-support);
+  font: 500 0.75rem/1.4 var(--ax-font-family);
+}
+
+.ax-time-picker__support:empty {
+  display: none;
+}
+
+.ax-time-picker__control {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: var(--ax-element-height);
+  border: 1px solid var(--ax-field-border);
+  border-radius: var(--ax-radius-sm);
+  background: var(--ax-field-background);
+  box-shadow: var(--ax-shadow-0);
+  transition:
+    background var(--ax-transition-fast),
+    border-color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast);
+}
+
+.ax-time-picker__control:hover {
+  border-color: var(--ax-color-border-hover);
+}
+
+.ax-time-picker__control:focus-within,
+.ax-time-picker__control[data-open="true"] {
+  border-color: var(--ax-color-brand-500);
+  box-shadow: var(--ax-focus-ring), var(--ax-shadow-0);
+}
+
+.ax-time-picker__native {
+  flex: 1;
+  min-width: 0;
+  height: calc(var(--ax-element-height) - 2px);
+  padding-inline: var(--ax-field-padding-inline);
+  border: 0;
+  background: transparent;
+  color: var(--ax-color-text);
+  font: 500 0.95rem/1 var(--ax-font-family);
+  caret-color: var(--ax-color-brand-500);
+}
+
+.ax-time-picker__native:focus {
+  outline: none;
+}
+
+.ax-time-picker__native::placeholder {
+  color: var(--ax-color-text-soft);
+}
+
+.ax-time-picker__toggle {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: var(--ax-icon-slot-width);
+  height: calc(var(--ax-element-height) - 2px);
+  color: var(--ax-color-text-soft);
+}
+
+.ax-time-picker__toggle .ax-button {
+  width: calc(var(--ax-icon-slot-width) - 0.25rem);
+  min-width: calc(var(--ax-icon-slot-width) - 0.25rem);
+  height: calc(var(--ax-element-height) - 0.25rem);
+}
+
+.ax-time-picker__desktop-panel,
+.ax-time-picker__mobile-panel {
+  display: grid;
+  gap: var(--ax-space-4);
+}
+
+.ax-time-picker__desktop-panel {
+  width: min(22rem, calc(100vw - 1.5rem));
+}
+
+.ax-time-picker__panel-header {
+  display: grid;
+  gap: var(--ax-space-1);
+}
+
+.ax-time-picker__panel-value,
+.ax-time-picker__dial-tab-value,
+.ax-time-picker__dial-center-value,
+.ax-time-picker__fine-tune-value {
+  color: var(--ax-color-text);
+  font: 700 0.98rem/1.2 var(--ax-font-family);
+}
+
+.ax-time-picker__dial-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.ax-time-picker__dial-tab,
+.ax-time-picker__period-chip,
+.ax-time-picker__mobile-period {
+  display: grid;
+  gap: 0.1875rem;
+  min-width: 0;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-md);
+  background: var(--ax-surface-subtle);
+  color: var(--ax-color-text);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--ax-transition-fast),
+    border-color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast),
+    color var(--ax-transition-fast);
+}
+
+.ax-time-picker__dial-tab:hover,
+.ax-time-picker__period-chip:hover,
+.ax-time-picker__mobile-period:hover {
+  border-color: var(--ax-color-border-hover);
+  background: var(--ax-surface-hover);
+}
+
+.ax-time-picker__dial-tab[data-active="true"],
+.ax-time-picker__period-chip[data-selected="true"],
+.ax-time-picker__mobile-period[data-selected="true"] {
+  border-color: var(--ax-color-brand-500);
+  background: color-mix(
+    in srgb,
+    var(--ax-color-brand-500) 10%,
+    var(--ax-surface-raised)
+  );
+  box-shadow: var(--ax-focus-ring), var(--ax-shadow-0);
+}
+
+.ax-time-picker__dial-tab:focus-visible,
+.ax-time-picker__period-chip:focus-visible,
+.ax-time-picker__mobile-period:focus-visible,
+.ax-time-picker__dial-option:focus-visible,
+.ax-time-picker__mobile-input:focus-visible {
+  outline: none;
+  box-shadow: var(--ax-focus-ring), var(--ax-shadow-0);
+}
+
+.ax-time-picker__dial-tab-label {
+  color: var(--ax-color-text-muted);
+  font: 500 0.75rem/1.2 var(--ax-font-family);
+}
+
+.ax-time-picker__period-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.ax-time-picker__dial-shell {
+  display: grid;
+  gap: var(--ax-space-3);
+}
+
+.ax-time-picker__dial-face {
+  position: relative;
+  min-height: 16rem;
+  border: 1px solid color-mix(in srgb, var(--ax-color-brand-500) 18%, transparent);
+  border-radius: 1.35rem;
+  background:
+    radial-gradient(circle at center, var(--ax-surface-raised) 0 18%, transparent 18.5%),
+    radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--ax-color-brand-500) 4%, var(--ax-surface-panel)) 0%,
+      var(--ax-surface-panel) 58%,
+      color-mix(in srgb, var(--ax-color-brand-500) 8%, var(--ax-surface-subtle)) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    var(--ax-shadow-1);
+}
+
+.ax-time-picker__dial-face[data-dense="true"] {
+  min-height: 15.25rem;
+}
+
+.ax-time-picker__dial-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 4.75rem;
+  height: 4.75rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-raised) 0%,
+    var(--ax-surface-panel) 100%
+  );
+  box-shadow: var(--ax-shadow-1);
+}
+
+.ax-time-picker__dial-center-value {
+  font-size: 1.15rem;
+}
+
+.ax-time-picker__dial-hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: var(--ax-time-picker-hand-length);
+  height: 0.1875rem;
+  transform: rotate(var(--ax-time-picker-hand-angle));
+  transform-origin: 0 50%;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ax-color-brand-500) 78%, white 22%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.ax-time-picker__dial-hand::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.3125rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--ax-color-brand-500);
+}
+
+.ax-time-picker__dial-option {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  display: inline-grid;
+  place-items: center;
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0.25rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: 999px;
+  background: var(--ax-surface-raised);
+  color: var(--ax-color-text);
+  cursor: pointer;
+  font: 700 0.76rem/1 var(--ax-font-family);
+  transition:
+    background var(--ax-transition-fast),
+    border-color var(--ax-transition-fast),
+    box-shadow var(--ax-transition-fast),
+    transform var(--ax-transition-fast);
+}
+
+.ax-time-picker__dial-option:hover {
+  border-color: var(--ax-color-border-hover);
+  background: var(--ax-surface-hover);
+}
+
+.ax-time-picker__dial-option[data-ring="inner"] {
+  min-width: 1.7rem;
+  min-height: 1.7rem;
+  font-size: 0.68rem;
+}
+
+.ax-time-picker__dial-option[data-anchor="true"] {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ax-color-brand-500) 28%, transparent);
+}
+
+.ax-time-picker__dial-option[data-selected="true"] {
+  border-color: var(--ax-color-brand-500);
+  background: color-mix(
+    in srgb,
+    var(--ax-color-brand-500) 14%,
+    var(--ax-surface-raised)
+  );
+  color: var(--ax-color-brand-strong);
+  box-shadow: var(--ax-focus-ring), var(--ax-shadow-0);
+}
+
+.ax-time-picker__fine-tune {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ax-space-3);
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-md);
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-subtle) 0%,
+    var(--ax-surface-panel) 100%
+  );
+}
+
+.ax-time-picker__fine-tune-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ax-space-2);
+}
+
+.ax-time-picker__fine-tune-controls .ax-button {
+  width: 2rem;
+  min-width: 2rem;
+  height: 2rem;
+}
+
+.ax-time-picker__mobile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.ax-time-picker__mobile-card {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.875rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: 1rem;
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-raised) 0%,
+    var(--ax-surface-panel) 100%
+  );
+}
+
+.ax-time-picker__mobile-input {
+  width: 100%;
+  min-width: 0;
+  height: 3rem;
+  padding-inline: 0.75rem;
+  border: 1px solid var(--ax-color-border-strong);
+  border-radius: 0.875rem;
+  background: var(--ax-surface-subtle);
+  color: var(--ax-color-text);
+  font: 700 1.35rem/1 var(--ax-font-family);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.ax-time-picker__mobile-periods {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.ax-time-picker__panel-error {
+  padding: 0.625rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--ax-color-negative-500) 32%, transparent);
+  border-radius: var(--ax-radius-md);
+  background: var(--ax-surface-negative);
+  color: var(--ax-color-negative-strong);
+  font: 500 0.8rem/1.45 var(--ax-font-family);
+}
+
+.ax-time-picker[data-value-state="error"] {
+  --ax-field-background: var(--ax-surface-negative);
+  --ax-field-border: var(--ax-color-negative-500);
+  --ax-field-support: var(--ax-color-negative-strong);
+}
+
+.ax-time-picker[data-value-state="warning"] {
+  --ax-field-background: var(--ax-surface-attention);
+  --ax-field-border: var(--ax-color-attention-500);
+  --ax-field-support: var(--ax-color-attention-strong);
+}
+
+.ax-time-picker[data-value-state="success"] {
+  --ax-field-background: var(--ax-surface-positive);
+  --ax-field-border: var(--ax-color-positive-500);
+  --ax-field-support: var(--ax-color-positive-strong);
+}
+
+.ax-time-picker[data-value-state="information"] {
+  --ax-field-background: var(--ax-surface-information);
+  --ax-field-border: var(--ax-color-information-500);
+  --ax-field-support: var(--ax-color-information-strong);
+}
+
+.ax-time-picker[data-disabled="true"] .ax-time-picker__control {
+  opacity: 0.58;
+}
+
+.ax-time-picker[data-disabled="true"] .ax-time-picker__native {
+  cursor: not-allowed;
+}
+
+.ax-time-picker[data-readonly="true"] .ax-time-picker__control {
+  background: var(--ax-surface-subtle);
+  border-style: dashed;
+}
+
+@media (max-width: 720px) {
+  .ax-time-picker__desktop-panel {
+    width: min(20rem, calc(100vw - 1.5rem));
+  }
+
+  .ax-time-picker__dial-face {
+    min-height: 14.5rem;
+  }
+
+  .ax-time-picker__dial-option {
+    min-width: 1.8rem;
+    min-height: 1.8rem;
+    font-size: 0.72rem;
+  }
+
+  .ax-time-picker__dial-option[data-ring="inner"] {
+    min-width: 1.55rem;
+    min-height: 1.55rem;
+    font-size: 0.62rem;
+  }
+}

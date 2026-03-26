@@ -2,12 +2,25 @@
   "name": "@axiomui/react",
   "version": "0.1.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwsheng009/axiomui.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/wwsheng009/axiomui/issues"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/wwsheng009/axiomui/tree/main/packages/react#readme",
   "files": [
     "dist"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": [
     "**/*.css"
   ],
@@ -26,7 +39,7 @@
     "@axiomui/tokens": "workspace:*"
   },
   "scripts": {
-    "build": "vite build && node ./scripts/build-styles.mjs && tsc -p tsconfig.json --emitDeclarationOnly --outDir dist/types",
+    "build": "vite build && node ./scripts/build-styles.mjs && node ./scripts/build-types.mjs",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

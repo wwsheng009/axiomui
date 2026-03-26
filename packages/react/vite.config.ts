@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 const entryFile = fileURLToPath(new URL("./src/index.ts", import.meta.url));
@@ -18,4 +18,3 @@ export default defineConfig({
     },
   },
 });
-

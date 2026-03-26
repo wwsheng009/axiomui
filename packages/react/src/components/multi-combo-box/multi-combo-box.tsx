@@ -11,8 +11,15 @@ import {
 } from "react";
 
 import { cx } from "../../lib/cx";
+import { restoreElementFocus } from "../../lib/overlay/focus-restore";
+import { useLocale } from "../../providers/locale-provider";
 import { Icon } from "../icon/icon";
 import type { ValueState } from "../input/input";
+import {
+  getOverlayCopy,
+  getOverlayEmptyState,
+  getRemoveValueButtonLabel,
+} from "../overlay/overlay-copy";
 import { Popover } from "../popover/popover";
 
 export interface MultiComboBoxItem {
@@ -81,7 +88,7 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
       name,
       onInputValueChange,
       onValuesChange,
-      placeholder = "Type to search",
+      placeholder,
       readOnly,
       valueState = "none",
       values,
@@ -95,6 +102,8 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
     const descriptionId = description ? `${inputId}-description` : undefined;
     const messageId = message ? `${inputId}-message` : undefined;
     const describedBy = [descriptionId, messageId].filter(Boolean).join(" ") || undefined;
+    const { locale } = useLocale();
+    const copy = useMemo(() => getOverlayCopy(locale), [locale]);
     const [open, setOpen] = useState(false);
     const [internalValues, setInternalValues] = useState(defaultValues);
     const [internalInputValue, setInternalInputValue] = useState(defaultInputValue);
@@ -103,6 +112,7 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
     const controlRef = useRef<HTMLDivElement | null>(null);
     const resolvedValues = values ?? internalValues;
     const resolvedInputValue = inputValue ?? internalInputValue;
+    const resolvedPlaceholder = placeholder ?? copy.searchPlaceholder;
     const selectedValueSet = useMemo(() => new Set(resolvedValues), [resolvedValues]);
     const itemMap = useMemo(
       () => new Map(items.map((item) => [item.value, item])),
@@ -181,7 +191,7 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
 
     function focusInput() {
       window.requestAnimationFrame(() => {
-        inputRef.current?.focus();
+        restoreElementFocus(inputRef.current, [controlRef.current, inputRef.current]);
       });
     }
 
@@ -362,7 +372,7 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
                   <button
                     type="button"
                     className="ax-multi-combo-box__token-remove"
-                    aria-label={`Remove ${itemText}`}
+                    aria-label={getRemoveValueButtonLabel(itemText, locale)}
                     disabled={disabled}
                     onClick={() => removeValue(itemValue)}
                   >
@@ -392,7 +402,7 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
                 : undefined
             }
             disabled={disabled}
-            placeholder={resolvedValues.length > 0 ? "" : placeholder}
+            placeholder={resolvedValues.length > 0 ? "" : resolvedPlaceholder}
             readOnly={readOnly}
             value={resolvedInputValue}
             onChange={(event) => {
@@ -410,7 +420,7 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
             <button
               type="button"
               className="ax-button"
-              aria-label={open ? "Close suggestions" : "Open suggestions"}
+              aria-label={open ? copy.closeSuggestions : copy.openSuggestions}
               data-variant="transparent"
               onClick={() => {
                 if (!disabled && !readOnly) {
@@ -468,14 +478,14 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
                       ) : null}
                     </span>
                     <span className="ax-multi-combo-box__option-state">
-                      {selected ? "Selected" : "Choose"}
+                      {selected ? copy.selected : copy.choose}
                     </span>
                   </button>
                 );
               })}
             </div>
           ) : (
-            <div className="ax-multi-combo-box__empty">No matching items.</div>
+            <div className="ax-multi-combo-box__empty">{getOverlayEmptyState(locale)}</div>
           )}
         </Popover>
 

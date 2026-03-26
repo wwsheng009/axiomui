@@ -2,6 +2,19 @@
   "name": "@axiomui/tokens",
   "version": "0.1.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwsheng009/axiomui.git",
+    "directory": "packages/tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/wwsheng009/axiomui/issues"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/wwsheng009/axiomui/tree/main/packages/tokens#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": ["dist"],
   "sideEffects": ["**/*.css"],
   "exports": {
@@ -12,4 +25,3 @@
     "typecheck": "node -e \"console.log('No typecheck required for @axiomui/tokens')\""
   }
 }
-

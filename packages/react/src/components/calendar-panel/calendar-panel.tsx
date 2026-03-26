@@ -11,6 +11,7 @@ import {
 import { cx } from "../../lib/cx";
 import { useLocale } from "../../providers/locale-provider";
 import { Button } from "../button/button";
+import { formatRangeSummaryBoundary, getDateCopy } from "./date-copy";
 import {
   addCalendarDays,
   addCalendarMonths,
@@ -78,6 +79,7 @@ export const CalendarPanel = forwardRef<HTMLDivElement, CalendarPanelProps>(
   ) {
     const { locale: localeFromContext } = useLocale();
     const locale = localeProp ?? localeFromContext;
+    const copy = useMemo(() => getDateCopy(locale), [locale]);
     const titleId = useId();
     const [internalValue, setInternalValue] = useState(defaultValue ?? "");
     const [internalVisibleMonth, setInternalVisibleMonth] = useState(() =>
@@ -189,7 +191,7 @@ export const CalendarPanel = forwardRef<HTMLDivElement, CalendarPanelProps>(
         <div className="ax-calendar-panel__header">
           <div className="ax-calendar-panel__nav">
             <Button
-              aria-label="Previous month"
+              aria-label={copy.previousMonth}
               iconName="chevron-left"
               variant="transparent"
               onMouseDown={(event) => {
@@ -203,7 +205,7 @@ export const CalendarPanel = forwardRef<HTMLDivElement, CalendarPanelProps>(
               }}
             />
             <Button
-              aria-label="Next month"
+              aria-label={copy.nextMonth}
               iconName="chevron-right"
               variant="transparent"
               onMouseDown={(event) => {
@@ -352,10 +354,18 @@ export const CalendarPanel = forwardRef<HTMLDivElement, CalendarPanelProps>(
           <div className="ax-calendar-panel__range-note">
             {[
               minCalendarDate
-                ? `From ${formatCalendarDate(minCalendarDate, locale)}`
+                ? formatRangeSummaryBoundary(
+                    "min",
+                    formatCalendarDate(minCalendarDate, locale),
+                    locale,
+                  )
                 : undefined,
               maxCalendarDate
-                ? `Until ${formatCalendarDate(maxCalendarDate, locale)}`
+                ? formatRangeSummaryBoundary(
+                    "max",
+                    formatCalendarDate(maxCalendarDate, locale),
+                    locale,
+                  )
                 : undefined,
             ]
               .filter(Boolean)

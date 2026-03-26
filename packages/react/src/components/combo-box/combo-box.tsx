@@ -11,8 +11,14 @@ import {
 } from "react";
 
 import { cx } from "../../lib/cx";
+import { restoreElementFocus } from "../../lib/overlay/focus-restore";
+import { useLocale } from "../../providers/locale-provider";
 import { Icon } from "../icon/icon";
 import type { ValueState } from "../input/input";
+import {
+  getOverlayCopy,
+  getOverlayEmptyState,
+} from "../overlay/overlay-copy";
 import { Popover } from "../popover/popover";
 
 export interface ComboBoxItem {
@@ -80,7 +86,7 @@ export const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(function Com
     name,
     onInputValueChange,
     onValueChange,
-    placeholder = "Type to search",
+    placeholder,
     readOnly,
     value,
     valueState = "none",
@@ -94,6 +100,8 @@ export const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(function Com
   const descriptionId = description ? `${inputId}-description` : undefined;
   const messageId = message ? `${inputId}-message` : undefined;
   const describedBy = [descriptionId, messageId].filter(Boolean).join(" ") || undefined;
+  const { locale } = useLocale();
+  const copy = useMemo(() => getOverlayCopy(locale), [locale]);
   const [open, setOpen] = useState(false);
   const [internalValue, setInternalValue] = useState(defaultValue ?? "");
   const defaultSelectedItem = items.find((item) => item.value === defaultValue);
@@ -111,6 +119,7 @@ export const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(function Com
 
   const selectedItemText = selectedItem ? getItemText(selectedItem) : "";
   const resolvedInputValue = inputValue ?? internalInputValue;
+  const resolvedPlaceholder = placeholder ?? copy.searchPlaceholder;
   const shouldFilterOptions =
     resolvedInputValue.trim().length > 0 && resolvedInputValue !== selectedItemText;
 
@@ -174,7 +183,7 @@ export const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(function Com
 
   function focusInput() {
     window.requestAnimationFrame(() => {
-      inputRef.current?.focus();
+      restoreElementFocus(inputRef.current, [controlRef.current, inputRef.current]);
     });
   }
 
@@ -371,7 +380,7 @@ export const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(function Com
               : undefined
           }
           disabled={disabled}
-          placeholder={placeholder}
+          placeholder={resolvedPlaceholder}
           readOnly={readOnly}
           value={resolvedInputValue}
           onChange={(event) => {
@@ -396,7 +405,7 @@ export const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(function Com
           <button
             type="button"
             className="ax-button"
-            aria-label={open ? "Close suggestions" : "Open suggestions"}
+            aria-label={open ? copy.closeSuggestions : copy.openSuggestions}
             data-variant="transparent"
             onClick={() => {
               if (!disabled && !readOnly) {
@@ -452,7 +461,7 @@ export const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(function Com
           </div>
         ) : (
           <div className="ax-combo-box__empty">
-            No matching items. {allowCustomValue ? "Press Enter to keep your text." : ""}
+            {getOverlayEmptyState(locale, allowCustomValue)}
           </div>
         )}
       </Popover>

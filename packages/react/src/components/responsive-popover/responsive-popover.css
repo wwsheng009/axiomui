@@ -1,0 +1,94 @@
+.ax-responsive-popover {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  align-items: end;
+  padding-top: max(8vh, var(--ax-space-6));
+}
+
+.ax-responsive-popover__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--ax-surface-overlay);
+  backdrop-filter: blur(6px);
+}
+
+.ax-responsive-popover__sheet {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(100%, 42rem);
+  max-height: min(88vh, 42rem);
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  justify-self: center;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: 1.25rem 1.25rem 0 0;
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-raised) 0%,
+    var(--ax-surface-panel) 100%
+  );
+  box-shadow: var(--ax-shadow-2);
+}
+
+.ax-responsive-popover__grabber {
+  width: 3rem;
+  height: 0.3125rem;
+  margin: 0.75rem auto 0;
+  border-radius: 999px;
+  background: var(--ax-color-border-strong);
+  opacity: 0.7;
+}
+
+.ax-responsive-popover__header,
+.ax-responsive-popover__content,
+.ax-responsive-popover__footer {
+  display: grid;
+  gap: var(--ax-space-2);
+}
+
+.ax-responsive-popover__header {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--ax-space-3);
+  padding: 1rem 1rem 0.875rem;
+}
+
+.ax-responsive-popover__headline {
+  display: grid;
+  gap: var(--ax-space-1);
+}
+
+.ax-responsive-popover__title {
+  color: var(--ax-color-text);
+  font: 700 1rem/1.2 var(--ax-font-family);
+}
+
+.ax-responsive-popover__description {
+  color: var(--ax-color-text-muted);
+  font: 500 0.85rem/1.5 var(--ax-font-family);
+}
+
+.ax-responsive-popover__content {
+  overflow: auto;
+  padding: 0 1rem 1rem;
+}
+
+.ax-responsive-popover__footer {
+  padding: 0.875rem 1rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--ax-color-border-subtle);
+  background: var(--ax-surface-subtle);
+}
+
+@media (max-width: 640px) {
+  .ax-responsive-popover {
+    padding-top: max(10vh, var(--ax-space-4));
+  }
+
+  .ax-responsive-popover__sheet {
+    width: 100%;
+    max-height: 92vh;
+  }
+}

@@ -84,6 +84,7 @@
 - docs 示例
 - 测试或 smoke path
 - 导出入口
+- 面向发布包改动时对应的 `.changeset/*.md`
 - 必要的简短说明
 
 不要接受以下半成品：
@@ -92,6 +93,7 @@
 - 只有 demo，没有公共导出
 - 只有视觉，没有键盘路径
 - 只有 happy path，没有最小测试
+- 改了可发布包，却没有 changeset
 
 ## 目录约定
 
@@ -165,6 +167,33 @@ pnpm build
 - docs 对应 demo
 
 如果任务涉及日期、时间、数字显示，还要验证 locale。
+
+如果改动涉及可发布包，先执行：
+
+```bash
+pnpm changeset
+```
+
+如果准备发布包或改动了公共导出、构建、打包、类型声明，还要额外执行：
+
+```bash
+pnpm release:check
+```
+
+如果改动了 `.github/workflows/*` 或发布自动化逻辑，还要执行：
+
+```bash
+pnpm lint:workflows
+```
+
+发布检查细则见 [docs/release/README.md](./docs/release/README.md)。
+
+仓库还启用了 Dependabot 配置：
+
+- `npm` 依赖更新
+- `github-actions` 依赖更新
+
+当收到这类自动升级 PR 时，仍然要按同样的验证要求执行对应检查。
 
 ## Pull Request 要求
 
