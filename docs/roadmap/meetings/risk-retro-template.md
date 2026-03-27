@@ -59,6 +59,7 @@
 
 ## References
 
+- [Current Status](../execution/current-status.md)
 - [Risk Register](../03-risk-register.md)
 - [Weekly Execution Board](../execution/weekly-execution-board.md)
 - [Master Backlog Board](../backlog/master-backlog-board.md)

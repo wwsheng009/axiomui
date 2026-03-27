@@ -22,6 +22,7 @@
 @import "../components/date-range-picker/date-range-picker.css";
 @import "../components/dynamic-page/dynamic-page.css";
 @import "../components/dialog/dialog.css";
+@import "../components/file-uploader/file-uploader.css";
 @import "../components/filter-bar/filter-bar.css";
 @import "../components/flexible-column-layout/flexible-column-layout.css";
 @import "../components/form-grid/form-grid.css";
@@ -53,6 +54,8 @@
 @import "../components/tool-page/tool-page.css";
 @import "../components/toolbar/toolbar.css";
 @import "../components/tabs/tabs.css";
+@import "../components/upload/upload-dropzone.css";
+@import "../components/upload/upload-file-item.css";
 @import "../components/variant-sync/variant-sync.css";
 @import "../components/variant-manager/variant-manager.css";
 
@@ -81,6 +84,7 @@
   .ax-date-range-picker,
   .ax-dynamic-page,
   .ax-dialog,
+  .ax-file-uploader,
   .ax-filter-bar,
   .ax-flexible-column-layout,
   .ax-form-grid,
@@ -111,6 +115,8 @@
   .ax-tool-page,
   .ax-toolbar,
   .ax-tabs,
+  .ax-upload-dropzone,
+  .ax-upload-file-item,
   .ax-variant-sync-panel,
   .ax-variant-sync-review,
   .ax-variant-manager

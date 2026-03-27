@@ -1,6 +1,12 @@
 # Weekly Execution Board
 
-这份执行板用于把 `Sprint 1-5` 的 backlog 继续压缩到周级别，方便直接做每周排班、周会同步和风险跟踪。
+这份执行板用于把 `Sprint 1-5` 的 backlog 压缩到周级别，作为历史周计划基线，方便回看当时的排班方式、周会节奏和风险跟踪方法。
+
+截至 `2026-03-27`，当前 live status 不再以本页为准：
+
+- 当前真实实施状态请先看 [current-status.md](./current-status.md)
+- 当前任务状态和依赖关系请看 [master-backlog-board.md](../backlog/master-backlog-board.md) 与 [owner-backlog-board.md](../backlog/owner-backlog-board.md)
+- 本页更适合回答“前五个 sprint 当时是怎么按周推进的”，而不是“现在 Sprint 6 正在做什么”
 
 ## 字段说明
 
@@ -115,6 +121,8 @@
 
 ## Week 5-10 Suggested Rhythm
 
+下面这组节奏仍然是对 `Sprint 3-5` 推进方式的历史总结，可继续作为后续排班参考，但不表示当前 live board。
+
 ### Week 5-6
 
 - 推进 Sprint 3：MultiComboBox、DateRangePicker、TimePicker、ResponsivePopover、Menu、MessagePopover
@@ -143,6 +151,7 @@
 
 ## 关联文档
 
+- [Current Status](./current-status.md)
 - [Roadmap Overview](../01-roadmap.md)
 - [Sprint Checklists](../04-sprint-checklists.md)
 - [Backlog Board](../backlog/master-backlog-board.md)

@@ -63,6 +63,9 @@
 
 优先看：
 
+- [../backlog/master-backlog-board.md](../backlog/master-backlog-board.md)
+- [../backlog/owner-backlog-board.md](../backlog/owner-backlog-board.md)
+- [../execution/current-status.md](../execution/current-status.md)
 - [../execution/weekly-execution-board.md](../execution/weekly-execution-board.md)
 - [../backlog/import/master-backlog-board.csv](../backlog/import/master-backlog-board.csv)
 - [../backlog/import/owner-backlog-board.csv](../backlog/import/owner-backlog-board.csv)
@@ -71,7 +74,13 @@
 
 - 做周会
 - 分配 owner
+- 看当前真实状态或缺口
 - 导入项目管理工具
+
+补充说明：
+
+- markdown board 和 `current-status` 反映当前代码快照
+- `backlog/import/*.csv` 更适合第一次导入项目管理工具，不是实时状态源
 
 ## 如果你要主持会议或做复盘
 

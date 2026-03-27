@@ -58,6 +58,7 @@
 
 ## References
 
+- [Current Status](../execution/current-status.md)
 - [Sprint Checklists](../04-sprint-checklists.md)
 - [Demo Scenarios](../05-demo-scenarios.md)
 - [Master Backlog Board](../backlog/master-backlog-board.md)

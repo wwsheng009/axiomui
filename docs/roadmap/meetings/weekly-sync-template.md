@@ -61,6 +61,7 @@
 
 ## References
 
+- [Current Status](../execution/current-status.md)
 - [Weekly Execution Board](../execution/weekly-execution-board.md)
 - [Master Backlog Board](../backlog/master-backlog-board.md)
 - [Owner Backlog Board](../backlog/owner-backlog-board.md)

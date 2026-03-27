@@ -15,9 +15,9 @@
 
 其中当前 `workspace` 测试通过情况为：
 
-- `@axiomui/react`：`46` 个测试文件、`160` 个测试全部通过
+- `@axiomui/react`：`49` 个测试文件、`168` 个测试全部通过
 - `@axiomui/docs`：`10` 个测试文件、`35` 个测试全部通过
-- 合计：`56` 个测试文件、`195` 个测试全部通过
+- 合计：`59` 个测试文件、`203` 个测试全部通过
 
 ## 总体判断
 
@@ -29,6 +29,7 @@
 - `Shell And Object Page` 已完成
 - `MicroChart` 已完成
 - `Sprint 1-5` backlog 主线与 QA 收口项也都已完成
+- `Sprint 6` 已启动，`S6-01 Upload primitives and file model`、`S6-02 FileUploader` 与 `S6-08 Saved Variant persistence adapter` 已完成
 
 ## 里程碑状态
 
@@ -47,6 +48,7 @@
 - 主题、密度、方向、语言切换已接入 docs 根应用
 - token 包可独立构建并输出样式
 - React 包已导出 Icon、overlay primitives、formatters 与 provider
+- React 包已新增 upload 域基础：`UploadDropzone`、`UploadFileItemView`、upload state helpers、upload locale copy helpers
 - docs 根应用现已把 `operations`、`shell`、`charts` 三组重型演示区改为按视口接近时再触发的运行时懒加载，而不是首屏同步挂载整页 demo
 - docs 还新增了 `App` 级 smoke，用于验证 eager sections 先渲染，而 `operations / shell / charts` 三组 deferred 模块仅在 observer 触发后再挂载
 - docs 的 `App` 级 smoke 也已覆盖 locale 与 density 切换后的延迟挂载路径，确保 deferred groups 接收到的是最新 props，而不是初始快照
@@ -56,15 +58,20 @@
 - 已实现并导出：`Input`、`Select`、`ComboBox`、`MultiInput`、`MultiComboBox`
 - 已实现并导出：`CalendarPanel`、`DatePicker`、`DateRangePicker`、`TimePicker`
 - 已实现并导出：`Dialog`、`Popover`、`ResponsivePopover`、`Menu`、`MessagePopover`
+- 已实现并导出：`FileUploader`
 - 已实现并导出：`FormGrid`、`FilterBar`、`Tabs`
 - `Input`、`Select`、`ComboBox`、`MultiComboBox`、`DateRangePicker`、`TimePicker` 的错误态 aria 语义现已统一，`MultiComboBox` 的 token overflow 也已补齐可读摘要
+- `FileUploader` 当前支持 browse、drag and drop、队列渲染、retry / remove、受控与非受控 items，以及 `valueState`/辅助文案联动
 
 ### Worklist And Personalization
 
 - 已实现并导出：`DataTable`、`Pagination`
-- 已实现并导出：`VariantManager`、`VariantSync`
+- 已实现并导出：`VariantManager`
+- 已实现并导出：`useVariantSync`、`VariantSyncPanel`、`VariantSyncDialog` 等 variant sync primitives
+- 已实现并导出：`createLocalStorageVariantPersistenceAdapter`、`createSessionStorageVariantPersistenceAdapter`、`createMemoryVariantPersistenceAdapter`、`withLatencyVariantPersistenceAdapter`
 - 已实现并导出：`ColumnManager`、`SortManager`、`GroupManager`
 - docs 中已有完整的高级筛选和本地视图管理流程
+- docs 高级 worklist 当前已支持 `localStorage`、`sessionStorage` 与 `memory` mock cloud adapter 切换，并可演示 push / pull / refresh / clear、remote drift 与 sync review
 
 ### Shell Primitives
 
@@ -106,15 +113,19 @@
 
 当前 `Sprint 1-5` 的 backlog 主线与收口项都已经落地，代码侧没有剩余的 roadmap 实现缺口。
 
+`Sprint 6` 当前已从纯草案进入起步实施阶段：`S6-01 Upload primitives and file model`、`S6-02 FileUploader` 与 `S6-08 Saved Variant persistence adapter` 已完成；剩余 `S6-03`、`S6-04`、`S6-05`、`S6-06`、`S6-07`、`S6-09`、`S6-10` 仍在 backlog 中。
+
 ## 风险与备注
 
 - docs 构建已经完成手工分 chunk，当前不再出现 Vite chunk size warning；产物已拆分为 `vendor-react`、`axiomui-forms`、`docs-worklist`、`docs-shell`、`docs-charts` 等领域 chunk，其中最大 gzip 后约为 `56.35 kB`
 - docs 运行时也已加入 `IntersectionObserver` 驱动的延迟挂载壳层，但若后续继续扩展单个分组内的演示复杂度，仍然需要重新评估分组边界，避免某一个 deferred 区块再次膨胀
 - 根 `README` 和 roadmap 文档若不持续同步，仍然会让新成员误判实际完成度
 - `ChartSurface` / `ChartLegend` 当前已经被整批 microchart 复用，这层 contract 后续应保持稳定，避免因为业务场景继续膨胀而重新分叉
+- upload primitives 与 `FileUploader` 当前已形成第一版共享上传 contract，后续 `Workflow Lab` 和更复杂上传场景应复用这层基础，而不是重新定义 file model、dropzone 文案、queue summary 或 remove/retry 语义
+- `Saved Variant persistence adapter` 当前已经形成 `contract + mock remote demo + hook / component / docs tests` 的组合，后续真实后端接入应复用这层 adapter，不要把 async/error/review 状态重新散落到各个业务页面里
 
 ## 建议的下一步
 
-1. 若后续继续扩展 docs，优先沿用当前按 `foundation / worklist / shell / charts / react domains` 的 chunk 划分，不要再回到单入口大包。
-2. 持续把新组件的 a11y / regression smoke 保持在和现有 chart、form 组件一致的收口标准上。
-3. 若后续开启 `Sprint 6` 或新的 epic，建议直接沿用当前的 backlog/status 同步方式，避免文档状态再次滞后于代码。
+1. `Sprint 6` 的最短路径已切换为直接进入 `S6-03 Calendar`，并保持与现有 `FileUploader` 一样的导出、测试和 docs 收口标准；后续 `S6-09 Workflow Lab` 应直接复用 `S6-08` 已落地的 adapter contract、sync hook 和 mock cloud 交互模式。
+2. 若后续继续扩展 docs，优先沿用当前按 `foundation / worklist / shell / charts / react domains` 的 chunk 划分，不要再回到单入口大包。
+3. 持续把新组件的 a11y / regression smoke 保持在和现有 chart、form 组件一致的收口标准上，并继续同步 backlog、`README` 与 `current-status`。

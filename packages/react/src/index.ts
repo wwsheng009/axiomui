@@ -167,6 +167,11 @@ export { Dialog } from "./components/dialog/dialog";
 export type { DialogProps, DialogTone } from "./components/dialog/dialog";
 export { FilterBar } from "./components/filter-bar/filter-bar";
 export type { FilterBarProps } from "./components/filter-bar/filter-bar";
+export { FileUploader } from "./components/file-uploader/file-uploader";
+export type {
+  FileUploaderProps,
+  FileUploaderSource,
+} from "./components/file-uploader/file-uploader";
 export { FlexibleColumnLayout } from "./components/flexible-column-layout/flexible-column-layout";
 export type {
   FlexibleColumnLayoutColumn,
@@ -186,6 +191,43 @@ export type {
 } from "./components/group-manager/group-manager";
 export { Input } from "./components/input/input";
 export type { InputProps, ValueState } from "./components/input/input";
+export { UploadDropzone } from "./components/upload/upload-dropzone";
+export { UploadFileItemView } from "./components/upload/upload-file-item";
+export {
+  getUploadActionLabel,
+  getUploadCopy,
+  getUploadDropzoneHint,
+  getUploadStatusText,
+} from "./components/upload/upload-copy";
+export {
+  canRemoveUploadFile,
+  canRetryUploadFile,
+  getUploadFileTone,
+  isUploadFileStatus,
+  isUploadTerminalStatus,
+  normalizeUploadDropOperation,
+  normalizeUploadProgress,
+  uploadFileStatuses,
+} from "./components/upload/upload-state";
+export type {
+  UploadDropzoneProps,
+} from "./components/upload/upload-dropzone";
+export type {
+  UploadFileItemViewProps,
+} from "./components/upload/upload-file-item";
+export type {
+  UploadCopy,
+} from "./components/upload/upload-copy";
+export type {
+  UploadFileTone,
+} from "./components/upload/upload-state";
+export type {
+  UploadDropOperation,
+  UploadDropPayload,
+  UploadFileAction,
+  UploadFileItem,
+  UploadFileStatus,
+} from "./components/upload/upload-types";
 export { MessagePage } from "./components/message-page/message-page";
 export type { MessagePageProps } from "./components/message-page/message-page";
 export { MessagePopover } from "./components/message-popover/message-popover";

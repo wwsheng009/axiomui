@@ -23,9 +23,13 @@
 - [backlog/README.md](./backlog/README.md)
   backlog 草稿总览，包含可直接复制为 issue 的 sprint 任务草案。
 - [backlog/master-backlog-board.md](./backlog/master-backlog-board.md)
-  五个 sprint 的总控板，汇总 owner、状态、依赖与 draft 入口。
+  六个 sprint 的总控板，汇总 owner、状态、依赖与 draft 入口。
 - [backlog/owner-backlog-board.md](./backlog/owner-backlog-board.md)
   按 owner 组织的分工视图，适合直接做团队排班和任务归属。
+- [backlog/completion-snapshot.md](./backlog/completion-snapshot.md)
+  `Sprint 1-5` backlog 完成快照，适合快速查看已交付范围的 sprint 清单与 owner 矩阵。
+- [backlog/sprint-6/README.md](./backlog/sprint-6/README.md)
+  `Sprint 6` 的 backlog 与实施台账，覆盖上传、规划、层级选择、向导流与持久化适配，当前已完成 `S6-01`、`S6-02` 与 `S6-08`。
 - [execution/README.md](./execution/README.md)
   周执行文档入口，包含周计划和执行看板。
 - [meetings/README.md](./meetings/README.md)
@@ -46,8 +50,8 @@
 
 ## 当前规划假设
 
-- 总周期按 `10-12 周` 规划，分为 `5 个 sprint`，每个 sprint `2 周`
-- 优先顺序是：`Foundation -> Form Controls -> Overlay & Feedback -> Shell & Object Page -> MicroChart`
+- 初始主线按 `10-12 周`、`5 个 sprint` 规划；截至 `2026-03-27`，`Sprint 1-5` 已完成，并已开启 `Sprint 6`
+- 当前优先顺序已延伸为：`Foundation -> Form Controls -> Overlay & Feedback -> Shell & Object Page -> MicroChart -> Workflow And Planning`
 - 每个功能任务都必须同时交付：
   - 组件代码
   - token 接入

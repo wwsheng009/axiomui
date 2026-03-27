@@ -1,22 +1,22 @@
 # Owner Backlog Board
 
-这份总表用于把 `Sprint 1-5` 的 backlog 草稿按 `owner` 重新组织，方便直接做团队分工、周会同步和容量评估。
+这份总表用于把 `Sprint 1-6` 的 backlog 草稿按 `owner` 重新组织，方便直接做团队分工、周会同步和容量评估。
 
-当前状态已按 `2026-03-27` 的代码快照更新。判断依据来自实际组件导出、docs 示例页和已通过的 `pnpm typecheck`、`pnpm test`、`pnpm build`、`pnpm release:check`。
+当前状态已按 `2026-03-27` 的代码快照更新。`Sprint 1-5` 的状态判断来自实际组件导出、docs 示例页和已通过的 `pnpm typecheck`、`pnpm test`、`pnpm build`、`pnpm release:check`；`Sprint 6` 当前已启动，`S6-01`、`S6-02` 与 `S6-08` 已完成，剩余任务仍处于 backlog 阶段。
 
 ## Owner Summary
 
 | Owner | Task Count | Main Focus |
 | --- | --- | --- |
-| Tech Lead | 5 | Sprint epic、依赖收口、里程碑推进 |
-| Foundation | 6 | Theme、Icon、Locale、Overlay 底座 |
+| Tech Lead | 6 | Sprint epic、依赖收口、里程碑推进 |
+| Foundation | 8 | Theme、Icon、Locale、Overlay 底座，以及上传与持久化基础 |
 | Overlay | 5 | Dialog/Popover/ResponsivePopover/Menu/MessagePopover |
-| Form | 12 | 字段基元、高频输入、复杂筛选集成 |
-| Shell | 9 | 工作台壳层、多列布局、对象页结构 |
+| Form | 15 | 字段基元、高频输入、复杂筛选，以及上传与层级选择 |
+| Shell | 12 | 工作台壳层、多列布局、对象页结构，以及规划与向导流 |
 | Chart Foundation | 1 | 图形共享基元与 token |
 | Chart | 7 | 各类 microchart 与 KPI Card |
-| Docs | 6 | Labs、业务 demo、使用文档 |
-| QA | 5 | Smoke、回归、a11y 和性能基线 |
+| Docs | 7 | Labs、业务 demo、使用文档 |
+| QA | 6 | Smoke、回归、a11y 和性能基线 |
 
 ## Tech Lead
 
@@ -27,6 +27,7 @@
 | S3-EPIC | Sprint 3 | Advanced Filters sprint epic | Advanced Filters | Done | S2 form core exit | [S3 Epic](./sprint-3/00-sprint-3-epic.md) |
 | S4-EPIC | Sprint 4 | Shell and Object Page sprint epic | Shell And Object Page | Done | S3 advanced filters exit | [S4 Epic](./sprint-4/00-sprint-4-epic.md) |
 | S5-EPIC | Sprint 5 | MicroChart sprint epic | MicroChart | Done | S4 shell exit | [S5 Epic](./sprint-5/00-sprint-5-epic.md) |
+| S6-EPIC | Sprint 6 | Workflow and Planning sprint epic | Workflow And Planning | In Progress | S5 KPI exit | [S6 Epic](./sprint-6/00-sprint-6-epic.md) |
 
 ## Foundation
 
@@ -38,6 +39,8 @@
 | S1-05 | Sprint 1 | Icon registry v1 | Foundation | Done | None | [S1-05](./sprint-1/05-icon-registry-v1.md) |
 | S1-06 | Sprint 1 | Locale provider and formatters | Foundation | Done | S1-01 | [S1-06](./sprint-1/06-locale-provider-and-formatters.md) |
 | S1-07 | Sprint 1 | Overlay foundation | Foundation | Done | None | [S1-07](./sprint-1/07-overlay-foundation.md) |
+| S6-01 | Sprint 6 | Upload primitives and file model | Workflow And Planning | Done | S1 foundation exit | [S6-01](./sprint-6/01-upload-primitives-and-file-model.md) |
+| S6-08 | Sprint 6 | Saved Variant persistence adapter | Workflow And Planning | Done | existing VariantManager and VariantSync foundation | [S6-08](./sprint-6/08-saved-variant-persistence-adapter.md) |
 
 ## Overlay
 
@@ -65,6 +68,9 @@
 | S3-03 | Sprint 3 | TimePicker | Advanced Filters | Done | S1 LocaleProvider, S2 Popover | [S3-03](./sprint-3/03-time-picker.md) |
 | S3-07 | Sprint 3 | FilterBar advanced integration | Advanced Filters | Done | S3-01, S3-02, S3-03 | [S3-07](./sprint-3/07-filter-bar-advanced-integration.md) |
 | S3-09 | Sprint 3 | State and help text unification | Advanced Filters | Done | S3-01, S3-02, S3-03 | [S3-09](./sprint-3/09-state-and-help-text-unification.md) |
+| S6-02 | Sprint 6 | FileUploader | Workflow And Planning | Done | S6-01, S1-07 | [S6-02](./sprint-6/02-file-uploader.md) |
+| S6-03 | Sprint 6 | Calendar | Workflow And Planning | Backlog | S1-06, S2-06 | [S6-03](./sprint-6/03-calendar.md) |
+| S6-06 | Sprint 6 | HierarchicalSelect | Workflow And Planning | Backlog | S6-05, S2-04, S3-04 | [S6-06](./sprint-6/06-hierarchical-select.md) |
 
 ## Shell
 
@@ -79,6 +85,9 @@
 | S4-07 | Sprint 4 | ObjectStatus and ObjectIdentifier | Shell And Object Page | Done | S1 IconRegistry, S1 theme foundation | [S4-07](./sprint-4/07-object-status-and-object-identifier.md) |
 | S4-08 | Sprint 4 | ObjectPageHeader | Shell And Object Page | Done | S4-05, S4-06, S4-07 | [S4-08](./sprint-4/08-object-page-header.md) |
 | S4-09 | Sprint 4 | ObjectPageLayout | Shell And Object Page | Done | S4-08, existing DynamicPage/ObjectPageNav | [S4-09](./sprint-4/09-object-page-layout.md) |
+| S6-04 | Sprint 6 | PlanningCalendar | Workflow And Planning | Backlog | S6-03, S4 shell and page patterns | [S6-04](./sprint-6/04-planning-calendar.md) |
+| S6-05 | Sprint 6 | Tree primitives | Workflow And Planning | Backlog | S1 theme or icon foundation | [S6-05](./sprint-6/05-tree-primitives.md) |
+| S6-07 | Sprint 6 | Wizard | Workflow And Planning | Backlog | S2 form integration, S4 shell and page patterns | [S6-07](./sprint-6/07-wizard.md) |
 
 ## Chart Foundation
 
@@ -108,6 +117,7 @@
 | S3-08 | Sprint 3 | Advanced filter worklist demo | Advanced Filters | Done | S3-01, S3-02, S3-03, S3-06, S3-07 | [S3-08](./sprint-3/08-advanced-filter-worklist-demo.md) |
 | S4-10 | Sprint 4 | Shell Lab and Object Page demo | Shell And Object Page | Done | S4-01, S4-02, S4-03, S4-04, S4-08, S4-09 | [S4-10](./sprint-4/10-shell-lab-and-object-page-demo.md) |
 | S5-09 | Sprint 5 | Chart Lab and business demos | MicroChart | Done | S5-02, S5-03, S5-04, S5-05, S5-06, S5-07, S5-08 | [S5-09](./sprint-5/09-chart-lab-and-business-demos.md) |
+| S6-09 | Sprint 6 | Workflow Lab and business demos | Workflow And Planning | Backlog | S6-02, S6-03, S6-04, S6-06, S6-07, S6-08 | [S6-09](./sprint-6/09-workflow-lab-and-business-demos.md) |
 
 ## QA
 
@@ -118,6 +128,7 @@
 | S3-10 | Sprint 3 | A11y and regression tests | Advanced Filters | Done | S3-01, S3-02, S3-03, S3-04, S3-05, S3-06 | [S3-10](./sprint-3/10-a11y-and-regression-tests.md) |
 | S4-11 | Sprint 4 | A11y and regression tests | Shell And Object Page | Done | S4-01, S4-02, S4-03, S4-04, S4-08, S4-09 | [S4-11](./sprint-4/11-a11y-and-regression-tests.md) |
 | S5-10 | Sprint 5 | A11y, performance, and regression tests | MicroChart | Done | S5-02, S5-03, S5-04, S5-05, S5-06, S5-07, S5-08 | [S5-10](./sprint-5/10-a11y-performance-and-regression-tests.md) |
+| S6-10 | Sprint 6 | A11y and regression tests | Workflow And Planning | Backlog | S6-02, S6-03, S6-04, S6-05, S6-06, S6-07, S6-08 | [S6-10](./sprint-6/10-a11y-and-regression-tests.md) |
 
 ## 使用建议
 

@@ -34,11 +34,11 @@ pnpm build
 截至 `2026-03-27`，仓库现状如下：
 
 - `@axiomui/tokens`：已提供主题 token、semantic token、密度变量、全局样式输出，以及完整的 chart semantic tones、series palette、spacing 与 sizing tokens
-- `@axiomui/react`：`Foundation`、`Form Core`、`Advanced Filters`、`Shell And Object Page`、`MicroChart` 主链路均已落地；当前已补齐 `VariantManager`、`VariantSync`、`ColumnManager`、`SortManager`、`GroupManager`、`ChartSurface`、`ChartLegend`、`BulletMicroChart`、`RadialMicroChart`、`DeltaMicroChart`、`HarveyBallMicroChart`、`StackedBarMicroChart`、`InteractiveDonutChart`、`InteractiveLineChart`、`KpiCard`
+- `@axiomui/react`：`Foundation`、`Form Core`、`Advanced Filters`、`Shell And Object Page`、`MicroChart` 主链路均已落地；当前已补齐 `VariantManager`、`ColumnManager`、`SortManager`、`GroupManager`、`useVariantSync`、`VariantSyncPanel / VariantSyncDialog` 等 sync primitives、`ChartSurface`、`ChartLegend`、`BulletMicroChart`、`RadialMicroChart`、`DeltaMicroChart`、`HarveyBallMicroChart`、`StackedBarMicroChart`、`InteractiveDonutChart`、`InteractiveLineChart`、`KpiCard`，并已新增 `Sprint 6` 的上传域基础与 saved variant persistence adapter：`UploadDropzone`、`UploadFileItemView`、upload state/copy helpers、persistence adapter contract、`localStorage / sessionStorage / memory` adapter
 - `@axiomui/docs`：已提供 Theme、Overlay、Form、Advanced Filter Worklist、Side Navigation、ToolPage、Flexible Column Layout、Breadcrumbs、Avatar、Object Status / Identifier、Object Page Header / Layout、Dynamic Page、Object Page、Split Layout，以及独立 `Chart Lab`，覆盖 `KPI cards wall`、`Object page summary`、`Table and list inline indicators`
 - docs 工程：已完成构建层手工分 chunk，并将 `operations`、`shell`、`charts` 三组重型演示区改为按视口接近时再挂载的运行时懒加载；同时已有 `App` 级 smoke 覆盖 eager/deferred 挂载顺序，以及 locale/density 切换后的延迟挂载路径
 - 工程验证：当前快照已通过 `pnpm typecheck`、`pnpm test`、`pnpm build`、`pnpm release:check`
-- 当前测试统计：`@axiomui/react` 为 `46` 个测试文件、`160` 个测试通过；`@axiomui/docs` 为 `10` 个测试文件、`35` 个测试通过；合计 `56` 个测试文件、`195` 个测试通过
+- 当前测试统计：`@axiomui/react` 为 `49` 个测试文件、`168` 个测试通过；`@axiomui/docs` 为 `10` 个测试文件、`35` 个测试通过；合计 `59` 个测试文件、`203` 个测试通过
 
 ## 项目规划文档
 
@@ -51,8 +51,9 @@ pnpm build
 - `docs/roadmap/05-demo-scenarios.md`：docs 演示与 walkthrough 场景
 - `docs/roadmap/execution/current-status.md`：基于当前代码快照的实施情况汇总
 - `docs/roadmap/backlog/README.md`：Sprint backlog 草稿入口
-- `docs/roadmap/backlog/master-backlog-board.md`：五个 sprint 的总控板
+- `docs/roadmap/backlog/master-backlog-board.md`：六个 sprint 的总控板
 - `docs/roadmap/backlog/owner-backlog-board.md`：按 owner 组织的分工视图
+- `docs/roadmap/backlog/completion-snapshot.md`：`Sprint 1-5` 完成快照
 - `docs/roadmap/execution/README.md`：周执行文档入口
 - `docs/roadmap/meetings/README.md`：会议模板入口
 
@@ -67,6 +68,6 @@ pnpm build
 
 ## 下一步建议
 
-1. 若继续扩展 docs，优先沿用当前按 `foundation / worklist / shell / charts / react domains` 的 chunk 划分与 deferred section 边界，不要回到单入口大包。
-2. 新组件继续保持与现有 chart、form 组件一致的 a11y、regression smoke 和 docs walkthrough 收口标准。
-3. 若启动 `Sprint 6` 或新的 epic，优先同步更新 `README`、roadmap backlog 与 `current-status`，避免文档状态再次落后于代码。
+1. `Sprint 6` 当前最短路径是基于已完成的 upload primitives、`FileUploader` 和 saved variant persistence adapter 继续推进 `S6-03 Calendar`；`S6-09 Workflow Lab` 后续也应直接复用现有 mock cloud adapter、sync review 和 activity 模式。
+2. 若继续扩展 docs，优先沿用当前按 `foundation / worklist / shell / charts / react domains` 的 chunk 划分与 deferred section 边界，不要回到单入口大包。
+3. 新阶段继续保持 backlog、`README` 与 `current-status` 同步更新，避免代码和文档再次脱节。
