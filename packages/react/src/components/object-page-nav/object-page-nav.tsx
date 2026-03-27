@@ -10,6 +10,7 @@ export interface ObjectPageNavItem {
 
 export interface ObjectPageNavProps extends HTMLAttributes<HTMLDivElement> {
   items: ObjectPageNavItem[];
+  listAriaLabel?: string;
   value: string;
   onValueChange?: (value: string) => void;
 }
@@ -24,6 +25,7 @@ export interface ObjectPageSectionProps extends HTMLAttributes<HTMLElement> {
 export function ObjectPageNav({
   className,
   items,
+  listAriaLabel,
   onValueChange,
   value,
   ...props
@@ -32,7 +34,12 @@ export function ObjectPageNav({
 
   return (
     <div className={cx("ax-object-page-nav", className)} {...props}>
-      <div className="ax-object-page-nav__list" role="tablist" aria-orientation="horizontal">
+      <div
+        className="ax-object-page-nav__list"
+        role="tablist"
+        aria-label={listAriaLabel}
+        aria-orientation="horizontal"
+      >
         {items.map((item) => {
           const selected = item.key === value;
 
@@ -87,4 +94,3 @@ export function ObjectPageSection({
     </section>
   );
 }
-

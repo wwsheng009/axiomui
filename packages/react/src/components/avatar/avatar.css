@@ -1,0 +1,116 @@
+.ax-avatar {
+  --ax-avatar-size: 2.5rem;
+  --ax-avatar-font-size: 0.86rem;
+  --ax-avatar-icon-size: 1.1rem;
+  --ax-avatar-status-size: 0.8rem;
+  display: inline-grid;
+  position: relative;
+  width: var(--ax-avatar-size);
+  height: var(--ax-avatar-size);
+  min-width: var(--ax-avatar-size);
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+
+.ax-avatar[data-size="xs"] {
+  --ax-avatar-size: 1.5rem;
+  --ax-avatar-font-size: 0.56rem;
+  --ax-avatar-icon-size: 0.8rem;
+  --ax-avatar-status-size: 0.56rem;
+}
+
+.ax-avatar[data-size="sm"] {
+  --ax-avatar-size: 2rem;
+  --ax-avatar-font-size: 0.72rem;
+  --ax-avatar-icon-size: 0.95rem;
+  --ax-avatar-status-size: 0.68rem;
+}
+
+.ax-avatar[data-size="lg"] {
+  --ax-avatar-size: 3rem;
+  --ax-avatar-font-size: 1rem;
+  --ax-avatar-icon-size: 1.35rem;
+  --ax-avatar-status-size: 0.92rem;
+}
+
+.ax-avatar[data-size="xl"] {
+  --ax-avatar-size: 3.75rem;
+  --ax-avatar-font-size: 1.2rem;
+  --ax-avatar-icon-size: 1.65rem;
+  --ax-avatar-status-size: 1rem;
+}
+
+.ax-avatar__frame {
+  display: inline-grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ax-surface-raised) 88%, white 12%) 0%,
+    color-mix(in srgb, var(--ax-surface-subtle) 92%, var(--ax-color-brand-500) 8%) 100%
+  );
+  box-shadow: var(--ax-shadow-0);
+  color: var(--ax-color-text-soft);
+}
+
+.ax-avatar[data-shape="square"] .ax-avatar__frame {
+  border-radius: var(--ax-radius-md);
+}
+
+.ax-avatar__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ax-avatar__fallback {
+  display: inline-grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0.125rem;
+  color: inherit;
+  font: 800 var(--ax-avatar-font-size) / 1 var(--ax-font-family);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.ax-avatar__fallback--icon .ax-icon {
+  width: var(--ax-avatar-icon-size);
+  height: var(--ax-avatar-icon-size);
+}
+
+.ax-avatar__status {
+  --ax-avatar-status-background: var(--ax-color-text-soft);
+  position: absolute;
+  inset-inline-end: -0.0625rem;
+  inset-block-end: -0.0625rem;
+  width: var(--ax-avatar-status-size);
+  height: var(--ax-avatar-status-size);
+  border: 2px solid var(--ax-surface-raised);
+  border-radius: 999px;
+  background: var(--ax-avatar-status-background);
+  box-shadow: var(--ax-shadow-0);
+}
+
+.ax-avatar__status[data-tone="information"] {
+  --ax-avatar-status-background: var(--ax-color-information-500);
+}
+
+.ax-avatar__status[data-tone="success"] {
+  --ax-avatar-status-background: var(--ax-color-positive-500);
+}
+
+.ax-avatar__status[data-tone="warning"] {
+  --ax-avatar-status-background: var(--ax-color-attention-500);
+}
+
+.ax-avatar__status[data-tone="error"] {
+  --ax-avatar-status-background: var(--ax-color-negative-500);
+}

@@ -107,7 +107,12 @@ describe("TimePicker", () => {
 
     render(
       <LocaleProvider locale="en-US">
-        <TimePicker label="Reminder" minuteStep={15} onValueChange={handleValueChange} />
+        <TimePicker
+          description="Use quarter-hour slots."
+          label="Reminder"
+          minuteStep={15}
+          onValueChange={handleValueChange}
+        />
       </LocaleProvider>,
     );
 
@@ -117,9 +122,17 @@ describe("TimePicker", () => {
     await user.type(input, "3:10 PM{Enter}");
 
     expect(handleValueChange).not.toHaveBeenCalled();
-    expect(
-      screen.getByText(/enter a valid time that matches the current format and step values/i),
-    ).toBeInTheDocument();
+    const message = screen.getByText(
+      /enter a valid time that matches the current format and step values/i,
+    );
+    const description = screen.getByText(/use quarter-hour slots/i);
+
+    expect(message).toBeInTheDocument();
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).toHaveAttribute(
+      "aria-describedby",
+      `${description.getAttribute("id")} ${message.getAttribute("id")}`,
+    );
   });
 
   it("renders localized numeric entry fields in the small-screen sheet", async () => {

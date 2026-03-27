@@ -47,6 +47,18 @@ export { useOverlayStack } from "./lib/overlay/overlay-stack";
 export type { OverlayStackState } from "./lib/overlay/overlay-stack";
 export { AppShell } from "./components/app-shell/app-shell";
 export type { AppShellProps } from "./components/app-shell/app-shell";
+export { Avatar } from "./components/avatar/avatar";
+export type {
+  AvatarProps,
+  AvatarShape,
+  AvatarSize,
+  AvatarStatusTone,
+} from "./components/avatar/avatar";
+export { Breadcrumbs } from "./components/breadcrumbs/breadcrumbs";
+export type {
+  BreadcrumbsItem,
+  BreadcrumbsProps,
+} from "./components/breadcrumbs/breadcrumbs";
 export { Button } from "./components/button/button";
 export type {
   ButtonProps,
@@ -56,6 +68,72 @@ export { CalendarPanel } from "./components/calendar-panel/calendar-panel";
 export type { CalendarPanelProps } from "./components/calendar-panel/calendar-panel";
 export { Card } from "./components/card/card";
 export type { CardProps } from "./components/card/card";
+export { KpiCard } from "./components/kpi-card/kpi-card";
+export type {
+  KpiCardIndicator,
+  KpiCardProps,
+  KpiCardStatusTone,
+  KpiCardTone,
+} from "./components/kpi-card/kpi-card";
+export { ChartLegend } from "./components/microchart/_shared/chart-legend";
+export type {
+  ChartLegendItem,
+  ChartLegendLayout,
+  ChartLegendProps,
+} from "./components/microchart/_shared/chart-legend";
+export { ChartSurface } from "./components/microchart/_shared/chart-surface";
+export type {
+  ChartSurfaceProps,
+  ChartSurfaceSize,
+} from "./components/microchart/_shared/chart-surface";
+export { BulletMicroChart } from "./components/microchart/bullet/bullet-microchart";
+export { DeltaMicroChart } from "./components/microchart/delta/delta-microchart";
+export { HarveyBallMicroChart } from "./components/microchart/harvey-ball/harvey-ball-microchart";
+export { InteractiveDonutChart } from "./components/microchart/interactive-donut/interactive-donut-chart";
+export { InteractiveLineChart } from "./components/microchart/interactive-line/interactive-line-chart";
+export { RadialMicroChart } from "./components/microchart/radial/radial-microchart";
+export { StackedBarMicroChart } from "./components/microchart/stacked-bar/stacked-bar-microchart";
+export {
+  buildChartAriaLabel,
+  formatChartValueText,
+  getChartSeriesToken,
+  getChartToneToken,
+} from "./components/microchart/_shared/chart-utils";
+export type {
+  BuildChartAriaLabelInput,
+  ChartTone,
+  FormatChartValueTextOptions,
+} from "./components/microchart/_shared/chart-utils";
+export type {
+  BulletMicroChartProps,
+  BulletMicroChartRange,
+} from "./components/microchart/bullet/bullet-microchart";
+export type {
+  DeltaMicroChartDirection,
+  DeltaMicroChartProps,
+  DeltaMicroChartStatus,
+} from "./components/microchart/delta/delta-microchart";
+export type {
+  HarveyBallMicroChartProps,
+  HarveyBallMicroChartSegment,
+} from "./components/microchart/harvey-ball/harvey-ball-microchart";
+export type {
+  InteractiveDonutChartProps,
+  InteractiveDonutChartSegment,
+} from "./components/microchart/interactive-donut/interactive-donut-chart";
+export type {
+  InteractiveLineChartPoint,
+  InteractiveLineChartProps,
+} from "./components/microchart/interactive-line/interactive-line-chart";
+export type {
+  RadialMicroChartProps,
+  RadialMicroChartStatus,
+} from "./components/microchart/radial/radial-microchart";
+export type {
+  StackedBarMicroChartLabelMode,
+  StackedBarMicroChartProps,
+  StackedBarMicroChartSegment,
+} from "./components/microchart/stacked-bar/stacked-bar-microchart";
 export { ComboBox } from "./components/combo-box/combo-box";
 export type {
   ComboBoxItem,
@@ -89,6 +167,13 @@ export { Dialog } from "./components/dialog/dialog";
 export type { DialogProps, DialogTone } from "./components/dialog/dialog";
 export { FilterBar } from "./components/filter-bar/filter-bar";
 export type { FilterBarProps } from "./components/filter-bar/filter-bar";
+export { FlexibleColumnLayout } from "./components/flexible-column-layout/flexible-column-layout";
+export type {
+  FlexibleColumnLayoutColumn,
+  FlexibleColumnLayoutColumnKey,
+  FlexibleColumnLayoutMode,
+  FlexibleColumnLayoutProps,
+} from "./components/flexible-column-layout/flexible-column-layout";
 export { FormField, FormGrid } from "./components/form-grid/form-grid";
 export type {
   FormFieldProps,
@@ -122,11 +207,32 @@ export type {
 } from "./components/multi-combo-box/multi-combo-box";
 export { MultiInput } from "./components/multi-input/multi-input";
 export type { MultiInputProps } from "./components/multi-input/multi-input";
+export { NavigationList } from "./components/navigation-list/navigation-list";
+export type {
+  NavigationListGroup,
+  NavigationListItem,
+  NavigationListProps,
+} from "./components/navigation-list/navigation-list";
 export { NotificationList } from "./components/notification-list/notification-list";
 export type {
   NotificationItem,
   NotificationListProps,
 } from "./components/notification-list/notification-list";
+export { ObjectIdentifier } from "./components/object-identifier/object-identifier";
+export type {
+  ObjectIdentifierProps,
+} from "./components/object-identifier/object-identifier";
+export { ObjectPageHeader } from "./components/object-page-header/object-page-header";
+export type {
+  ObjectPageHeaderProps,
+} from "./components/object-page-header/object-page-header";
+export { ObjectPageLayout, ObjectPageSubSection } from "./components/object-page-layout/object-page-layout";
+export type {
+  ObjectPageLayoutProps,
+  ObjectPageLayoutSection,
+  ObjectPageLayoutSubSection,
+  ObjectPageSubSectionProps,
+} from "./components/object-page-layout/object-page-layout";
 export {
   ObjectPageNav,
   ObjectPageSection,
@@ -136,6 +242,11 @@ export type {
   ObjectPageNavProps,
   ObjectPageSectionProps,
 } from "./components/object-page-nav/object-page-nav";
+export { ObjectStatus } from "./components/object-status/object-status";
+export type {
+  ObjectStatusProps,
+  ObjectStatusTone,
+} from "./components/object-status/object-status";
 export { PageSection } from "./components/page-section/page-section";
 export type { PageSectionProps } from "./components/page-section/page-section";
 export { Pagination } from "./components/pagination/pagination";
@@ -151,6 +262,10 @@ export type {
 } from "./components/responsive-popover/responsive-popover";
 export { Select } from "./components/select/select";
 export type { SelectItem, SelectProps } from "./components/select/select";
+export { SideNavigation } from "./components/side-navigation/side-navigation";
+export type {
+  SideNavigationProps,
+} from "./components/side-navigation/side-navigation";
 export { SplitLayout } from "./components/split-layout/split-layout";
 export type {
   SplitLayoutPane,
@@ -165,6 +280,8 @@ export type {
 } from "./components/sort-manager/sort-manager";
 export { ToolHeader } from "./components/tool-header/tool-header";
 export type { ToolHeaderProps } from "./components/tool-header/tool-header";
+export { ToolPage } from "./components/tool-page/tool-page";
+export type { ToolPageProps } from "./components/tool-page/tool-page";
 export { Toolbar } from "./components/toolbar/toolbar";
 export type { ToolbarProps, ToolbarVariant } from "./components/toolbar/toolbar";
 export { Tabs } from "./components/tabs/tabs";

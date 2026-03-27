@@ -1,8 +1,19 @@
 @import "@axiomui/tokens/styles.css";
 @import "../components/app-shell/app-shell.css";
+@import "../components/avatar/avatar.css";
+@import "../components/breadcrumbs/breadcrumbs.css";
 @import "../components/button/button.css";
 @import "../components/calendar-panel/calendar-panel.css";
 @import "../components/card/card.css";
+@import "../components/kpi-card/kpi-card.css";
+@import "../components/microchart/_shared/chart-shared.css";
+@import "../components/microchart/bullet/bullet-microchart.css";
+@import "../components/microchart/delta/delta-microchart.css";
+@import "../components/microchart/harvey-ball/harvey-ball-microchart.css";
+@import "../components/microchart/interactive-donut/interactive-donut-chart.css";
+@import "../components/microchart/interactive-line/interactive-line-chart.css";
+@import "../components/microchart/radial/radial-microchart.css";
+@import "../components/microchart/stacked-bar/stacked-bar-microchart.css";
 @import "../components/combo-box/combo-box.css";
 @import "../components/icon/icon.css";
 @import "../components/column-manager/column-manager.css";
@@ -12,6 +23,7 @@
 @import "../components/dynamic-page/dynamic-page.css";
 @import "../components/dialog/dialog.css";
 @import "../components/filter-bar/filter-bar.css";
+@import "../components/flexible-column-layout/flexible-column-layout.css";
 @import "../components/form-grid/form-grid.css";
 @import "../components/group-manager/group-manager.css";
 @import "../components/input/input.css";
@@ -21,17 +33,24 @@
 @import "../components/menu/menu.css";
 @import "../components/multi-combo-box/multi-combo-box.css";
 @import "../components/multi-input/multi-input.css";
+@import "../components/navigation-list/navigation-list.css";
 @import "../components/notification-list/notification-list.css";
 @import "../components/object-page-nav/object-page-nav.css";
+@import "../components/object-identifier/object-identifier.css";
+@import "../components/object-page-header/object-page-header.css";
+@import "../components/object-page-layout/object-page-layout.css";
+@import "../components/object-status/object-status.css";
 @import "../components/page-section/page-section.css";
 @import "../components/pagination/pagination.css";
 @import "../components/popover/popover.css";
 @import "../components/responsive-popover/responsive-popover.css";
 @import "../components/select/select.css";
+@import "../components/side-navigation/side-navigation.css";
 @import "../components/split-layout/split-layout.css";
 @import "../components/sort-manager/sort-manager.css";
 @import "../components/time-picker/time-picker.css";
 @import "../components/tool-header/tool-header.css";
+@import "../components/tool-page/tool-page.css";
 @import "../components/toolbar/toolbar.css";
 @import "../components/tabs/tabs.css";
 @import "../components/variant-sync/variant-sync.css";
@@ -39,9 +58,21 @@
 
 :where(
   .ax-shell,
+  .ax-avatar,
+  .ax-breadcrumbs,
   .ax-button,
   .ax-calendar-panel,
   .ax-card,
+  .ax-kpi-card,
+  .ax-bullet-microchart,
+  .ax-chart-legend,
+  .ax-chart-surface,
+  .ax-delta-microchart,
+  .ax-harvey-ball-microchart,
+  .ax-interactive-donut-chart,
+  .ax-interactive-line-chart,
+  .ax-radial-microchart,
+  .ax-stacked-bar-microchart,
   .ax-combo-box,
   .ax-icon,
   .ax-column-manager,
@@ -51,6 +82,7 @@
   .ax-dynamic-page,
   .ax-dialog,
   .ax-filter-bar,
+  .ax-flexible-column-layout,
   .ax-form-grid,
   .ax-group-manager,
   .ax-input,
@@ -60,16 +92,23 @@
   .ax-menu,
   .ax-multi-combo-box,
   .ax-multi-input,
+  .ax-navigation-list,
   .ax-notification-list,
+  .ax-object-identifier,
+  .ax-object-page-header,
+  .ax-object-page-layout,
   .ax-object-page-nav,
+  .ax-object-status,
   .ax-page-section,
   .ax-pagination,
   .ax-popover,
   .ax-responsive-popover,
   .ax-select,
+  .ax-side-navigation,
   .ax-split-layout,
   .ax-sort-manager,
   .ax-tool-header,
+  .ax-tool-page,
   .ax-toolbar,
   .ax-tabs,
   .ax-variant-sync-panel,

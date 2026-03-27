@@ -2,15 +2,16 @@ import { useState } from "react";
 
 import {
   AppShell,
-  LocaleProvider,
-  ThemeProvider,
   Button,
   Input,
+  LocaleProvider,
+  ThemeProvider,
   type AxiomDensity,
   type AxiomDirection,
   type AxiomThemeName,
 } from "@axiomui/react";
 
+import { DeferredDocsModule } from "./deferred-docs-module";
 import {
   localeLabelByValue,
   localeOptions,
@@ -19,28 +20,12 @@ import {
   type LocaleCode,
 } from "./docs-app-config";
 import { DocsHeroSection } from "./docs-hero-section";
-import {
-  FieldAndTabsDemoSections,
-  FormGridDialogDemoSection,
-  ThemeAndButtonDemoSections,
-} from "./foundation-demo-sections";
+import { ThemeAndButtonDemoSections } from "./foundation-demo-sections";
 import { OverlayDemoSections } from "./overlay-demo-sections";
-import {
-  DynamicPageDemoSection,
-  ObjectPageDemoSection,
-  SplitLayoutDemoSection,
-} from "./shell-page-sections";
-import { useDocsWorklistController } from "./use-docs-worklist-controller";
-import { WorklistFilterManagementSection } from "./worklist-advanced/worklist-page-sections";
-import { WorklistResultsSection } from "./worklist-advanced/worklist-results-section";
-import {
-  ManageLocalViewsDialog,
-  RenameLocalViewDialog,
-  SaveWorklistViewDialog,
-  WorkspaceDraftDialog,
-  WorklistVariantSyncReviewDialog,
-  WorklistVariantTransferDialog,
-} from "./worklist-advanced/worklist-variant-dialogs";
+
+const loadDocsOperationsSectionSet = () => import("./docs-operations-section-set");
+const loadDocsShellSectionSet = () => import("./docs-shell-section-set");
+const loadDocsChartSectionSet = () => import("./docs-chart-section-set");
 
 export function App() {
   const [theme, setTheme] = useState<AxiomThemeName>("horizon");
@@ -49,24 +34,6 @@ export function App() {
   const [locale, setLocale] = useState<LocaleCode>("en-US");
   const themeLabel = themeLabelByValue[theme];
   const localeLabel = localeLabelByValue[locale];
-  const {
-    closeWorkspaceDraftDialog,
-    manageLocalViewsDialogProps,
-    openWorkspaceDraftDialog,
-    renameLocalViewDialogProps,
-    saveWorklistViewDialogProps,
-    selectedRowCount,
-    worklistFilterManagementProps,
-    worklistResultsProps,
-    worklistVariantSyncReviewDialogProps,
-    worklistVariantTransferDialogProps,
-    workspaceDraftDialogProps,
-  } = useDocsWorklistController({
-    densityLabel: density,
-    locale,
-    localeLabel,
-    themeLabel,
-  });
 
   return (
     <LocaleProvider locale={locale}>
@@ -125,41 +92,36 @@ export function App() {
 
             <OverlayDemoSections />
 
-            <FieldAndTabsDemoSections
-              locale={locale}
-              selectedRowCount={selectedRowCount}
+            <DeferredDocsModule
+              componentProps={{
+                densityLabel: density,
+                locale,
+                localeLabel,
+                themeLabel,
+              }}
+              description="Form fields, advanced filters, worklist walkthroughs and related dialogs now load as a deferred operations bundle."
+              heading="Loading operations demos"
+              loader={loadDocsOperationsSectionSet}
+              minHeight="56rem"
             />
 
-            <WorklistFilterManagementSection {...worklistFilterManagementProps} />
+            <DeferredDocsModule
+              componentProps={{ locale }}
+              description="Shell, object page and workspace layout demos now load when the reader approaches the shell section block."
+              heading="Loading shell demos"
+              loader={loadDocsShellSectionSet}
+              minHeight="60rem"
+            />
 
-            <WorklistResultsSection {...worklistResultsProps} />
-
-            <FormGridDialogDemoSection onOpenDialog={openWorkspaceDraftDialog} />
-
-            <DynamicPageDemoSection />
-
-            <ObjectPageDemoSection />
-
-            <SplitLayoutDemoSection locale={locale} />
+            <DeferredDocsModule
+              componentProps={{}}
+              description="Chart primitives, KPI cards and Chart Lab scenarios now load as a dedicated deferred chart bundle."
+              heading="Loading chart demos"
+              loader={loadDocsChartSectionSet}
+              minHeight="72rem"
+            />
           </div>
         </AppShell>
-
-        <SaveWorklistViewDialog {...saveWorklistViewDialogProps} />
-
-        <ManageLocalViewsDialog {...manageLocalViewsDialogProps} />
-
-        <WorklistVariantSyncReviewDialog
-          {...worklistVariantSyncReviewDialogProps}
-        />
-
-        <RenameLocalViewDialog {...renameLocalViewDialogProps} />
-
-        <WorklistVariantTransferDialog {...worklistVariantTransferDialogProps} />
-
-        <WorkspaceDraftDialog
-          {...workspaceDraftDialogProps}
-          onClose={closeWorkspaceDraftDialog}
-        />
       </ThemeProvider>
     </LocaleProvider>
   );

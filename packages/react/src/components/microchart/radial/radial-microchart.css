@@ -1,0 +1,146 @@
+.ax-radial-microchart {
+  inline-size: 100%;
+}
+
+.ax-radial-microchart__surface-body {
+  display: grid;
+  place-items: center;
+}
+
+.ax-radial-microchart__figure {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 7rem;
+  block-size: 7rem;
+  min-width: 0;
+}
+
+.ax-chart-surface[data-size="sm"] .ax-radial-microchart__figure {
+  inline-size: 5.5rem;
+  block-size: 5.5rem;
+}
+
+.ax-chart-surface[data-size="lg"] .ax-radial-microchart__figure {
+  inline-size: 8.5rem;
+  block-size: 8.5rem;
+}
+
+.ax-radial-microchart__svg {
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: visible;
+  transform: rotate(-90deg);
+}
+
+.ax-radial-microchart__track,
+.ax-radial-microchart__progress {
+  fill: none;
+  stroke-width: 8;
+}
+
+.ax-radial-microchart__track {
+  stroke: var(--ax-chart-track);
+}
+
+.ax-radial-microchart__progress {
+  stroke: var(--ax-chart-tone-brand);
+  stroke-dasharray: var(--ax-radial-circumference);
+  stroke-dashoffset: calc(
+    var(--ax-radial-circumference) * (1 - var(--ax-radial-progress))
+  );
+  stroke-linecap: round;
+  transition:
+    stroke-dashoffset var(--ax-transition-soft),
+    stroke var(--ax-transition-fast);
+}
+
+.ax-radial-microchart__figure[data-status="brand"] .ax-radial-microchart__track {
+  stroke: var(--ax-chart-tone-brand-soft);
+}
+
+.ax-radial-microchart__figure[data-status="brand"] .ax-radial-microchart__progress {
+  stroke: var(--ax-chart-tone-brand);
+}
+
+.ax-radial-microchart__figure[data-status="information"] .ax-radial-microchart__track {
+  stroke: var(--ax-chart-tone-information-soft);
+}
+
+.ax-radial-microchart__figure[data-status="information"] .ax-radial-microchart__progress {
+  stroke: var(--ax-chart-tone-information);
+}
+
+.ax-radial-microchart__figure[data-status="success"] .ax-radial-microchart__track {
+  stroke: var(--ax-chart-tone-success-soft);
+}
+
+.ax-radial-microchart__figure[data-status="success"] .ax-radial-microchart__progress {
+  stroke: var(--ax-chart-tone-success);
+}
+
+.ax-radial-microchart__figure[data-status="warning"] .ax-radial-microchart__track {
+  stroke: var(--ax-chart-tone-warning-soft);
+}
+
+.ax-radial-microchart__figure[data-status="warning"] .ax-radial-microchart__progress {
+  stroke: var(--ax-chart-tone-warning);
+}
+
+.ax-radial-microchart__figure[data-status="error"] .ax-radial-microchart__track {
+  stroke: var(--ax-chart-tone-error-soft);
+}
+
+.ax-radial-microchart__figure[data-status="error"] .ax-radial-microchart__progress {
+  stroke: var(--ax-chart-tone-error);
+}
+
+.ax-radial-microchart__figure[data-status="neutral"] .ax-radial-microchart__track {
+  stroke: var(--ax-chart-tone-neutral-soft);
+}
+
+.ax-radial-microchart__figure[data-status="neutral"] .ax-radial-microchart__progress {
+  stroke: var(--ax-chart-tone-neutral);
+}
+
+.ax-radial-microchart__center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 0.125rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.ax-radial-microchart__center-value {
+  color: var(--ax-chart-value);
+  font: 700 1.1rem/1 var(--ax-font-family);
+  letter-spacing: -0.02em;
+}
+
+.ax-radial-microchart__center-label {
+  overflow: hidden;
+  color: var(--ax-chart-label);
+  font: 700 0.62rem/1.2 var(--ax-font-family);
+  letter-spacing: 0.04em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ax-chart-surface[data-size="sm"] .ax-radial-microchart__center {
+  padding: 0.75rem;
+}
+
+.ax-chart-surface[data-size="sm"] .ax-radial-microchart__center-value {
+  font-size: 0.92rem;
+}
+
+.ax-chart-surface[data-size="sm"] .ax-radial-microchart__center-label {
+  font-size: 0.56rem;
+}
+
+.ax-chart-surface[data-size="lg"] .ax-radial-microchart__center-value {
+  font-size: 1.3rem;
+}

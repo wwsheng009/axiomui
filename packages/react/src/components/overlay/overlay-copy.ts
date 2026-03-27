@@ -57,3 +57,23 @@ export function getOverlayEmptyState(locale: string, allowCustomValue = false) {
 export function getRemoveValueButtonLabel(valueLabel: string, locale: string) {
   return isChineseLocale(locale) ? `移除${valueLabel}` : `Remove ${valueLabel}`;
 }
+
+export function getOverflowValueSummary(
+  valueLabels: string[],
+  overflowCount: number,
+  locale: string,
+) {
+  if (overflowCount <= 0) {
+    return "";
+  }
+
+  if (isChineseLocale(locale)) {
+    return valueLabels.length
+      ? `还有 ${overflowCount} 项已选：${valueLabels.join("、")}`
+      : `还有 ${overflowCount} 项已选`;
+  }
+
+  return valueLabels.length
+    ? `${overflowCount} more selected: ${valueLabels.join(", ")}`
+    : `${overflowCount} more selected`;
+}

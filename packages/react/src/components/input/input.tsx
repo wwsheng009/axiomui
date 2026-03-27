@@ -77,6 +77,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           id={controlId}
           className={cx("ax-input__native", inputClassName)}
           aria-describedby={describedBy}
+          aria-invalid={valueState === "error" || undefined}
           disabled={disabled}
           readOnly={readOnly}
           {...props}
@@ -96,4 +97,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     </div>
   );
 });
-

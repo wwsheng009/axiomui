@@ -48,6 +48,18 @@
   --ax-variant-sync-card-padding: 1rem;
   --ax-variant-pill-height: 2rem;
   --ax-pagination-height: 2rem;
+  --ax-chart-gap-sm: 0.5rem;
+  --ax-chart-gap-md: 0.75rem;
+  --ax-chart-gap-lg: 1rem;
+  --ax-chart-surface-padding-sm: 0.75rem;
+  --ax-chart-surface-padding-md: 1rem;
+  --ax-chart-surface-padding-lg: 1.25rem;
+  --ax-chart-min-block-size-sm: 7rem;
+  --ax-chart-min-block-size-md: 8.5rem;
+  --ax-chart-min-block-size-lg: 10rem;
+  --ax-chart-marker-size: 0.625rem;
+  --ax-chart-bar-radius: 999px;
+  --ax-chart-stroke-width: 0.1875rem;
   --ax-transition-fast: 140ms ease;
   --ax-transition-soft: 220ms ease;
 }
@@ -117,6 +129,32 @@
     var(--ax-color-brand-600) 0%,
     #06478b 100%
   );
+  --ax-chart-surface: var(--ax-surface-panel);
+  --ax-chart-surface-strong: var(--ax-surface-raised);
+  --ax-chart-grid: var(--ax-color-border-subtle);
+  --ax-chart-axis: var(--ax-color-border-strong);
+  --ax-chart-label: var(--ax-color-text-muted);
+  --ax-chart-value: var(--ax-color-text);
+  --ax-chart-track: var(--ax-surface-subtle);
+  --ax-chart-track-strong: var(--ax-surface-active);
+  --ax-chart-tone-brand: var(--ax-color-brand-500);
+  --ax-chart-tone-brand-soft: var(--ax-surface-selected);
+  --ax-chart-tone-information: var(--ax-color-information-500);
+  --ax-chart-tone-information-soft: var(--ax-surface-information);
+  --ax-chart-tone-success: var(--ax-color-positive-500);
+  --ax-chart-tone-success-soft: var(--ax-surface-positive);
+  --ax-chart-tone-warning: var(--ax-color-attention-500);
+  --ax-chart-tone-warning-soft: var(--ax-surface-attention);
+  --ax-chart-tone-error: var(--ax-color-negative-500);
+  --ax-chart-tone-error-soft: var(--ax-surface-negative);
+  --ax-chart-tone-neutral: var(--ax-color-text-muted);
+  --ax-chart-tone-neutral-soft: var(--ax-surface-subtle);
+  --ax-chart-series-1: var(--ax-color-brand-500);
+  --ax-chart-series-2: var(--ax-color-information-500);
+  --ax-chart-series-3: var(--ax-color-positive-500);
+  --ax-chart-series-4: var(--ax-color-attention-500);
+  --ax-chart-series-5: var(--ax-color-negative-500);
+  --ax-chart-series-6: var(--ax-color-text-soft);
 }
 
 [data-axiom-theme="fiori_3"] {
@@ -183,6 +221,32 @@
     var(--ax-color-brand-600) 0%,
     #0a457b 100%
   );
+  --ax-chart-surface: var(--ax-surface-panel);
+  --ax-chart-surface-strong: var(--ax-surface-raised);
+  --ax-chart-grid: var(--ax-color-border-subtle);
+  --ax-chart-axis: var(--ax-color-border-strong);
+  --ax-chart-label: var(--ax-color-text-muted);
+  --ax-chart-value: var(--ax-color-text);
+  --ax-chart-track: var(--ax-surface-subtle);
+  --ax-chart-track-strong: var(--ax-surface-active);
+  --ax-chart-tone-brand: var(--ax-color-brand-500);
+  --ax-chart-tone-brand-soft: var(--ax-surface-selected);
+  --ax-chart-tone-information: var(--ax-color-information-500);
+  --ax-chart-tone-information-soft: var(--ax-surface-information);
+  --ax-chart-tone-success: var(--ax-color-positive-500);
+  --ax-chart-tone-success-soft: var(--ax-surface-positive);
+  --ax-chart-tone-warning: var(--ax-color-attention-500);
+  --ax-chart-tone-warning-soft: var(--ax-surface-attention);
+  --ax-chart-tone-error: var(--ax-color-negative-500);
+  --ax-chart-tone-error-soft: var(--ax-surface-negative);
+  --ax-chart-tone-neutral: var(--ax-color-text-muted);
+  --ax-chart-tone-neutral-soft: var(--ax-surface-subtle);
+  --ax-chart-series-1: var(--ax-color-brand-500);
+  --ax-chart-series-2: var(--ax-color-information-500);
+  --ax-chart-series-3: var(--ax-color-positive-500);
+  --ax-chart-series-4: var(--ax-color-attention-500);
+  --ax-chart-series-5: var(--ax-color-negative-500);
+  --ax-chart-series-6: var(--ax-color-text-soft);
 }
 
 [data-axiom-theme="horizon_dark"] {
@@ -249,6 +313,32 @@
     #3a8edc 0%,
     #2d7bc6 100%
   );
+  --ax-chart-surface: var(--ax-surface-panel);
+  --ax-chart-surface-strong: var(--ax-surface-raised);
+  --ax-chart-grid: var(--ax-color-border-subtle);
+  --ax-chart-axis: var(--ax-color-border-strong);
+  --ax-chart-label: var(--ax-color-text-muted);
+  --ax-chart-value: var(--ax-color-text);
+  --ax-chart-track: var(--ax-surface-subtle);
+  --ax-chart-track-strong: var(--ax-surface-active);
+  --ax-chart-tone-brand: var(--ax-color-brand-500);
+  --ax-chart-tone-brand-soft: var(--ax-surface-selected);
+  --ax-chart-tone-information: var(--ax-color-information-500);
+  --ax-chart-tone-information-soft: var(--ax-surface-information);
+  --ax-chart-tone-success: var(--ax-color-positive-500);
+  --ax-chart-tone-success-soft: var(--ax-surface-positive);
+  --ax-chart-tone-warning: var(--ax-color-attention-500);
+  --ax-chart-tone-warning-soft: var(--ax-surface-attention);
+  --ax-chart-tone-error: var(--ax-color-negative-500);
+  --ax-chart-tone-error-soft: var(--ax-surface-negative);
+  --ax-chart-tone-neutral: var(--ax-color-text-muted);
+  --ax-chart-tone-neutral-soft: var(--ax-surface-subtle);
+  --ax-chart-series-1: var(--ax-color-brand-500);
+  --ax-chart-series-2: var(--ax-color-information-500);
+  --ax-chart-series-3: var(--ax-color-positive-500);
+  --ax-chart-series-4: var(--ax-color-attention-500);
+  --ax-chart-series-5: var(--ax-color-negative-500);
+  --ax-chart-series-6: var(--ax-color-text-soft);
 }
 
 [data-axiom-theme="fiori_3_dark"] {
@@ -315,6 +405,32 @@
     #377fc2 0%,
     #29679e 100%
   );
+  --ax-chart-surface: var(--ax-surface-panel);
+  --ax-chart-surface-strong: var(--ax-surface-raised);
+  --ax-chart-grid: var(--ax-color-border-subtle);
+  --ax-chart-axis: var(--ax-color-border-strong);
+  --ax-chart-label: var(--ax-color-text-muted);
+  --ax-chart-value: var(--ax-color-text);
+  --ax-chart-track: var(--ax-surface-subtle);
+  --ax-chart-track-strong: var(--ax-surface-active);
+  --ax-chart-tone-brand: var(--ax-color-brand-500);
+  --ax-chart-tone-brand-soft: var(--ax-surface-selected);
+  --ax-chart-tone-information: var(--ax-color-information-500);
+  --ax-chart-tone-information-soft: var(--ax-surface-information);
+  --ax-chart-tone-success: var(--ax-color-positive-500);
+  --ax-chart-tone-success-soft: var(--ax-surface-positive);
+  --ax-chart-tone-warning: var(--ax-color-attention-500);
+  --ax-chart-tone-warning-soft: var(--ax-surface-attention);
+  --ax-chart-tone-error: var(--ax-color-negative-500);
+  --ax-chart-tone-error-soft: var(--ax-surface-negative);
+  --ax-chart-tone-neutral: var(--ax-color-text-muted);
+  --ax-chart-tone-neutral-soft: var(--ax-surface-subtle);
+  --ax-chart-series-1: var(--ax-color-brand-500);
+  --ax-chart-series-2: var(--ax-color-information-500);
+  --ax-chart-series-3: var(--ax-color-positive-500);
+  --ax-chart-series-4: var(--ax-color-attention-500);
+  --ax-chart-series-5: var(--ax-color-negative-500);
+  --ax-chart-series-6: var(--ax-color-text-soft);
 }
 
 [data-axiom-theme="horizon_hcb"] {
@@ -380,6 +496,32 @@
     #66b3ff 0%,
     #4f9ae3 100%
   );
+  --ax-chart-surface: var(--ax-surface-panel);
+  --ax-chart-surface-strong: var(--ax-surface-raised);
+  --ax-chart-grid: var(--ax-color-border-subtle);
+  --ax-chart-axis: var(--ax-color-border-strong);
+  --ax-chart-label: var(--ax-color-text-muted);
+  --ax-chart-value: var(--ax-color-text);
+  --ax-chart-track: var(--ax-surface-subtle);
+  --ax-chart-track-strong: var(--ax-surface-active);
+  --ax-chart-tone-brand: var(--ax-color-brand-500);
+  --ax-chart-tone-brand-soft: var(--ax-surface-selected);
+  --ax-chart-tone-information: var(--ax-color-information-500);
+  --ax-chart-tone-information-soft: var(--ax-surface-information);
+  --ax-chart-tone-success: var(--ax-color-positive-500);
+  --ax-chart-tone-success-soft: var(--ax-surface-positive);
+  --ax-chart-tone-warning: var(--ax-color-attention-500);
+  --ax-chart-tone-warning-soft: var(--ax-surface-attention);
+  --ax-chart-tone-error: var(--ax-color-negative-500);
+  --ax-chart-tone-error-soft: var(--ax-surface-negative);
+  --ax-chart-tone-neutral: var(--ax-color-text-muted);
+  --ax-chart-tone-neutral-soft: var(--ax-surface-subtle);
+  --ax-chart-series-1: var(--ax-color-brand-500);
+  --ax-chart-series-2: var(--ax-color-information-500);
+  --ax-chart-series-3: var(--ax-color-positive-500);
+  --ax-chart-series-4: var(--ax-color-attention-500);
+  --ax-chart-series-5: var(--ax-color-negative-500);
+  --ax-chart-series-6: var(--ax-color-text-soft);
 }
 
 [data-axiom-theme="horizon_hcw"] {
@@ -445,6 +587,32 @@
     var(--ax-color-brand-600) 0%,
     #003178 100%
   );
+  --ax-chart-surface: var(--ax-surface-panel);
+  --ax-chart-surface-strong: var(--ax-surface-raised);
+  --ax-chart-grid: var(--ax-color-border-subtle);
+  --ax-chart-axis: var(--ax-color-border-strong);
+  --ax-chart-label: var(--ax-color-text-muted);
+  --ax-chart-value: var(--ax-color-text);
+  --ax-chart-track: var(--ax-surface-subtle);
+  --ax-chart-track-strong: var(--ax-surface-active);
+  --ax-chart-tone-brand: var(--ax-color-brand-500);
+  --ax-chart-tone-brand-soft: var(--ax-surface-selected);
+  --ax-chart-tone-information: var(--ax-color-information-500);
+  --ax-chart-tone-information-soft: var(--ax-surface-information);
+  --ax-chart-tone-success: var(--ax-color-positive-500);
+  --ax-chart-tone-success-soft: var(--ax-surface-positive);
+  --ax-chart-tone-warning: var(--ax-color-attention-500);
+  --ax-chart-tone-warning-soft: var(--ax-surface-attention);
+  --ax-chart-tone-error: var(--ax-color-negative-500);
+  --ax-chart-tone-error-soft: var(--ax-surface-negative);
+  --ax-chart-tone-neutral: var(--ax-color-text-muted);
+  --ax-chart-tone-neutral-soft: var(--ax-surface-subtle);
+  --ax-chart-series-1: var(--ax-color-brand-500);
+  --ax-chart-series-2: var(--ax-color-information-500);
+  --ax-chart-series-3: var(--ax-color-positive-500);
+  --ax-chart-series-4: var(--ax-color-attention-500);
+  --ax-chart-series-5: var(--ax-color-negative-500);
+  --ax-chart-series-6: var(--ax-color-text-soft);
 }
 
 :where(*, *::before, *::after) {
@@ -482,6 +650,16 @@
   --ax-variant-sync-card-padding: 0.875rem;
   --ax-variant-pill-height: 1.875rem;
   --ax-pagination-height: 1.875rem;
+  --ax-chart-gap-md: 0.625rem;
+  --ax-chart-gap-lg: 0.875rem;
+  --ax-chart-surface-padding-sm: 0.625rem;
+  --ax-chart-surface-padding-md: 0.875rem;
+  --ax-chart-surface-padding-lg: 1rem;
+  --ax-chart-min-block-size-sm: 6.25rem;
+  --ax-chart-min-block-size-md: 7.5rem;
+  --ax-chart-min-block-size-lg: 8.75rem;
+  --ax-chart-marker-size: 0.5625rem;
+  --ax-chart-stroke-width: 0.15625rem;
 }
 
 [data-axiom-density="cozy"],

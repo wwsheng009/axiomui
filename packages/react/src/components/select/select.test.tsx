@@ -79,4 +79,29 @@ describe("Select", () => {
       expect(trigger).toHaveFocus();
     });
   });
+
+  it("exposes helper copy and invalid semantics on the trigger", () => {
+    render(
+      <Select
+        label="Release status"
+        description="Choose the rollout state."
+        items={[
+          { value: "planned", label: "Planned" },
+          { value: "active", label: "Active" },
+        ]}
+        message="A status is required."
+        valueState="error"
+      />,
+    );
+
+    const trigger = screen.getByRole("button", { name: /release status/i });
+    const description = screen.getByText(/choose the rollout state/i);
+    const message = screen.getByText(/a status is required/i);
+
+    expect(trigger).toHaveAttribute(
+      "aria-describedby",
+      `${description.getAttribute("id")} ${message.getAttribute("id")}`,
+    );
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+  });
 });

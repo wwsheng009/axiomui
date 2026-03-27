@@ -136,7 +136,11 @@ describe("DateRangePicker", () => {
 
     render(
       <LocaleProvider locale="en-US">
-        <DateRangePicker label="Milestone range" onValueChange={handleValueChange} />
+        <DateRangePicker
+          description="Keep the end on or after the start."
+          label="Milestone range"
+          onValueChange={handleValueChange}
+        />
       </LocaleProvider>,
     );
 
@@ -153,9 +157,20 @@ describe("DateRangePicker", () => {
     await user.type(endInput, "04/10/2026{Enter}");
 
     expect(handleValueChange).not.toHaveBeenCalled();
-    expect(
-      screen.getByText(/start date must be on or before end date/i),
-    ).toBeInTheDocument();
+    const message = screen.getByText(/start date must be on or before end date/i);
+    const description = screen.getByText(/keep the end on or after the start/i);
+
+    expect(message).toBeInTheDocument();
+    expect(startInput).toHaveAttribute("aria-invalid", "true");
+    expect(endInput).toHaveAttribute("aria-invalid", "true");
+    expect(startInput).toHaveAttribute(
+      "aria-describedby",
+      `${description.getAttribute("id")} ${message.getAttribute("id")}`,
+    );
+    expect(endInput).toHaveAttribute(
+      "aria-describedby",
+      `${description.getAttribute("id")} ${message.getAttribute("id")}`,
+    );
   });
 
   it("localizes control and panel copy for zh-CN", async () => {

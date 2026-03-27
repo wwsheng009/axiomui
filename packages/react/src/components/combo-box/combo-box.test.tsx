@@ -121,4 +121,29 @@ describe("ComboBox", () => {
     });
     expect(input).not.toHaveFocus();
   });
+
+  it("exposes helper copy and invalid semantics on the field input", () => {
+    render(
+      <ComboBox
+        label="Owner"
+        description="Search the owner catalog."
+        items={[
+          { value: "mia", label: "Mia Chen" },
+          { value: "avery", label: "Avery Kim" },
+        ]}
+        message="Choose an owner before saving."
+        valueState="error"
+      />,
+    );
+
+    const input = screen.getByRole("combobox", { name: /owner/i });
+    const description = screen.getByText(/search the owner catalog/i);
+    const message = screen.getByText(/choose an owner before saving/i);
+
+    expect(input).toHaveAttribute(
+      "aria-describedby",
+      `${description.getAttribute("id")} ${message.getAttribute("id")}`,
+    );
+    expect(input).toHaveAttribute("aria-invalid", "true");
+  });
 });

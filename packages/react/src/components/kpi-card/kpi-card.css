@@ -1,0 +1,176 @@
+.ax-kpi-card .ax-card__body {
+  gap: var(--ax-space-4);
+}
+
+.ax-kpi-card__shell,
+.ax-kpi-card__hero,
+.ax-kpi-card__metric,
+.ax-kpi-card__indicators,
+.ax-kpi-card__indicator {
+  display: grid;
+}
+
+.ax-kpi-card__shell {
+  gap: var(--ax-space-4);
+}
+
+.ax-kpi-card__hero {
+  grid-template-columns: minmax(0, 1.05fr) minmax(12rem, 0.95fr);
+  align-items: start;
+  gap: var(--ax-space-4);
+}
+
+.ax-kpi-card__shell[data-has-chart="false"] .ax-kpi-card__hero {
+  grid-template-columns: 1fr;
+}
+
+.ax-kpi-card__metric {
+  gap: var(--ax-space-2);
+  align-content: start;
+}
+
+.ax-kpi-card__secondary-value {
+  color: var(--ax-color-text-soft);
+  font: 700 0.72rem/1.2 var(--ax-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ax-kpi-card__main-value {
+  color: var(--ax-color-text);
+  font: 700 clamp(1.8rem, 3vw, 2.4rem) / 0.95 var(--ax-font-family);
+  letter-spacing: -0.03em;
+}
+
+.ax-kpi-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ax-space-2);
+}
+
+.ax-kpi-card__status,
+.ax-kpi-card__trend {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  font: 700 0.72rem/1.2 var(--ax-font-family);
+  letter-spacing: 0.04em;
+}
+
+.ax-kpi-card__status {
+  color: var(--ax-chart-tone-neutral);
+  background: var(--ax-chart-tone-neutral-soft);
+  text-transform: uppercase;
+}
+
+.ax-kpi-card__status[data-tone="brand"] {
+  color: var(--ax-chart-tone-brand);
+  background: var(--ax-chart-tone-brand-soft);
+}
+
+.ax-kpi-card__status[data-tone="information"] {
+  color: var(--ax-chart-tone-information);
+  background: var(--ax-chart-tone-information-soft);
+}
+
+.ax-kpi-card__status[data-tone="success"] {
+  color: var(--ax-chart-tone-success);
+  background: var(--ax-chart-tone-success-soft);
+}
+
+.ax-kpi-card__status[data-tone="warning"] {
+  color: var(--ax-chart-tone-warning);
+  background: var(--ax-chart-tone-warning-soft);
+}
+
+.ax-kpi-card__status[data-tone="error"] {
+  color: var(--ax-chart-tone-error);
+  background: var(--ax-chart-tone-error-soft);
+}
+
+.ax-kpi-card__status[data-tone="neutral"] {
+  color: var(--ax-chart-tone-neutral);
+  background: var(--ax-chart-tone-neutral-soft);
+}
+
+.ax-kpi-card__trend {
+  color: var(--ax-color-text-soft);
+  background: var(--ax-surface-panel);
+  border: 1px solid var(--ax-color-border-subtle);
+}
+
+.ax-kpi-card__chart {
+  min-width: 0;
+}
+
+.ax-kpi-card__chart > * {
+  inline-size: 100%;
+}
+
+.ax-kpi-card__indicators {
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: var(--ax-space-3);
+}
+
+.ax-kpi-card__indicator {
+  gap: 0.1875rem;
+  min-width: 0;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-md);
+  background: var(--ax-surface-panel);
+}
+
+.ax-kpi-card__indicator[data-tone="brand"] {
+  background: var(--ax-chart-tone-brand-soft);
+}
+
+.ax-kpi-card__indicator[data-tone="information"] {
+  background: var(--ax-chart-tone-information-soft);
+}
+
+.ax-kpi-card__indicator[data-tone="success"] {
+  background: var(--ax-chart-tone-success-soft);
+}
+
+.ax-kpi-card__indicator[data-tone="warning"] {
+  background: var(--ax-chart-tone-warning-soft);
+}
+
+.ax-kpi-card__indicator[data-tone="error"] {
+  background: var(--ax-chart-tone-error-soft);
+}
+
+.ax-kpi-card__indicator[data-tone="neutral"] {
+  background: var(--ax-chart-tone-neutral-soft);
+}
+
+.ax-kpi-card__indicator-label {
+  color: var(--ax-color-text-soft);
+  font: 700 0.7rem/1.2 var(--ax-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ax-kpi-card__indicator-value {
+  color: var(--ax-color-text);
+  font: 700 0.96rem/1.3 var(--ax-font-family);
+}
+
+.ax-kpi-card__indicator-description {
+  color: var(--ax-color-text-muted);
+  font: 600 0.74rem/1.4 var(--ax-font-family);
+}
+
+@media (max-width: 720px) {
+  .ax-kpi-card__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .ax-kpi-card__indicators {
+    grid-template-columns: 1fr;
+  }
+}

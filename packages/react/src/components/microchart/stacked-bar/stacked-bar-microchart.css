@@ -1,0 +1,197 @@
+.ax-stacked-bar-microchart {
+  inline-size: 100%;
+}
+
+.ax-stacked-bar-microchart__surface-body,
+.ax-stacked-bar-microchart__summary,
+.ax-stacked-bar-microchart__summary-copy {
+  display: grid;
+}
+
+.ax-stacked-bar-microchart__surface-body {
+  gap: var(--ax-chart-gap-md);
+}
+
+.ax-stacked-bar-microchart__track {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  min-block-size: 1.55rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-chart-bar-radius);
+  background: var(--ax-chart-track);
+}
+
+.ax-stacked-bar-microchart__segment {
+  --ax-stacked-segment-color: var(--ax-chart-tone-neutral);
+  position: relative;
+  flex: 0 0 auto;
+  min-inline-size: 0;
+  block-size: 100%;
+  background: var(--ax-stacked-segment-color);
+}
+
+.ax-stacked-bar-microchart__segment + .ax-stacked-bar-microchart__segment {
+  box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.45);
+}
+
+.ax-stacked-bar-microchart__segment[data-tone="brand"],
+.ax-stacked-bar-microchart__summary-item[data-tone="brand"] {
+  --ax-stacked-segment-color: var(--ax-chart-tone-brand);
+}
+
+.ax-stacked-bar-microchart__segment[data-tone="information"],
+.ax-stacked-bar-microchart__summary-item[data-tone="information"] {
+  --ax-stacked-segment-color: var(--ax-chart-tone-information);
+}
+
+.ax-stacked-bar-microchart__segment[data-tone="success"],
+.ax-stacked-bar-microchart__summary-item[data-tone="success"] {
+  --ax-stacked-segment-color: var(--ax-chart-tone-success);
+}
+
+.ax-stacked-bar-microchart__segment[data-tone="warning"],
+.ax-stacked-bar-microchart__summary-item[data-tone="warning"] {
+  --ax-stacked-segment-color: var(--ax-chart-tone-warning);
+}
+
+.ax-stacked-bar-microchart__segment[data-tone="error"],
+.ax-stacked-bar-microchart__summary-item[data-tone="error"] {
+  --ax-stacked-segment-color: var(--ax-chart-tone-error);
+}
+
+.ax-stacked-bar-microchart__segment[data-tone="neutral"],
+.ax-stacked-bar-microchart__summary-item[data-tone="neutral"] {
+  --ax-stacked-segment-color: var(--ax-chart-tone-neutral);
+}
+
+.ax-stacked-bar-microchart__segment[data-series="1"],
+.ax-stacked-bar-microchart__summary-item[data-series="1"] {
+  --ax-stacked-segment-color: var(--ax-chart-series-1);
+}
+
+.ax-stacked-bar-microchart__segment[data-series="2"],
+.ax-stacked-bar-microchart__summary-item[data-series="2"] {
+  --ax-stacked-segment-color: var(--ax-chart-series-2);
+}
+
+.ax-stacked-bar-microchart__segment[data-series="3"],
+.ax-stacked-bar-microchart__summary-item[data-series="3"] {
+  --ax-stacked-segment-color: var(--ax-chart-series-3);
+}
+
+.ax-stacked-bar-microchart__segment[data-series="4"],
+.ax-stacked-bar-microchart__summary-item[data-series="4"] {
+  --ax-stacked-segment-color: var(--ax-chart-series-4);
+}
+
+.ax-stacked-bar-microchart__segment[data-series="5"],
+.ax-stacked-bar-microchart__summary-item[data-series="5"] {
+  --ax-stacked-segment-color: var(--ax-chart-series-5);
+}
+
+.ax-stacked-bar-microchart__segment[data-series="6"],
+.ax-stacked-bar-microchart__summary-item[data-series="6"] {
+  --ax-stacked-segment-color: var(--ax-chart-series-6);
+}
+
+.ax-stacked-bar-microchart__segment--remainder {
+  --ax-stacked-segment-color: color-mix(
+    in srgb,
+    var(--ax-chart-track) 72%,
+    var(--ax-chart-grid)
+  );
+}
+
+.ax-stacked-bar-microchart__empty {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  min-block-size: inherit;
+  color: var(--ax-chart-label);
+  font: 700 0.72rem/1.3 var(--ax-font-family);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ax-stacked-bar-microchart__summary {
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: var(--ax-chart-gap-sm);
+}
+
+.ax-stacked-bar-microchart__summary-item {
+  --ax-stacked-segment-color: var(--ax-chart-tone-neutral);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.625rem;
+  min-width: 0;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-md);
+  background: color-mix(
+    in srgb,
+    var(--ax-stacked-segment-color) 12%,
+    var(--ax-chart-surface-strong)
+  );
+}
+
+.ax-stacked-bar-microchart__summary[data-mode="compact"] .ax-stacked-bar-microchart__summary-item {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.ax-stacked-bar-microchart__summary[data-mode="full"] .ax-stacked-bar-microchart__summary-item {
+  align-items: start;
+}
+
+.ax-stacked-bar-microchart__summary-marker {
+  display: block;
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+  border-radius: var(--ax-chart-bar-radius);
+  background: var(--ax-stacked-segment-color);
+}
+
+.ax-stacked-bar-microchart__summary-copy {
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.ax-stacked-bar-microchart__summary-label {
+  overflow: hidden;
+  color: var(--ax-chart-value);
+  font: 700 0.8rem/1.35 var(--ax-font-family);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ax-stacked-bar-microchart__summary-description {
+  color: var(--ax-chart-label);
+  font: 500 0.72rem/1.4 var(--ax-font-family);
+}
+
+.ax-stacked-bar-microchart__summary-value {
+  color: var(--ax-chart-value);
+  font: 700 0.76rem/1.25 var(--ax-font-family);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ax-stacked-bar-microchart__legend {
+  gap: var(--ax-chart-gap-sm);
+}
+
+.ax-chart-surface[data-size="sm"] .ax-stacked-bar-microchart__track {
+  min-block-size: 1.3rem;
+}
+
+.ax-chart-surface[data-size="sm"] .ax-stacked-bar-microchart__summary {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 640px) {
+  .ax-stacked-bar-microchart__summary {
+    grid-template-columns: 1fr;
+  }
+}

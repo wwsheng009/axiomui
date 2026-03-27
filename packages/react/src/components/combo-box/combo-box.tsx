@@ -374,6 +374,7 @@ export const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(function Com
           aria-controls={open ? listboxId : undefined}
           aria-describedby={describedBy}
           aria-expanded={open}
+          aria-invalid={valueState === "error" || undefined}
           aria-activedescendant={
             open && filteredItems[activeIndex]
               ? `${inputId}-option-${filteredItems[activeIndex].value}`

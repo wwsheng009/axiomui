@@ -18,6 +18,7 @@ import type { ValueState } from "../input/input";
 import {
   getOverlayCopy,
   getOverlayEmptyState,
+  getOverflowValueSummary,
   getRemoveValueButtonLabel,
 } from "../overlay/overlay-copy";
 import { Popover } from "../popover/popover";
@@ -151,6 +152,20 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
       maxVisibleValues !== undefined && maxVisibleValues >= 0
         ? Math.max(resolvedValues.length - maxVisibleValues, 0)
         : 0;
+    const overflowValueLabels = useMemo(
+      () =>
+        resolvedValues
+          .slice(visibleValues.length)
+          .map((itemValue) => itemMap.get(itemValue))
+          .map((item, index) =>
+            item ? getItemText(item) : resolvedValues[visibleValues.length + index],
+          ),
+      [itemMap, resolvedValues, visibleValues.length],
+    );
+    const overflowSummary = useMemo(
+      () => getOverflowValueSummary(overflowValueLabels, overflowCount, locale),
+      [locale, overflowCount, overflowValueLabels],
+    );
 
     useEffect(() => {
       if (!open) {
@@ -384,7 +399,13 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
           })}
 
           {overflowCount > 0 ? (
-            <span className="ax-multi-combo-box__overflow">+{overflowCount}</span>
+            <span
+              className="ax-multi-combo-box__overflow"
+              aria-label={overflowSummary || undefined}
+              title={overflowSummary || undefined}
+            >
+              +{overflowCount}
+            </span>
           ) : null}
 
           <input
@@ -396,6 +417,7 @@ export const MultiComboBox = forwardRef<HTMLInputElement, MultiComboBoxProps>(
             aria-controls={open ? listboxId : undefined}
             aria-describedby={describedBy}
             aria-expanded={open}
+            aria-invalid={valueState === "error" || undefined}
             aria-activedescendant={
               open && filteredItems[activeIndex]
                 ? `${inputId}-option-${filteredItems[activeIndex].value}`

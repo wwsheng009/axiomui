@@ -1,0 +1,85 @@
+.ax-tool-page {
+  --ax-tool-page-main-max-block-size: calc(100vh - var(--ax-shell-height) - 12rem);
+  display: grid;
+  gap: var(--ax-space-4);
+  min-height: 100%;
+  padding: clamp(1rem, 2vw, 1.25rem);
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-lg);
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-raised) 0%,
+    var(--ax-surface-subtle) 100%
+  );
+  box-shadow: var(--ax-shadow-1);
+  box-sizing: border-box;
+}
+
+.ax-tool-page__header,
+.ax-tool-page__body,
+.ax-tool-page__side,
+.ax-tool-page__side-content,
+.ax-tool-page__main {
+  min-width: 0;
+}
+
+.ax-tool-page__header[data-sticky="true"] {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.ax-tool-page__body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--ax-space-4);
+  min-height: 0;
+  align-items: start;
+}
+
+.ax-tool-page[data-has-side="false"] .ax-tool-page__body {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ax-tool-page__side,
+.ax-tool-page__main {
+  display: grid;
+  gap: var(--ax-space-3);
+  min-height: 0;
+}
+
+.ax-tool-page__side {
+  align-content: start;
+}
+
+.ax-tool-page__side-content {
+  padding: 1rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-lg);
+  background: var(--ax-surface-panel);
+  box-shadow: var(--ax-shadow-0);
+}
+
+.ax-tool-page__main {
+  gap: var(--ax-space-4);
+}
+
+.ax-tool-page__main[data-scrollable="true"] {
+  overflow: auto;
+  max-block-size: var(--ax-tool-page-main-max-block-size);
+  padding-inline-end: 0.25rem;
+}
+
+.ax-tool-page[data-mobile="true"] .ax-tool-page__body {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ax-tool-page[data-mobile="true"] .ax-tool-page__main[data-scrollable="true"] {
+  max-block-size: none;
+}
+
+@media (max-width: 720px) {
+  .ax-tool-page {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,92 @@
+.ax-object-page-layout {
+  display: grid;
+  gap: var(--ax-space-4);
+}
+
+.ax-object-page-layout__header,
+.ax-object-page-layout__main,
+.ax-object-page-layout__side,
+.ax-object-page-layout__sections,
+.ax-object-page-layout__subsections,
+.ax-object-page-layout__section-anchor {
+  display: grid;
+  gap: var(--ax-space-4);
+}
+
+.ax-object-page-layout__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.85fr);
+  gap: var(--ax-space-4);
+  align-items: start;
+}
+
+.ax-object-page-layout__section-anchor {
+  scroll-margin-top: calc(var(--ax-shell-height) + var(--ax-tool-header-height) + 4rem);
+}
+
+.ax-object-page-layout__subsection {
+  border-color: color-mix(in srgb, var(--ax-color-border-subtle) 90%, var(--ax-color-brand-500) 10%);
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-raised) 0%,
+    var(--ax-surface-panel) 100%
+  );
+}
+
+.ax-object-page-subsection {
+  display: grid;
+  gap: var(--ax-space-3);
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-md);
+  background: var(--ax-surface-subtle);
+}
+
+.ax-object-page-subsection__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ax-space-3);
+}
+
+.ax-object-page-subsection__headline,
+.ax-object-page-subsection__body,
+.ax-object-page-subsection__actions {
+  display: grid;
+  gap: var(--ax-space-2);
+}
+
+.ax-object-page-subsection__eyebrow {
+  color: var(--ax-color-brand-600);
+  font: 700 0.68rem/1.2 var(--ax-font-family);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ax-object-page-subsection__heading {
+  margin: 0;
+  color: var(--ax-color-text);
+  font: 700 0.92rem/1.25 var(--ax-font-family);
+}
+
+.ax-object-page-subsection__description {
+  margin: 0;
+  color: var(--ax-color-text-muted);
+  font: 500 0.8rem/1.5 var(--ax-font-family);
+}
+
+@media (max-width: 980px) {
+  .ax-object-page-layout__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .ax-object-page-subsection__header {
+    flex-direction: column;
+  }
+
+  .ax-object-page-layout__section-anchor {
+    scroll-margin-top: calc(var(--ax-shell-height) + 1rem);
+  }
+}

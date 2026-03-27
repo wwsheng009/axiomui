@@ -81,4 +81,41 @@ describe("MultiComboBox", () => {
     expect(screen.getByRole("button", { name: "移除Avery Kim" })).toBeInTheDocument();
     expect(screen.getByText("已选")).toBeInTheDocument();
   });
+
+  it("marks the field invalid and summarizes truncated tokens", () => {
+    render(
+      <MultiComboBox
+        defaultValues={["mia", "avery", "noah"]}
+        description="Select at least two reviewers."
+        items={[
+          { value: "mia", label: "Mia Chen" },
+          { value: "avery", label: "Avery Kim" },
+          { value: "noah", label: "Noah Patel" },
+        ]}
+        label="Review owners"
+        maxVisibleValues={1}
+        message="Review owners are required."
+        valueState="error"
+      />,
+    );
+
+    const input = screen.getByRole("combobox", { name: /review owners/i });
+    const description = screen.getByText(/select at least two reviewers/i);
+    const message = screen.getByText(/review owners are required/i);
+    const overflow = screen.getByText("+2");
+
+    expect(input).toHaveAttribute(
+      "aria-describedby",
+      `${description.getAttribute("id")} ${message.getAttribute("id")}`,
+    );
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(overflow).toHaveAttribute(
+      "aria-label",
+      "2 more selected: Avery Kim, Noah Patel",
+    );
+    expect(overflow).toHaveAttribute(
+      "title",
+      "2 more selected: Avery Kim, Noah Patel",
+    );
+  });
 });

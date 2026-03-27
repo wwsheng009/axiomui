@@ -1,0 +1,135 @@
+.ax-harvey-ball-microchart {
+  inline-size: 100%;
+}
+
+.ax-harvey-ball-microchart__surface-body,
+.ax-harvey-ball-microchart__grid,
+.ax-harvey-ball-microchart__copy {
+  display: grid;
+}
+
+.ax-harvey-ball-microchart__surface-body {
+  gap: var(--ax-chart-gap-md);
+}
+
+.ax-harvey-ball-microchart__grid {
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--ax-chart-gap-sm);
+}
+
+.ax-harvey-ball-microchart__item {
+  --ax-harvey-color: var(--ax-chart-tone-neutral);
+  --ax-harvey-soft: var(--ax-chart-tone-neutral-soft);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-md);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ax-harvey-soft) 44%, var(--ax-chart-surface-strong)) 0%,
+    var(--ax-chart-surface-strong) 100%
+  );
+}
+
+.ax-harvey-ball-microchart__item[data-tone="brand"] {
+  --ax-harvey-color: var(--ax-chart-tone-brand);
+  --ax-harvey-soft: var(--ax-chart-tone-brand-soft);
+}
+
+.ax-harvey-ball-microchart__item[data-tone="information"] {
+  --ax-harvey-color: var(--ax-chart-tone-information);
+  --ax-harvey-soft: var(--ax-chart-tone-information-soft);
+}
+
+.ax-harvey-ball-microchart__item[data-tone="success"] {
+  --ax-harvey-color: var(--ax-chart-tone-success);
+  --ax-harvey-soft: var(--ax-chart-tone-success-soft);
+}
+
+.ax-harvey-ball-microchart__item[data-tone="warning"] {
+  --ax-harvey-color: var(--ax-chart-tone-warning);
+  --ax-harvey-soft: var(--ax-chart-tone-warning-soft);
+}
+
+.ax-harvey-ball-microchart__item[data-tone="error"] {
+  --ax-harvey-color: var(--ax-chart-tone-error);
+  --ax-harvey-soft: var(--ax-chart-tone-error-soft);
+}
+
+.ax-harvey-ball-microchart__item[data-tone="neutral"] {
+  --ax-harvey-color: var(--ax-chart-tone-neutral);
+  --ax-harvey-soft: var(--ax-chart-tone-neutral-soft);
+}
+
+.ax-harvey-ball-microchart__ball {
+  position: relative;
+  display: block;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  border: 2px solid color-mix(in srgb, var(--ax-harvey-color) 32%, var(--ax-chart-grid));
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--ax-harvey-color) calc(var(--ax-harvey-fill) * 1turn),
+    var(--ax-chart-track) 0
+  );
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ax-chart-surface) 55%, transparent);
+}
+
+.ax-harvey-ball-microchart__ball::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 28% 26%,
+    rgb(255 255 255 / 0.35) 0%,
+    transparent 42%
+  );
+  content: "";
+}
+
+.ax-harvey-ball-microchart__copy {
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.ax-harvey-ball-microchart__label {
+  overflow: hidden;
+  color: var(--ax-chart-value);
+  font: 700 0.8rem/1.35 var(--ax-font-family);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ax-harvey-ball-microchart__value {
+  color: var(--ax-chart-label);
+  font: 700 0.72rem/1.2 var(--ax-font-family);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ax-harvey-ball-microchart__description {
+  color: var(--ax-chart-label);
+  font: 500 0.72rem/1.4 var(--ax-font-family);
+}
+
+.ax-harvey-ball-microchart__legend {
+  gap: var(--ax-chart-gap-sm);
+}
+
+.ax-chart-surface[data-size="sm"] .ax-harvey-ball-microchart__grid {
+  grid-template-columns: 1fr;
+}
+
+.ax-chart-surface[data-size="sm"] .ax-harvey-ball-microchart__ball {
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+}
+
+.ax-chart-surface[data-size="lg"] .ax-harvey-ball-microchart__ball {
+  inline-size: 3rem;
+  block-size: 3rem;
+}

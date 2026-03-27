@@ -18,6 +18,8 @@
   Sprint 1 到 Sprint 5 的目标、交付清单、退出标准和建议评审点。
 - [05-demo-scenarios.md](./05-demo-scenarios.md)
   docs 演示站应覆盖的场景清单和 walkthrough 脚本。
+- [execution/current-status.md](./execution/current-status.md)
+  基于当前代码快照的实施情况汇总，适合先确认“现在做到哪一步了”。
 - [backlog/README.md](./backlog/README.md)
   backlog 草稿总览，包含可直接复制为 issue 的 sprint 任务草案。
 - [backlog/master-backlog-board.md](./backlog/master-backlog-board.md)
@@ -57,8 +59,9 @@
 ## 建议使用方式
 
 1. 新成员先从 [onboarding/README.md](./onboarding/README.md) 开始，快速进入上下文。
-2. 用 [01-roadmap.md](./01-roadmap.md) 做整体排期和 milestone 管理。
-3. 用 [04-sprint-checklists.md](./04-sprint-checklists.md) 建立 sprint backlog。
-4. 用 [02-api-conventions.md](./02-api-conventions.md) 控制多人并行时的 API 一致性。
-5. 用 [03-risk-register.md](./03-risk-register.md) 作为周会中的风险跟踪表。
-6. 用 [05-demo-scenarios.md](./05-demo-scenarios.md) 作为 docs 验收和 walkthrough 清单。
+2. 先用 [execution/current-status.md](./execution/current-status.md) 确认代码快照的真实进度，再进入排期讨论。
+3. 用 [01-roadmap.md](./01-roadmap.md) 做整体排期和 milestone 管理。
+4. 用 [04-sprint-checklists.md](./04-sprint-checklists.md) 建立 sprint backlog。
+5. 用 [02-api-conventions.md](./02-api-conventions.md) 控制多人并行时的 API 一致性。
+6. 用 [03-risk-register.md](./03-risk-register.md) 作为周会中的风险跟踪表。
+7. 用 [05-demo-scenarios.md](./05-demo-scenarios.md) 作为 docs 验收和 walkthrough 清单。

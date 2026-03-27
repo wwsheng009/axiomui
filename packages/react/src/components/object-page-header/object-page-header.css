@@ -1,0 +1,118 @@
+.ax-object-page-header {
+  display: grid;
+  gap: var(--ax-space-4);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--ax-color-border-subtle);
+  border-radius: var(--ax-radius-lg);
+  background: linear-gradient(
+    180deg,
+    var(--ax-surface-raised) 0%,
+    var(--ax-surface-subtle) 100%
+  );
+  box-shadow: var(--ax-shadow-1);
+}
+
+.ax-object-page-header__breadcrumbs {
+  min-width: 0;
+}
+
+.ax-object-page-header__main {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--ax-space-4);
+}
+
+.ax-object-page-header__avatar {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0.125rem;
+}
+
+.ax-object-page-header__content,
+.ax-object-page-header__headline {
+  display: grid;
+  gap: var(--ax-space-2);
+  min-width: 0;
+}
+
+.ax-object-page-header__title {
+  margin: 0;
+  min-width: 0;
+  color: var(--ax-color-text);
+  font: 700 clamp(1.45rem, 2.9vw, 2.15rem) / 1.02 var(--ax-font-family);
+}
+
+.ax-object-page-header__title-link {
+  display: inline;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+}
+
+.ax-object-page-header__title-link:hover {
+  color: var(--ax-color-brand-600);
+}
+
+.ax-object-page-header__title-link:focus-visible {
+  outline: none;
+  box-shadow: var(--ax-focus-ring);
+  border-radius: var(--ax-radius-sm);
+}
+
+.ax-object-page-header__title-link[data-disabled="true"] {
+  color: var(--ax-color-text-soft);
+  cursor: default;
+}
+
+.ax-object-page-header__subtitle {
+  margin: 0;
+  max-width: 60rem;
+  color: var(--ax-color-text-muted);
+  font: 600 0.94rem/1.6 var(--ax-font-family);
+}
+
+.ax-object-page-header__meta,
+.ax-object-page-header__statuses,
+.ax-object-page-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ax-space-2);
+  min-width: 0;
+}
+
+.ax-object-page-header__meta {
+  color: var(--ax-color-text-soft);
+  font: 700 0.72rem/1.3 var(--ax-font-family);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ax-object-page-header__actions {
+  justify-content: flex-end;
+}
+
+@media (max-width: 960px) {
+  .ax-object-page-header__main {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .ax-object-page-header__actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .ax-object-page-header__main {
+    grid-template-columns: 1fr;
+  }
+}

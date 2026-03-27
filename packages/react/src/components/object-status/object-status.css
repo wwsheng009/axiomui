@@ -1,0 +1,59 @@
+.ax-object-status {
+  --ax-object-status-background: var(--ax-surface-subtle);
+  --ax-object-status-border: var(--ax-color-border-subtle);
+  --ax-object-status-color: var(--ax-color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  max-width: 100%;
+  min-height: calc(var(--ax-element-height) - 0.625rem);
+  padding: 0.1875rem 0.625rem;
+  border: 1px solid var(--ax-object-status-border);
+  border-radius: 999px;
+  background: var(--ax-object-status-background);
+  color: var(--ax-object-status-color);
+  vertical-align: middle;
+}
+
+.ax-object-status[data-tone="information"] {
+  --ax-object-status-background: var(--ax-surface-information);
+  --ax-object-status-border: var(--ax-color-information-500);
+  --ax-object-status-color: var(--ax-color-information-strong);
+}
+
+.ax-object-status[data-tone="success"] {
+  --ax-object-status-background: var(--ax-surface-positive);
+  --ax-object-status-border: var(--ax-color-positive-500);
+  --ax-object-status-color: var(--ax-color-positive-strong);
+}
+
+.ax-object-status[data-tone="warning"] {
+  --ax-object-status-background: var(--ax-surface-attention);
+  --ax-object-status-border: var(--ax-color-attention-500);
+  --ax-object-status-color: var(--ax-color-attention-strong);
+}
+
+.ax-object-status[data-tone="error"] {
+  --ax-object-status-background: var(--ax-surface-negative);
+  --ax-object-status-border: var(--ax-color-negative-500);
+  --ax-object-status-color: var(--ax-color-negative-strong);
+}
+
+.ax-object-status__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 0.875rem;
+  height: 0.875rem;
+  color: inherit;
+  flex: 0 0 auto;
+}
+
+.ax-object-status__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: inherit;
+  font: 700 0.74rem/1.2 var(--ax-font-family);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
